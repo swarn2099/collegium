@@ -68,9 +68,18 @@ hr {
 
 html {
   font-family: 'Athiti';
+
   background-color: white;
 }
 
-#catog {
-  margin-left: 10%;
+
+@-webkit-keyframes typing { from { width: 0; } }
+@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+
+.type {
+	width: 21ch;
+	white-space: nowrap;
+	overflow: hidden;
+	-webkit-animation: typing 7s steps(21, end),
+	           blink-caret .5s step-end infinite alternate;
 }
