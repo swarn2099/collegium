@@ -1,0 +1,76 @@
+.btn {
+  border-radius: 20px;
+}
+
+.account {
+  border-radius: 50px;
+}
+
+#collegium {
+  margin-left: 5%;
+}
+
+nav {
+  background-color: #2F3136;
+}
+
+#thread-logo {
+  margin-left: 2%;
+}
+
+#welcome {
+  margin-top: -20%;
+}
+
+#other {
+  margin-top: -105%;
+}
+
+.thread {
+  background: linear-gradient(90deg, #006996 1.12%, #3A96AD 59.57%, #83C4B4 100%);
+  /* animation: pastelRainbow 10s ease infinite;
+  background-size: 400% 400%; */
+}
+@keyframes pastelRainbow {
+    0% {
+      background-position: 0% 50%; }
+    50% {
+      background-position: 100% 50%; }
+    100% {
+      background-position: 0% 50%;  }
+}
+
+hr {
+  background: #006996;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #006996, red);
+  /*For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #006996, red);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #006996, red);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #006996, red);
+  /* Standard syntax */
+}
+
+.creators {
+  background: linear-gradient(0deg, #253944, #253944);
+  height: 80px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.card, .card-panel {
+  border-radius: 15px;
+}
+
+html {
+  font-family: 'Athiti';
+  background-color: white;
+}
+
+#catog {
+  margin-left: 10%;
+}
