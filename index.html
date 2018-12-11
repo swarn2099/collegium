@@ -7,181 +7,365 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+
   <!--Import materialize.css-->
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="css/styles.css">
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/demo.css">
+
+  <script src="js/medium-editor.js"></script>
+  <link rel="stylesheet" href="css/medium-editor.css">
+  <link rel="stylesheet" href="css/default.css">
+  <script src="js/markdown.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+
 </head>
 
 <body>
   <section class="thread">
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo" id="collegium">collegium<span class="amber-text">.me</span></a>
+        <a href="index.html" class="brand-logo" id="collegium">collegium<span class="amber-text">.me</span></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#" class="waves-effect waves-light btn blue white-text">Add Thread</a></li>
+          <li><a href="#modal1" class="waves-effect waves-light btn modal-trigger blue white-text"><i class="material-icons right">create</i>Add Thread</a></li>
           <li><a href="#" class="waves-effect waves-light btn account white black-text">  <i class="large material-icons">account_circle</i></a></li>
         </ul>
     </nav>
-    <!-- <h3 class="white-text center" style="  font-family: 'Helvetica';" id="thread-logo" style="font-weight: 900;">Threads</h3> -->
-    <br>
-    <div class="row ">
-      <div class="container hide-on-med-and-down right">
-        <a href="#"><h5 class="white-text col s2">Intersting</h5></a>
-        <h5 class="white-text col s2">Questions</h5>
-        <h5 class="white-text col s2">College</h5>
-        <h5 class="white-text col s2">Funny</h5>
-        <h5 class="white-text col s2">Random</h5>
-        <h5 class="white-text col s2">Random</h5>
-      </div>
-    </div>
-  </section>
-  <section>
-
-    <div class="row">
-      <div class="col s12 m3">
-        <div class="card-panel white z-depth-4 hide-on-med-and-down" id="welcome" style="font-family: 'Helvetica';">
-          <h5 style="font-weight: 900;">Welcome Swarn</h5>
-          <ul>
-            <li>Sophmore</li>
-            <li>Copmuter Science</li>
-          </ul>
-          <h6><script>document.write(new Date().toDateString());</script></h6>
-          <hr color="#83C4B4" />
-          <h5>300 <span class="red-text">points</span> | <span class="blue-text">Tier 1</span></h5>
-          <hr color="#83C4B4" />
-          <h5 style="font-weight: 900;">News</h5>
-<a class="twitter-timeline" data-height="450" href="https://twitter.com/UT_Dallas?ref_src=twsrc%5Etfw">Tweets by UT_Dallas</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-      </div>
-      <div class="col s12 m9 center">
-        <div class="card-panel white z-depth-5">
-          <h4 class="left-align" style="font-weight: 900; ">Popular <span class="amber-text">Hashtags</span></h4>
-          <hr style="height:1px;">
-
-          <div class="row">
-
-            <div class="col m3 s12">
-              <div class="card-panel grey darken-4 white-text  z-depth-3 hoverable " style="border-color: black; border-width: 1px;">
-                <h5 style="font-weight: 800;">#todayifuckedup</h5>
-                <br>
-                <div class="row">
-                  <div class="col s12">
-                    <h6 class="category center-align amber-text">Funny</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col m3 s12">
-              <div class="card-panel grey darken-4 white-text z-depth-3 hoverable">
-                <h5 style="font-weight: 800;">#todayIlearned</h5>
-                <br>
-                <div class="row">
-                  <div class="col s12">
-                    <h6 class="category center-align amber-text">Interesting</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col m3 s12">
-              <div class="card-panel grey darken-4 white-text z-depth-3 hoverable">
-                <h5 style="font-weight: 800;">#ecssmells</h5>
-                <br>
-                <div class="row">
-                  <div class="col s12">
-                    <h6 class="category center-align amber-text">Funny</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col m3 s12">
-              <div class="card-panel grey darken-4 white-text z-depth-3 hoverable">
-                <h5 style="font-weight: 800;">#adviceroad</h5>
-                <br>
-                <div class="row">
-                  <div class="col s12">
-                    <h6 class="category center-align amber-text">Questions</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h4 class="left-align" style="font-weight: 900; ">Popular <span class="blue-text">Threads</span></h4>
-          <hr style="height:1px;">
-          <div class="row">
-            <div class="col m3 s12">
-              <div class="card-panel z-depth-3" >
-                <h5 style="font-weight: 800;">Temoc Naked Running</h5>
-                <br>
-                <div class="row">
-                  <div class="col s6">
-                    <h6>258 Upvotes</h6>
-                    <h6 class="category center-align blue-text text-darken-3" style="font-weight: 700;">#todayIsaw</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col m3 s12">
-              <div class="card-panel  z-depth-3">
-                <h5 style="font-weight: 800;">Temoc Naked Running</h5>
-                <br>
-                <div class="row">
-                  <div class="col s6">
-                    <h6>258 Upvotes</h6>
-                    <h6 class="category center-align blue-text text-darken-3" style="font-weight: 700;">#todayIsaw</h6>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col m3 s12">
-              <div class="card-panel  z-depth-3">
-                <h5 style="font-weight: 800;">Temoc Naked Running</h5>
-                <br>
-                <div class="row">
-                  <div class="col s6">
-                    <h6>258 Upvotes</h6>
-                    <h6 class="category center-align blue-text text-darken-3" style="font-weight: 700;">#todayIsaw</h6>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="col m3 s12">
-              <div class="card-panel  z-depth-3">
-                <h5 style="font-weight: 800;">Temoc Naked Running</h5>
-                <br>
-                <div class="row">
-                  <div class="col s6">
-                    <h6>258 Upvotes</h6>
-                    <h6 class="category center-align blue-text text-darken-3" style="font-weight: 700;">#todayIsaw</h6>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="row hide-on-med-and-down">
-    <div class="col s12 black">
+    <h3 class="right-align white-text hide-on-med-and-down" style="font-weight: 900; margin-right: 5%"><a href=""><span class="white-text">Threads</span></a><a href=""><span class="amber-text"> / Creators</span></a></h3>
+    <section class="home">
       <div class="row">
-        <div class="col s4">
-          <h4 class="white-text" id="thread-logo" style="font-weight: 900;">Creators</h4>
+        <div class="col s12 m3">
+          <div class="card-panel white z-depth-4 hide-on-med-and-down animated fadeInLeft" id="welcome" >
+            <h5 style="font-weight: 900;"><b>Welcome Swarn</b></h5>
+            <p>Sophmore | Copmuter Science</p>
+            <!-- <h6><script>document.write(new Date().toDateString());</script></h6> -->
+            <hr color="#ffc107" />
+            <h5 class="center">300 <span class="red-text">points</span></h5>
+            <hr color="#2196f3" />
+            <!-- <h5 style="font-weight: 900;">News</h5> -->
+            <br>
+            <a class="twitter-timeline" data-height="470" href="https://twitter.com/UT_Dallas?ref_src=twsrc%5Etfw">Tweets by UT_Dallas</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" overflow: "auto" overflow-y: "scroll"></script>
+          </div>
         </div>
-        <div class="col s8">
-          <h3 class="white-text right type" id="thread-logo">C O M I N G &nbsp S O O N</h3>
+        <div class="col s12 m9 center">
+          <div class="transparent z-depth-0">
+            <section id="popularTags">
+              <h4 class="left-align white-text" style="font-weight: 900; ">Popular <span class="amber-text">Hashtags</span></h4>
+              <hr color="white" />
 
+              <div class="row">
+                <div class="col m4 s12">
+                  <div id="hashtagCard" class="card-panel tag1 grey darken-4 white-text z-depth-3 hoverable" style="border-color: black; border-width: 1px;">
+                    <h4 style="font-weight: 800;" class="amount">#todayifuckedup</h4>
+                    <br>
+                    <div class="row">
+                      <div class="col s12">
+                        <p style="font-weight: 800;" class="amount">The funniest stories from around campus.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col m4 s12">
+                  <div id="hashtagCard" class="card-panel tag2 grey darken-4 white-text z-depth-4 hoverable">
+                    <h4 style="font-weight: 800;" class="amount">#todayilearned</h4>
+                    <br>
+                    <div class="row">
+                      <div class="col s12">
+                        <p style="font-weight: 800;" class="amount">You'll learn something new everyday.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col m4 s12">
+                  <div id="hashtagCard" class="card-panel tag3 grey darken-4 white-text z-depth-5 hoverable">
+                    <h4 style="font-weight: 800;" class="amount">#ecssmells</h4>
+                    <br>
+                    <div class="row">
+                      <div class="col s12">
+                        <p style="font-weight: 800;" class="amount">The smelliest engineers on the planet.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <h4 class="left-align" id="popularThreadText" style="font-weight: 900; ">Popular <span class="blue-text">Threads</span><hr style="height:1px;"></h4>
+            <ul class="collapsible white col m12 shadow " style="border: none; border-style: none;">
+              <li class="hideTags">
+                <div class="collapsible-header row">
+                  <div class="col s8 left">
+                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">Temoc spotted running around campus naked!</h6>
+                  </div>
+                  <div class=" col s4">
+                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
+                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
+                  </div>
+                </div>
+                <div class="collapsible-body left-align">
+                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br> So one day as
+                    I was coming home from work, a really good song came on the radio. I pulled into my garage just below my apartment complex, reclined my seat and closed my eyes, enjoying the music.<br><br> You can probably tell where I'm going with
+                    this story. I fell asleep in the car. With the engine running in an enclosed space.<br><br> (The garage is located underground, below each apartment block. Each apartment block is a duplex with it's own garage. The unit above ours
+                    is empty so basically I have both parking spaces to myself.)<br><br>
+                    <section class="comments" id="comments">
+                      <h5>Comments</h5>
+                      <hr color="#04204c" />
+                      <div class="row">
+                        <div class="input-field col m10 s12">
+                          <i class="material-icons prefix">account_circle</i>
+                          <input id="icon_prefix" type="text" class="validate">
+                          <label for="icon_prefix">Leave a comment...</label>
+                        </div>
+                        <div class="col m2 s12 center">
+                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
+                        </div>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Saketh Nallaparaju</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Marco Flores</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                    </section>
+                </div>
+              </li>
+              <li class="hideTags">
+                <div class="collapsible-header row">
+                  <div class="col s8 left">
+                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">Forgot to lock my door at Northside...</h6>
+                  </div>
+                  <div class=" col s4">
+                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
+                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
+                  </div>
+                </div>
+                <div class="collapsible-body left-align">
+                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br> So one day as
+                    I was coming home from work, a really good song came on the radio. I pulled into my garage just below my apartment complex, reclined my seat and closed my eyes, enjoying the music.<br><br> You can probably tell where I'm going with
+                    this story. I fell asleep in the car. With the engine running in an enclosed space.<br><br> (The garage is located underground, below each apartment block. Each apartment block is a duplex with it's own garage. The unit above ours
+                    is empty so basically I have both parking spaces to myself.)<br><br>
+                    <section class="comments" id="comments">
+                      <h5>Comments</h5>
+                      <hr color="#04204c" />
+                      <div class="row">
+                        <div class="input-field col s10">
+                          <i class="material-icons prefix">account_circle</i>
+                          <input id="icon_prefix" type="text" class="validate">
+                          <label for="icon_prefix">Leave a comment...</label>
+                        </div>
+                        <div class="col s2">
+                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
+                        </div>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Saketh Nallaparaju</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Marco Flores</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                    </section>
+                </div>
+              </li>
+              <li class="hideTags">
+                <div class="collapsible-header row">
+                  <div class="col s8 left">
+                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">To the guy who doesn't know how to park in the parking garage</h6>
+                  </div>
+                  <div class=" col s4">
+                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
+                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
+                  </div>
+                </div>
+                <div class="collapsible-body left-align">
+                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br>
+                    <section class="comments" id="comments">
+                      <h5>Comments</h5>
+                      <hr color="#04204c" />
+                      <div class="row">
+                        <div class="input-field col s10">
+                          <i class="material-icons prefix">account_circle</i>
+                          <input id="icon_prefix" type="text" class="validate">
+                          <label for="icon_prefix">Leave a comment...</label>
+                        </div>
+                        <div class="col s2">
+                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
+                        </div>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Saketh Nallaparaju</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Marco Flores</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                    </section>
+                </div>
+              </li>
+              <li class="hideTags">
+                <div class="collapsible-header row">
+                  <div class="col s8 left">
+                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">Didn't do my final semester project b/c I thought I would pass anyways...bad decision.</h6>
+                  </div>
+                  <div class=" col s4">
+                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
+                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
+                  </div>
+                </div>
+                <div class="collapsible-body left-align">
+                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br>
+                    <section class="comments" id="comments">
+                      <h5>Comments</h5>
+                      <hr color="#04204c" />
+                      <div class="row">
+                        <div class="input-field col s10">
+                          <i class="material-icons prefix">account_circle</i>
+                          <input id="icon_prefix" type="text" class="validate">
+                          <label for="icon_prefix">Leave a comment...</label>
+                        </div>
+                        <div class="col s2">
+                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
+                        </div>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Saketh Nallaparaju</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                      <div class="row commentCard">
+                        <h6><b>Marco Flores</b></h6>
+                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
+                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
+                        </p>
+                      </div>
+                    </section>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+    <div class="row creators hide-on-med-and-down">
+      <div class="col s12 black">
+        <div class="row">
+          <div class="col s4">
+            <h4 class="white-text left-align" id="thread-logo" style="font-weight: 900;">Creators</h4>
+          </div>
+          <div class="col s8">
+            <div class="typewriter">
+              <h4 class="white-text right type" id="thread-logo">C O M I N G &nbsp <span class="amber-text">S O O N</span></h4></div>
+          </div>
+        </div>
+      </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal bottom-sheet">
+        <header>
+          <div class="modal-content ">
+            <div class="row">
+              <div class="row">
+                <div class="col s4">
+                  <h4 class="left-align white-text" style="font-weight: 900; font-family: 'Helvetica';">Add a Thread</h4>
+                </div>
+                <div class="col s8  right-align">
+                  <a href="#!" class="waves-effect waves-light btn modal-trigger grey darken-4 white-text modal-close center"><i class="material-icons right">close</i>Close</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col m8 s12">
+                  <div class="card-panel z-depth-5" id="textbox">
+                    <h4 class="left-align black-text" style="font-weight: 900; "><b>Let's get Started</b></h4>
+
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" placeholder="Give your Thread a title" id="title" type="text" class="validate" style="border: none;">
+                          </div>
+                        </div>
+                    <textarea style="border-bottom: none; font-weight: 100;font-size: 24px;text-align: left; color: black;" class="materialize-textarea editable" style="border-color: white;"></textarea>
+                    <pre class="markdown" id="story" hidden></pre>
+                  </div>
+                </div>
+                <div class="col m4 s12">
+                  <div class="card-panel z-depth-5" id="textbox">
+                    <h5 class="left-align black-text" style="font-weight: 900; ">A few more things</h5>
+                    <div class="row">
+                      <div class="col s12">
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <!-- <i class="fas fa-hashtag"></i> -->
+                            <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" type="text" id="autocomplete-input" class="autocomplete">
+                            <label for="autocomplete-input">Add #hashtag</label>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" class="input-field col s12">
+                            <select>
+                           <option value="1">Intersting</option>
+                           <option value="1">Questions</option>
+                           <option value="1">College</option>
+                           <option value="1">Funny</option>
+                           <option value="1">Random</option>
+                         </select>
+                            <label>Select Category</label>
+                          </div>
+                          <div class="col s12 center">
+                            <a onclick="M.toast({html: 'Thread Added',classes: 'rounded green white-text center-align'})" class="waves-effect waves-light btn-large modal-trigger blue white-text center">Add Thread</a>
+                          </div>
+                        </div>
+                      </div>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0" preserveAspectRatio="none">
+                 <polygon fill="#FFF5F1" points="0 0 0"/>
+               </svg>
+        </header>
+        </div>
+        </div>
+        <script>
+          (function() {
+            var markDownEl = document.querySelector(".markdown");
+            new MediumEditor(document.querySelector(".editable"), {
+              extensions: {
+                markdown: new MeMarkdown(function(md) {
+                  markDownEl.textContent = md;
+                })
+              }
+            });
+          })();
+          var editor = new MediumEditor('.editable', {
+              buttonLabels: 'fontawesome'
+            }),
+            cssLink = document.getElementById('medium-editor-theme');
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/visual.js"></script>
+
 </body>
 
 </html>
