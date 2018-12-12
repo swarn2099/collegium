@@ -26,12 +26,10 @@
   <link rel="stylesheet" href="css/medium-editor.css">
   <link rel="stylesheet" href="css/default.css">
   <script src="js/markdown.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
 
   <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
-
   <script>
     // Initialize Firebase
     var config = {
@@ -48,8 +46,16 @@
     };
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
-
   </script>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/query.js"></script>
+  <script src="js/visual.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+
 
 </head>
 
@@ -357,11 +363,7 @@
             }),
             cssLink = document.getElementById('medium-editor-theme');
         </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/query.js"></script>
-        <script src="js/visual.js"></script>
+
 
 </body>
 
