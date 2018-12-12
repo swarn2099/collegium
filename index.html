@@ -46,15 +46,9 @@
     const settings = {
       timestampsInSnapshots: true
     };
-
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
-    db.collection("hashtags").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-      });
-    });
+
   </script>
 
 </head>
@@ -92,42 +86,8 @@
             <section id="popularTags">
               <h4 class="left-align white-text" style="font-weight: 900; ">Popular <span class="amber-text">Hashtags</span></h4>
               <hr color="white" />
-
-              <div class="row">
-                <div class="col m4 s12">
-                  <div id="hashtagCard" class="card-panel tag1 grey darken-4 white-text z-depth-3 hoverable" style="border-color: black; border-width: 1px;">
-                    <h5 style="font-weight: 800;" class="amount">#todayifuckedup</h5>
-                    <br>
-                    <div class="row">
-                      <div class="col s12">
-                        <p style="font-weight: 800;" class="amount">The funniest stories from around campus.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col m4 s12">
-                  <div id="hashtagCard" class="card-panel tag2 grey darken-4 white-text z-depth-4 hoverable">
-                    <h5 style="font-weight: 800;" class="amount">#todayilearned</h5>
-                    <br>
-                    <div class="row">
-                      <div class="col s12">
-                        <p style="font-weight: 800;" class="amount">You'll learn something new everyday.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col m4 s12">
-                  <div id="hashtagCard" class="card-panel tag3 grey darken-4 white-text z-depth-5 hoverable">
-                    <h5 style="font-weight: 800;" class="amount">#ecssmells</h5>
-                    <br>
-                    <div class="row">
-                      <div class="col s12">
-                        <p style="font-weight: 800;" class="amount">The smelliest engineers on the planet.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="row" id="threadsGoHere">
+                  <!--  Popular Hashtags go here-->
               </div>
             </section>
             <h4 class="left-align" id="popularThreadText" style="font-weight: 900; ">Popular <span class="blue-text">Threads</span><hr style="height:1px;"></h4>
@@ -400,6 +360,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="js/init.js"></script>
+        <script src="js/query.js"></script>
         <script src="js/visual.js"></script>
 
 </body>

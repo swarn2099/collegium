@@ -1,13 +1,3 @@
-$('.autocomplete').on('click', function() {
-  if ($("ul").hasClass("autocomplete-content")) {
-    $("ul").css({"margin-top": "-50px;"});
-
-  }
-  console.log("clicked");
-});
-
-
-
 $('.tag1').on('click', function() {
   var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
   sessionStorage.setItem("hashtagTitle", hashtagTitle);
@@ -31,7 +21,16 @@ $('.tag3').on('click', function() {
     window.open("hashtag.html", '_self');
   });
 });
+function hashtagPageLoad(d) {
+  // var hashtagTitle = $(this).data("title")
+  console.log(d.getAttribute("data-title"));
+  sessionStorage.setItem("hashtagTitle", d.getAttribute("data-title"));
+  sessionStorage.setItem("hashtagDescription", d.getAttribute("data-description"));
+    window.open("hashtag.html", '_self');
 
+  // $('.tag1').animateCss('bounce', function() {
+  // });
+}
 $('.hideTags').on('click', function() {
   if ($("li").hasClass("active")) {
     $("#popularTags").show('fadeInDown');
@@ -50,8 +49,11 @@ $('.active').on('click', function() {
 
 function hashtagPage() {
   var hashtagTitle = sessionStorage.getItem("hashtagTitle");
-  console.log(hashtagTitle);
+  var hashtagDescription = sessionStorage.getItem("hashtagDescription");
+
   $('#pageTitle').html(hashtagTitle);
+  $('#pageDescription').html(hashtagDescription);
+
 }
 
 
