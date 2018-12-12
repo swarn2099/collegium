@@ -1,7 +1,17 @@
+$('.autocomplete').on('click', function() {
+  if ($("ul").hasClass("autocomplete-content")) {
+    $("ul").css({"margin-top": "-50px;"});
+
+  }
+  console.log("clicked");
+});
+
+
+
 $('.tag1').on('click', function() {
   var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
   sessionStorage.setItem("hashtagTitle", hashtagTitle);
-  $('.tag1').animateCss('rubberBand', function() {
+  $('.tag1').animateCss('bounce', function() {
     window.open("hashtag.html", '_self');
   });
 });
@@ -9,7 +19,7 @@ $('.tag1').on('click', function() {
 $('.tag2').on('click', function() {
   var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
   sessionStorage.setItem("hashtagTitle", hashtagTitle);
-  $('.tag2').animateCss('rubberBand', function() {
+  $('.tag2').animateCss('bounce', function() {
     window.open("hashtag.html", '_self');
   });
 });
@@ -17,7 +27,7 @@ $('.tag2').on('click', function() {
 $('.tag3').on('click', function() {
   var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
   sessionStorage.setItem("hashtagTitle", hashtagTitle);
-  $('.tag3').animateCss('rubberBand', function() {
+  $('.tag3').animateCss('bounce', function() {
     window.open("hashtag.html", '_self');
   });
 });

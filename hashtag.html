@@ -33,7 +33,7 @@
 </head>
 
 <body onload="hashtagPage()">
-  <section class="thread">
+  <section class="">
     <nav>
       <div class="nav-wrapper">
         <a href="index.html" class="brand-logo" id="collegium">collegium<span class="amber-text">.me</span></a>
@@ -42,13 +42,22 @@
           <li><a href="#" class="waves-effect waves-light btn account white black-text">  <i class="large material-icons">account_circle</i></a></li>
         </ul>
     </nav>
-    <h3 class="right-align white-text" style="font-weight: 900; margin-right: 5%" id="pageTitle"></h3>
-    <br>
-    <h5 class="right-align white-text" style="font-weight: 900; margin-right: 5%">The funniest stories from around campus.</h5>
+    <div class="parallax-container">
 
-    <section class="home">
+      <div class="valign-wrapper h100">
+        <div class="white-text overlay right-align">
+          <h3 style="font-weight: 900; margin-right: 5%" id="pageTitle"></h3>
+          <h5 style="font-weight: 900; margin-right: 5%">The funniest things from campus.</h5>
+        </div>
+        <div class="parallax grey lighten-1">
+          <img src="img/light.jpg" width="100%" style="filter: blur(3px);">
+        </div>
+      </div>
+    </div>
+
+    <section style="margin-top: -1%; background-color: #2F3136;">
       <div class="row">
-        <div class="col s12 m3">
+        <div class="col s12 m3" style="margin-top: -3%;">
           <div class="card-panel white z-depth-4 hide-on-med-and-down animated fadeInLeft" id="welcome" style="font-family: 'Helvetica';">
             <h5 style="font-weight: 900;"><b>Welcome Swarn</b></h5>
             <p>Sophmore | Copmuter Science</p>
@@ -60,11 +69,12 @@
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" overflow: "auto" overflow-y: "scroll"></script>
           </div>
         </div>
-        <div class="col s12 m9 center">
-          <div class="transparent">
-            <ul class="collapsible collapseMove white col m12 z-depth-5" style="border: none; border-style: none;">
-              <li class="hideTags">
-                <div class="collapsible-header row">
+
+        <div class="col s12 m9 center" style="margin-top: -5%;">
+          <div class="transparent" style="margin-right: 1%;">
+            <ul class="collapsible collapseMove white col m12 z-depth-5" style="border: none; border-style: none;" >
+              <li class="hideTags" >
+                <div class="collapsible-header row" >
                   <div class="col s8 left">
                     <h6 class="left-align" style="font-weight: 900; margin-right: 5%;">Temoc spotted running around campus naked!</h6>
                   </div>
@@ -1083,11 +1093,11 @@
                 <div class="card-panel z-depth-5" id="textbox">
                   <h4 class="left-align black-text" style="font-weight: 900; "><b>Let's get Started</b></h4>
 
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" placeholder="Give your Thread a title" id="title" type="text" class="validate" style="border: none;">
-                        </div>
-                      </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" placeholder="Give your Thread a title" id="title" type="text" class="validate" style="border: none;">
+                    </div>
+                  </div>
                   <textarea style="border-bottom: none; font-weight: 100;font-size: 24px;text-align: left; color: black;" class="materialize-textarea editable" style="border-color: white;"></textarea>
                   <pre class="markdown" id="story" hidden></pre>
                 </div>
@@ -1145,22 +1155,22 @@
       </script>
 
 
-    <script>
-      (function() {
-        var markDownEl = document.querySelector(".markdown");
-        new MediumEditor(document.querySelector(".editable"), {
-          extensions: {
-            markdown: new MeMarkdown(function(md) {
-              markDownEl.textContent = md;
-            })
-          }
-        });
-      })();
-      var editor = new MediumEditor('.editable', {
-          buttonLabels: 'fontawesome'
-        }),
-        cssLink = document.getElementById('medium-editor-theme');
-    </script>
+      <script>
+        (function() {
+          var markDownEl = document.querySelector(".markdown");
+          new MediumEditor(document.querySelector(".editable"), {
+            extensions: {
+              markdown: new MeMarkdown(function(md) {
+                markDownEl.textContent = md;
+              })
+            }
+          });
+        })();
+        var editor = new MediumEditor('.editable', {
+            buttonLabels: 'fontawesome'
+          }),
+          cssLink = document.getElementById('medium-editor-theme');
+      </script>
 
 
 </body>

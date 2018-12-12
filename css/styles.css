@@ -9,9 +9,27 @@
 #collegium {
   margin-left: 5%;
 }
-
+#hashtagCard{
+  max-height: 200px;
+}
+#firstRounded{
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
 nav {
   background-color: #2F3136;
+}
+
+.search {
+  padding: 6px 15px 6px 30px;
+  margin: 3px;
+  background-color: white;
+}
+
+.rounded {
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
 }
 
 #thread-logo {
@@ -21,18 +39,18 @@ nav {
 #welcome {
   margin-top: -2%;
 }
-.home{
-  margin-top: -1%;
-}
+
+
 #mainCard {
   margin-top: -105%;
 }
+
 header {
   position: relative;
   z-index: 1;
   height: 450px;
   border-bottom-left-radius: 50% 20%;
-border-bottom-right-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), linear-gradient(223.46deg, #00E0FF -4.53%, #D700F9 134.16%);
 }
 
@@ -40,9 +58,23 @@ svg {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* height: 20vw; */
-  /* set height to pixels if you want angle to change with screen width */
 }
+.overlay {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.header {
+  margin: 5px;
+  text-rendering: optimizeLegibility;
+}
+.parallax-container {
+     height: 300px;
+   }
+
 .thread {
   background: linear-gradient(90deg, #006996 1.12%, #3A96AD 59.57%, #83C4B4 100%);
   /* animation: pastelRainbow 10s ease infinite;
@@ -50,110 +82,103 @@ svg {
   height: 400px;
   z-index: -1 !important;
 }
-.add{
-  background: #544a7d;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ffd452, #544a7d);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ffd452, #544a7d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-@keyframes pastelRainbow {
-    0% {
-      background-position: 0% 50%; }
-    50% {
-      background-position: 100% 50%; }
-    100% {
-      background-position: 0% 50%;  }
-}
-
-hr {
-  background: #006996;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #006996, red);
-  /*For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #006996, red);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #006996, red);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #006996, red);
-  /* Standard syntax */
-}
 
 .creators {
   background: linear-gradient(0deg, #253944, #253944);
-  height: 50px;
+  height: 30px;
   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: white;
-   text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
   animation: pastelRainbow 10s ease infinite;
-
 }
 
 .card, .card-panel {
   border-radius: 15px;
 }
 
-#textbox{
+#textbox {
   height: 400px;
 }
-.editable{
+
+.editable {
   border-style: none;
-   border-color: Transparent;
-   overflow: auto;
+  border-color: Transparent;
+  overflow: auto;
 }
+
 html {
   font-family: myriad-pro, sans-serif;
   font-style: normal;
   font-weight: 100;
-
   background-color: #FAFAFA;
 }
-#modal1{
+
+#modal1 {
   min-height: 55%;
   overflow-y: hidden;
   background-color: #FFF5F1;
 }
-.homePanels{
+
+.homePanels {
   height: 75%;
 }
+
 .typewriter h4 {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  /* margin: 0 auto; /* Gives that scrolling effect as the typing happens */ */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation:
-    typing 3.5s steps(30, end),
-    blinking-cursor .5s step-end infinite;
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  /* margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  */ letter-spacing: .15em;
+  /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blinking-cursor .5s step-end infinite;
 }
 
 /* The typing effect */
+
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0
+  }
+  to {
+    width: 100%
+  }
 }
 
 /* The typewriter cursor effect */
+
 @keyframes blinking-cursor {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+  from, to {
+    border-color: transparent
+  }
+  50% {
+    border-color: orange;
+  }
 }
-.threadConent{
-  text-indent:1em;
-  text-align:justify;
+
+.threadConent {
+  text-indent: 1em;
+  text-align: justify;
 }
-.commentCard{
-  border-width: 1px;
+
+.commentCard {
+  /* border-top: none;
+  border-bottom-width: 1px;
   border-color: grey;
-  border-style: dashed;
+  border-style: dashed; */
   padding: 5px;
   padding-left: 5px;
 }
-.offWhite{
+
+.offWhite {
   background-color: #FAFAFA;
 }
-.collapseMove{
+
+.collapseMove {
   margin-top: 5%;
 }
