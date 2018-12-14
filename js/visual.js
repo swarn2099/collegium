@@ -1,26 +1,10 @@
-$('.tag1').on('click', function() {
-  var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
-  sessionStorage.setItem("hashtagTitle", hashtagTitle);
+$('li').on('click', function() {
   $('.tag1').animateCss('bounce', function() {
     window.open("hashtag.html", '_self');
   });
 });
 
-$('.tag2').on('click', function() {
-  var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
-  sessionStorage.setItem("hashtagTitle", hashtagTitle);
-  $('.tag2').animateCss('bounce', function() {
-    window.open("hashtag.html", '_self');
-  });
-});
 
-$('.tag3').on('click', function() {
-  var hashtagTitle = $(this).closest('div[class^=col]').find('.amount').html();
-  sessionStorage.setItem("hashtagTitle", hashtagTitle);
-  $('.tag3').animateCss('bounce', function() {
-    window.open("hashtag.html", '_self');
-  });
-});
 function hashtagPageLoad(d) {
   // var hashtagTitle = $(this).data("title")
   console.log(d.getAttribute("data-title"));
@@ -31,21 +15,22 @@ function hashtagPageLoad(d) {
   // $('.tag1').animateCss('bounce', function() {
   // });
 }
-$('.hideTags').on('click', function() {
-  if ($("li").hasClass("active")) {
-    $("#popularTags").show('fadeInDown');
-    $("#popularThreadText").show('fadeInDown');
-  } else {
-    $("#popularTags").hide('fadeOutUp');
-    $("#popularThreadText").hide('fadeOutUp');
-  }
-  console.log("clicked");
-});
-$('.active').on('click', function() {
-  $("#popularTags").show();
-  $("#popularThreadText").show();
-
-});
+// function moveUpandHide(){
+//   $('.hideTags').on('click', function() {
+//   if ($("li").hasClass("active")) {
+//     $("#popularTags").show('fadeInDown');
+//     $("#popularThreadText").show('fadeInDown');
+//   } else {
+//     $("#popularTags").hide('fadeOutUp');
+//     $("#popularThreadText").hide('fadeOutUp');
+//   }
+//   console.log("clicked");
+// });
+// $('.active').on('click', function() {
+//   $("#popularTags").show();
+//   $("#popularThreadText").show();
+// });
+// }
 
 function hashtagPage() {
   var hashtagTitle = sessionStorage.getItem("hashtagTitle");

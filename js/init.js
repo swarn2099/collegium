@@ -1,18 +1,24 @@
 $(document).ready(function() {
+  $('.sidenav').sidenav();
+
+  $('.tooltipped').tooltip();
   $('.modal').modal();
   $('.parallax').parallax();
+  $('.carousel.carousel-slider').carousel({
+     fullWidth: true,
+     indicators: true
+   });
 
   M.updateTextFields();
   $('select').formSelect();
   $('.collapsible').collapsible();
   $('input.autocomplete').autocomplete({
     data: {
-      "todayIsaw": null,
-      "todayIlearned": null,
-      "todayifuckedup": null,
+      "#todayisaw": null,
+      "#todayilearned": null,
+      "#todayifuckedup": null,
     },
   });
-  console.log("welcome to collegium");
 
 
 

@@ -3,6 +3,7 @@
 
 <head>
   <title>collegium | Home </title>
+  <link rel="icon" href="img/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -47,30 +48,45 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
-  
+  <link rel="stylesheet" href="css/styles.css">
+
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/query.js"></script>
   <script src="js/visual.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
-
-
-
+  <style>
+  .dark-color { color: black }
+.light-color { color: white }
+  </style>
 </head>
 
-<body>
+<body onload="homePageQuery()">
   <section class="thread">
+    <section class="thread-inside">
     <nav>
       <div class="nav-wrapper">
-        <a href="index.html" class="brand-logo" id="collegium">collegium<span class="amber-text">.me</span></a>
+        <a href="index.html" class="brand-logo hide-on-med-and-down" style="margin-left: 5%;">collegium<span class="amber-text">.me</span></a>
+        <a href="index.html" class="brand-logo hide-on-med-and-up">collegium<span class="amber-text">.me</span></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#modal1" class="waves-effect waves-light btn modal-trigger blue white-text"><i class="material-icons">create</i></a></li>
-          <li><a href="#modal1" class="waves-effect waves-light btn modal-trigger amber white-text"><i class="fas fa-hashtag" ></i></a></li>
           <li><a href="#" class="waves-effect waves-light btn account white black-text">  <i class="large material-icons">account_circle</i></a></li>
         </ul>
+        <ul class="sidenav black-text" id="mobile-demo">
+          <li class="container">
+            <h5 style="font-weight: 900;"><b>Welcome Swarn</b></h5>
+            <p>Sophmore | Computer Science</p>
+            <hr color="#ffc107" />
+            <h5 class="center">300 <span class="red-text">points</span></h5>
+            <hr color="#2196f3" />
+          </li>
+          <li style="padding-left: 10px; padding-right: 10px;"><input placeholder="&nbsp &nbsp &#xF002; Search Hashtags and Threads" id="autocomplete-input" type="text" class="z-depth-3 black white-text autocomplete" style=" font-family: FontAwesome, myriad-pro, sans-serif; border-radius: 20px; background-color: white; "></li>
+          <li ><a href="#modal1" class="waves-effect waves-light btn modal-trigger blue white-text">Write a Thread<i class="material-icons white-text">create</i></a></li>
+          <li><a href="#" class="waves-effect waves-light btn account white black-text">My Account<i class="large material-icons">account_circle</i></a></li>
+        </ul>
     </nav>
-    <div class="input-field" style="display: flex; flex-direction: row; justify-content: flex-end; margin-right: 2%;">
+    <div class="input-field hide-on-med-and-down" style="display: flex; flex-direction: row; justify-content: flex-end; margin-right: 2%;">
       <input placeholder="&#xF002; Search Hashtags and Threads " id="autocomplete-input" type="text" class="z-depth-3 autocomplete" style=" font-family: FontAwesome, myriad-pro, sans-serif; border-radius: 20px; background-color: white; width: 30%; padding-left: 10px;">
     </div>
     <section style="margin-top: 1%;">
@@ -89,186 +105,25 @@
         </div>
         <div class="col s12 m9 center">
           <div class="transparent z-depth-0">
-            <section id="popularTags">
+            <section id="popularTags cover-info">
               <h4 class="left-align white-text" style="font-weight: 900; ">Popular <span class="amber-text">Hashtags</span></h4>
               <hr color="white" />
-              <div class="row" id="threadsGoHere">
-                  <!--  Popular Hashtags go here-->
+              <div class="row hide-on-med-and-down" id="tagsGoHere">
+                <!--  Popular Hashtags for Desktop go here-->
+              </div>
+              <div class="row hide-on-med-and-up" id="tagsMobileGoHere">
+                <!--  Popular Hashtags for Mobile go here-->
               </div>
             </section>
             <h4 class="left-align" id="popularThreadText" style="font-weight: 900; ">Popular <span class="blue-text">Threads</span><hr style="height:1px;"></h4>
-            <ul class="collapsible white col m12 shadow " style="border: none; border-style: none;">
-              <li class="hideTags">
-                <div class="collapsible-header row">
-                  <div class="col s8 left">
-                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">Temoc spotted running around campus naked!</h6>
-                  </div>
-                  <div class=" col s4">
-                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
-                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
-                  </div>
-                </div>
-                <div class="collapsible-body left-align">
-                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br> So one day as
-                    I was coming home from work, a really good song came on the radio. I pulled into my garage just below my apartment complex, reclined my seat and closed my eyes, enjoying the music.<br><br> You can probably tell where I'm going with
-                    this story. I fell asleep in the car. With the engine running in an enclosed space.<br><br> (The garage is located underground, below each apartment block. Each apartment block is a duplex with it's own garage. The unit above ours
-                    is empty so basically I have both parking spaces to myself.)<br><br>
-                    <section class="comments" id="comments">
-                      <h5>Comments</h5>
-                      <hr color="#04204c" />
-                      <div class="row">
-                        <div class="input-field col m10 s12">
-                          <i class="material-icons prefix">account_circle</i>
-                          <input id="icon_prefix" type="text" class="validate">
-                          <label for="icon_prefix">Leave a comment...</label>
-                        </div>
-                        <div class="col m2 s12 center">
-                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
-                        </div>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Saketh Nallaparaju</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                        <hr />
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Marco Flores</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                    </section>
-                </div>
-              </li>
-              <li class="hideTags">
-                <div class="collapsible-header row">
-                  <div class="col s8 left">
-                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">Forgot to lock my door at Northside...</h6>
-                  </div>
-                  <div class=" col s4">
-                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
-                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
-                  </div>
-                </div>
-                <div class="collapsible-body left-align">
-                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br> So one day as
-                    I was coming home from work, a really good song came on the radio. I pulled into my garage just below my apartment complex, reclined my seat and closed my eyes, enjoying the music.<br><br> You can probably tell where I'm going with
-                    this story. I fell asleep in the car. With the engine running in an enclosed space.<br><br> (The garage is located underground, below each apartment block. Each apartment block is a duplex with it's own garage. The unit above ours
-                    is empty so basically I have both parking spaces to myself.)<br><br>
-                    <section class="comments" id="comments">
-                      <h5>Comments</h5>
-                      <hr color="#04204c" />
-                      <div class="row">
-                        <div class="input-field col s10">
-                          <i class="material-icons prefix">account_circle</i>
-                          <input id="icon_prefix" type="text" class="validate">
-                          <label for="icon_prefix">Leave a comment...</label>
-                        </div>
-                        <div class="col s2">
-                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
-                        </div>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Saketh Nallaparaju</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Marco Flores</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                    </section>
-                </div>
-              </li>
-              <li class="hideTags">
-                <div class="collapsible-header row">
-                  <div class="col s8 left">
-                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">To the guy who doesn't know how to park in the parking garage</h6>
-                  </div>
-                  <div class=" col s4">
-                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
-                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
-                  </div>
-                </div>
-                <div class="collapsible-body left-align">
-                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br>
-                    <section class="comments" id="comments">
-                      <h5>Comments</h5>
-                      <hr color="#04204c" />
-                      <div class="row">
-                        <div class="input-field col s10">
-                          <i class="material-icons prefix">account_circle</i>
-                          <input id="icon_prefix" type="text" class="validate">
-                          <label for="icon_prefix">Leave a comment...</label>
-                        </div>
-                        <div class="col s2">
-                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
-                        </div>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Saketh Nallaparaju</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Marco Flores</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                    </section>
-                </div>
-              </li>
-              <li class="hideTags">
-                <div class="collapsible-header row">
-                  <div class="col s8 left">
-                    <h6 class="left-align" style="font-weight: 400; margin-right: 5%;">Didn't do my final semester project b/c I thought I would pass anyways...bad decision.</h6>
-                  </div>
-                  <div class=" col s4">
-                    <a onclick="M.toast({html: 'Upvoted!',classes: 'rounded green white-text center-align'})"><i class="large material-icons green-text">arrow_upward</i></a>
-                    <a onclick="M.toast({html: 'Downvoted',classes: 'rounded red white-text center-align'})"><i class="large material-icons red-text ">arrow_downward</i></a>
-                  </div>
-                </div>
-                <div class="collapsible-body left-align">
-                  <p class="threadConent">This actually happened a year ago. I was interning at a very fast paced and stressful job where the hours were something like 6am-10pm. Needless to say, I was perpetually tired and pretty much dead on the inside.<br><br>
-                    <section class="comments" id="comments">
-                      <h5>Comments</h5>
-                      <hr color="#04204c" />
-                      <div class="row">
-                        <div class="input-field col s10">
-                          <i class="material-icons prefix">account_circle</i>
-                          <input id="icon_prefix" type="text" class="validate">
-                          <label for="icon_prefix">Leave a comment...</label>
-                        </div>
-                        <div class="col s2">
-                          <a class="waves-effect waves-light btn light-blue darken-4" style="margin-top: 25%;">comment</a>
-                        </div>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Saketh Nallaparaju</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                      <div class="row commentCard">
-                        <h6><b>Marco Flores</b></h6>
-                        <p style="font-family: 'Athiti'; font-weight: 400; font-size: 15px;" class="black-text">
-                          This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol This is pretty funny not even gonna lie lol
-                        </p>
-                      </div>
-                    </section>
-                </div>
-              </li>
+
+            <ul class="collapsible white col m12 s12 shadow " style="border: none; border-style: none;">
+              <!--  Popular Threads go here-->
             </ul>
           </div>
         </div>
       </div>
+    </section>
     </section>
 
     <div class="row creators hide-on-med-and-down">
@@ -292,57 +147,42 @@
             <div class="row">
               <div class="row">
                 <div class="col s4">
-                  <h4 class="left-align white-text" style="font-weight: 900; font-family: 'Helvetica';">Add a Thread</h4>
+                  <h5 class="left-align white-text" style="font-weight: 900; font-family: 'Helvetica';">Add a Thread</h5>
                 </div>
                 <div class="col s8  right-align">
-                  <a href="#!" class="waves-effect waves-light btn modal-trigger grey darken-4 white-text modal-close center"><i class="material-icons right">close</i>Close</a>
+                  <a href="#!" class="waves-effect waves-light btn modal-trigger grey darken-4 white-text modal-close center"><i class="material-icons">close</i></a>
                 </div>
               </div>
               <div class="row">
                 <div class="col m8 s12">
                   <div class="card-panel z-depth-5" id="textbox">
                     <h4 class="left-align black-text" style="font-weight: 900; "><b>Let's get Started</b></h4>
-
                     <div class="row">
                       <div class="input-field col s12">
-                        <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" placeholder="Give your Thread a title" id="title" type="text" class="validate" style="border: none;">
+                        <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" placeholder="Give your Thread a title" id="threadtitle" type="text" class="validate" style="border: none;">
                       </div>
                     </div>
-                    <textarea style="border-bottom: none; font-weight: 100;font-size: 24px;text-align: left; color: black;" class="materialize-textarea editable" style="border-color: white;"></textarea>
-                    <pre class="markdown" id="story" hidden></pre>
+                    <textarea style="border-bottom: none; font-weight: 400; text-align: left; color: black;" class="materialize-textarea" placeholder="Write away..." id="threaddescription"></textarea>
                   </div>
                 </div>
                 <div class="col m4 s12">
                   <div class="card-panel z-depth-5" id="textbox">
-                    <h5 class="left-align black-text" style="font-weight: 900; ">A few more things</h5>
+                    <h6 class="left-align black-text" style="font-weight: 900; ">A few more things</h6>
                     <div class="row">
                       <div class="col s12">
                         <div class="row">
                           <div class="input-field col s12">
-                            <!-- <i class="fas fa-hashtag"></i> -->
-                            <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">Add #hashtag</label>
+                            <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" type="text" id="autocompletehashtag" class="autocomplete" placeholder="Add #hashtag">
                           </div>
                         </div>
-
                         <div class="row">
-                          <div style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" class="input-field col s12">
-                            <select>
-                           <option value="1">Intersting</option>
-                           <option value="1">Questions</option>
-                           <option value="1">College</option>
-                           <option value="1">Funny</option>
-                           <option value="1">Random</option>
-                         </select>
-                            <label>Select Category</label>
-                          </div>
                           <div class="col s12 center">
-                            <a onclick="M.toast({html: 'Thread Added',classes: 'rounded green white-text center-align'})" class="waves-effect waves-light btn-large modal-trigger blue white-text center">Add Thread</a>
+                            <a class="waves-effect waves-light btn blue white-text center" onclick="writeThread()">Add Thread</a>
                           </div>
                         </div>
                       </div>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0" preserveAspectRatio="none">
-                 <polygon fill="#FFF5F1" points="0 0 0"/>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0,0 0,0" preserveAspectRatio="none">
+                 <polygon fill="#FFF5F1" points="0,0 0,0 0,0"/>
                </svg>
         </header>
         </div>
