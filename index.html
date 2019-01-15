@@ -2,209 +2,134 @@
 <html>
 
 <head>
-  <title>collegium | Home </title>
-  <link rel="icon" href="img/logo.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="collegium">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-  <link href="https://fonts.googleapis.com/css?family=Athiti" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-
+  <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'> -->
+  <link rel="icon" href="img/poolIcon.png">
   <!--Import materialize.css-->
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/index.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/animate.css" media="screen,projection" />
+
   <!--Let browser know website is optimized for mobile-->
-  <link rel="stylesheet" href="css/demo.css">
-
-  <script src="js/medium-editor.js"></script>
-  <link rel="stylesheet" href="css/medium-editor.css">
-  <link rel="stylesheet" href="css/default.css">
-  <script src="js/markdown.js"></script>
-
-  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'> -->
+  <link rel="stylesheet" href="https://use.typekit.net/ohq8gdn.css">
   <script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyC6GRrWQ0v-xzvfHg32xgTP9fxSZB9Skb8",
-      authDomain: "collegium-a3676.firebaseapp.com",
-      databaseURL: "https://collegium-a3676.firebaseio.com",
-      projectId: "collegium-a3676",
-      storageBucket: "collegium-a3676.appspot.com",
-      messagingSenderId: "852316993941"
+      apiKey: "AIzaSyCvM4gKXyUW58BrDOnqU3bJBGnCNiexCzI",
+      authDomain: "marco-polo-c90db.firebaseapp.com",
+      databaseURL: "https://marco-polo-c90db.firebaseio.com",
+      projectId: "marco-polo-c90db",
+      storageBucket: "marco-polo-c90db.appspot.com",
+      messagingSenderId: "399167559169"
     };
     firebase.initializeApp(config);
-    const settings = {
-      timestampsInSnapshots: true
-    };
-    firebase.firestore().settings(settings);
-    var db = firebase.firestore();
   </script>
-  <link rel="stylesheet" href="css/styles.css">
-
-  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/query.js"></script>
-  <script src="js/visual.js"></script>
+  <title>Welcome to Collegium | </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="CeTknMlUfxMoa1-6oTNVihlqcCXhYTI7qfocIiWtxDI">
+  <meta name="description" content="Pool - Add events to marcopolo">
+  <meta property="og:description" content="Quickly add events to marcopolo">
+  <meta property="og:image" content="img/pool.png">
+  <meta property="og:title" content="Add events to marcopolo">
+  <!-- StyleSheets-->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,900" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" type="text/css"> -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- JavaScripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
   <style>
-  .dark-color { color: black }
-.light-color { color: white }
+  html{
+     font-family: myriad-pro, sans-serif;
+  }
   </style>
 </head>
-
-<body onload="homePageQuery()">
-  <section class="thread">
-    <section class="thread-inside">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="index.html" class="brand-logo hide-on-med-and-down" style="margin-left: 5%;">collegium<span class="amber-text">.me</span></a>
-        <a href="index.html" class="brand-logo hide-on-med-and-up">collegium<span class="amber-text">.me</span></a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#modal1" class="waves-effect waves-light btn modal-trigger blue white-text"><i class="material-icons">create</i></a></li>
-          <li><a href="#" class="waves-effect waves-light btn account white black-text">  <i class="large material-icons">account_circle</i></a></li>
-        </ul>
-        <ul class="sidenav black-text" id="mobile-demo">
-          <li class="container">
-            <h5 style="font-weight: 900;"><b>Welcome Swarn</b></h5>
-            <p>Sophmore | Computer Science</p>
-            <hr color="#ffc107" />
-            <h5 class="center">300 <span class="red-text">points</span></h5>
-            <hr color="#2196f3" />
-          </li>
-          <li style="padding-left: 10px; padding-right: 10px;"><input placeholder="&nbsp &nbsp &#xF002; Search Hashtags and Threads" id="autocomplete-input" type="text" class="z-depth-3 black white-text autocomplete" style=" font-family: FontAwesome, myriad-pro, sans-serif; border-radius: 20px; background-color: white; "></li>
-          <li ><a href="#modal1" class="waves-effect waves-light btn modal-trigger blue white-text">Write a Thread<i class="material-icons white-text">create</i></a></li>
-          <li><a href="#" class="waves-effect waves-light btn account white black-text">My Account<i class="large material-icons">account_circle</i></a></li>
-        </ul>
-    </nav>
-    <div class="input-field hide-on-med-and-down" style="display: flex; flex-direction: row; justify-content: flex-end; margin-right: 2%;">
-      <input placeholder="&#xF002; Search Hashtags and Threads " id="autocomplete-input" type="text" class="z-depth-3 autocomplete" style=" font-family: FontAwesome, myriad-pro, sans-serif; border-radius: 20px; background-color: white; width: 30%; padding-left: 10px;">
+<nav>
+  <div class="container-wide">
+    <div class="row">
+      <div class="col s12 m3">
+        <a href="index.html" class="brand-logo hide-on-med-and-down">collegium.me</a>
+      </div>
+      <div class="col s12 m9">
+        <div class="right ">
+          <ul>
+            <li><a href="#features">How it Works</a></li>
+            <li><a href="www/signin.html">Login</a></li>
+            <li><a href="www/signinOrg.html">org Login</a></li>
+            <li><a href="www/create.html" class="modal-trigger btn nav-sign-up waves-effect waves-light hide-on-med-and-down">Join Pool</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <section style="margin-top: 1%;">
-      <div class="row">
-        <div class="col s12 m3">
-          <div class="card-panel white z-depth-4 hide-on-med-and-down animated fadeInLeft" id="welcome">
-            <h5 style="font-weight: 900;"><b>Welcome Swarn</b></h5>
-            <p>Sophmore | Computer Science</p>
-            <hr color="#ffc107" />
-            <h5 class="center">300 <span class="red-text">points</span></h5>
-            <hr color="#2196f3" />
-            <br>
-            <a class="twitter-timeline" data-height="470" href="https://twitter.com/UT_Dallas?ref_src=twsrc%5Etfw">Tweets by UT_Dallas</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" overflow: "auto" overflow-y: "scroll"></script>
-          </div>
-        </div>
-        <div class="col s12 m9 center">
-          <div class="transparent z-depth-0">
-            <section id="popularTags cover-info">
-              <h4 class="left-align white-text" style="font-weight: 900; ">Popular <span class="amber-text">Hashtags</span></h4>
-              <hr color="white" />
-              <div class="row hide-on-med-and-down" id="tagsGoHere">
-                <!--  Popular Hashtags for Desktop go here-->
-              </div>
-              <div class="row hide-on-med-and-up" id="tagsMobileGoHere">
-                <!--  Popular Hashtags for Mobile go here-->
-              </div>
-            </section>
-            <h4 class="left-align" id="popularThreadText" style="font-weight: 900; ">Popular <span class="blue-text">Threads</span><hr style="height:1px;"></h4>
+  </div>
+</nav>
 
-            <ul class="collapsible white col m12 s12 shadow " style="border: none; border-style: none;">
-              <!--  Popular Threads go here-->
-            </ul>
+<body>
+  <div class="hero hero-landing">
+    <div class="row valign-wrapper no-valign-wrapper-on-mobile">
+      <div class="col l5 valign hero-text">
+        <div class="container-wide">
+          <h1>Welcome to Collegium.</h1>
+          <h2>Pool makes adding events to marcopolo a breeze. Fill out an event card and submit it for marcopolo in just a few minutes. Create an account now and get started.</h2>
+          <a href="www/create.html" class="modal-trigger btn btn-large waves-effect waves-light sign-up-btn">Join the Pool</a>
+        </div><br>
+        <div class="container-wide">
+          <a href="www/create.html" class="blue modal-trigger btn btn-large waves-effect waves-light sign-up-btn">Add your Org</a>
+        </div>
+      </div>
+      <div class="col l7 no-right-padding valign hero-img-col"><a href="#" class="modal-trigger"><img src="img/pool.png" alt="Sign Up Now" class="hero-img responsive-img"></a></div>
+    </div>
+  </div>
+  <div id="features" class="how section scrollspy">
+    <div class="how-question">How does Pool work?</div>
+    <div class="how-icon"><i class="material-icons">aspect_ratio</i></div>
+    <div class="how-step row">
+      <div class="how-step-left col l6 valign-wrapper">
+        <div class="container-wide">
+          <div class="how-step-content">
+            <div class="how-step-left-icon"><i class="material-icons">view_carousel</i></div>
+            <h3 class="how-step-title">Add an Event</h3>
+            <div class="how-step-description">Start by filling out the event cards with your event's basic information such as name, description, category, and more. Once you fill out the add page, click submit and view a card preview for a final check. Once you click submit, you'll have
+              24 hours to edit the event until a Traveler approves it for the app.</div>
           </div>
         </div>
       </div>
-    </section>
-    </section>
-
-    <div class="row creators hide-on-med-and-down">
-      <div class="col s12 black">
-        <div class="row">
-          <div class="col s4">
-            <h5 class="white-text left-align" id="thread-logo" style="font-weight: 900;">Creators</h5>
-          </div>
-          <div class="col s8">
-            <div class="typewriter">
-              <h5 class="white-text right type" id="thread-logo">C O M I N G &nbsp <span class="amber-text">S O O N</span></h5></div>
+      <div class="how-step-right col offset-l1 l5 no-right-padding valign"><img src="img/add.png" alt="Choose a Dope Theme" class="responsive-img z-depth-3"></div>
+    </div>
+    <div class="how-step row">
+      <div class="how-step-left col l6 valign-wrapper">
+        <div class="container-wide">
+          <div class="how-step-content">
+            <div class="how-step-left-icon"><i class="material-icons">edit</i></div>
+            <h3 class="how-step-title">Manage your Events</h3>
+            <div class="how-step-description">After submiting the event, you have 24 hours to make final changes which can be done through the Manage page. Edit all the things you added and reupload the card for review.</div>
           </div>
         </div>
       </div>
-
-
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal bottom-sheet">
-        <header>
-          <div class="modal-content ">
-            <div class="row">
-              <div class="row">
-                <div class="col s4">
-                  <h5 class="left-align white-text" style="font-weight: 900; font-family: 'Helvetica';">Add a Thread</h5>
-                </div>
-                <div class="col s8  right-align">
-                  <a href="#!" class="waves-effect waves-light btn modal-trigger grey darken-4 white-text modal-close center"><i class="material-icons">close</i></a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col m8 s12">
-                  <div class="card-panel z-depth-5" id="textbox">
-                    <h4 class="left-align black-text" style="font-weight: 900; "><b>Let's get Started</b></h4>
-                    <div class="row">
-                      <div class="input-field col s12">
-                        <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" placeholder="Give your Thread a title" id="threadtitle" type="text" class="validate" style="border: none;">
-                      </div>
-                    </div>
-                    <textarea style="border-bottom: none; font-weight: 400; text-align: left; color: black;" class="materialize-textarea" placeholder="Write away..." id="threaddescription"></textarea>
-                  </div>
-                </div>
-                <div class="col m4 s12">
-                  <div class="card-panel z-depth-5" id="textbox">
-                    <h6 class="left-align black-text" style="font-weight: 900; ">A few more things</h6>
-                    <div class="row">
-                      <div class="col s12">
-                        <div class="row">
-                          <div class="input-field col s12">
-                            <input style="border-bottom: none; font-weight: 400;font-size: 24px;text-align: left; color: black;" type="text" id="autocompletehashtag" class="autocomplete" placeholder="Add #hashtag">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col s12 center">
-                            <a class="waves-effect waves-light btn blue white-text center" onclick="writeThread()">Add Thread</a>
-                          </div>
-                        </div>
-                      </div>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0,0 0,0" preserveAspectRatio="none">
-                 <polygon fill="#FFF5F1" points="0,0 0,0 0,0"/>
-               </svg>
-        </header>
+      <div class="how-step-right col offset-l1 l5 no-right-padding valign"><img src="img/manage.png" alt="Customize with Visual and Code Editors" class="responsive-img z-depth-3"></div>
+    </div>
+    <div class="how-step row">
+      <div class="how-step-left col l6 valign-wrapper how-step-left-last">
+        <div class="container-wide">
+          <div class="how-step-content">
+            <div class="how-step-left-icon how-step-left-icon-pull-left"><i class="material-icons">smartphone</i></div>
+            <h3 class="how-step-title">See it on <span class="teal-text">marco</span><span class="blue-text">polo</span></h3>
+            <div class="how-step-description">Once you submit an event, a campus Traveler will approve the event and then you'll see your event on the app!</div>
+          </div>
         </div>
-        </div>
-        <script>
-          (function() {
-            var markDownEl = document.querySelector(".markdown");
-            new MediumEditor(document.querySelector(".editable"), {
-              extensions: {
-                markdown: new MeMarkdown(function(md) {
-                  markDownEl.textContent = md;
-                })
-              }
-            });
-          })();
-          var editor = new MediumEditor('.editable', {
-              buttonLabels: 'fontawesome'
-            }),
-            cssLink = document.getElementById('medium-editor-theme');
-        </script>
+      </div>
+      <div class="how-step-right col offset-l1 l5 no-right-padding valign"><img src="img/marcopoloexample.png" alt="Choose a Dope Theme" style="max-height: 700px;" class="responsive-img z-depth-3"></div>
 
-
+    </div>
+  </div>
 </body>
+
+<script type="text/javascript" src="js/materialize.min.js"></script>
 
 </html>

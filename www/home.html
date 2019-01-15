@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link rel="icon" href="../img/poolIcon.png">
+
+  <title>Home | collegium</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/init.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC6GRrWQ0v-xzvfHg32xgTP9fxSZB9Skb8",
+      authDomain: "collegium-a3676.firebaseapp.com",
+      databaseURL: "https://collegium-a3676.firebaseio.com",
+      projectId: "collegium-a3676",
+      storageBucket: "collegium-a3676.appspot.com",
+      messagingSenderId: "852316993941"
+    };
+    firebase.initializeApp(config);
+    const settings = {
+      timestampsInSnapshots: true
+    };
+    firebase.firestore().settings(settings);
+    var db = firebase.firestore();
+    document.getElementById('video').play();
+  </script>
+  <style>
+    .carousel {
+      height: 450px;
+    }
+
+    .container123 {
+      position: relative;
+    }
+
+    .container123 video {
+      position: relative;
+      z-index: 0;
+      height: 100%;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<ul id="slide-out" class="sidenav sidenav-fixed center"><br>
+  <li><a href="home.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
+  <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
+  <li><a href="story.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
+  <li><a href="manage.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
+  <li><a href="org.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">group</i></a></li>
+
+</ul>
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper black-text color-page3">
+      <a href="home.html" class="brand-logo center" style=""><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+      <ul class="right hide-on-med-and-down black-text">
+        <li>
+          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
+        </li>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<body class="black">
+  <div class="carousel carousel-slider" style="z-index: -1">
+    <div class="carousel-item transparent white-text" href="#one!">
+      <div class="container123">
+        <video style="width: 100%; height: 100%" autoplay loop muted poster="screenshot.jpg" id="background">
+        <source src="../img/movie.mp4">
+        </video>
+        <div class="overlay"></div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row white transparent">
+    <div class="col m6 s12">
+      <h3 class="black-text container " style="font-weight: 900;">The College Creator Platform</h3><br>
+      <h6 class="container">Collegium is a platform that allows for college creators to showcase their skill. It works as an accelerator platform to allow you to generate views quickly as well as a marketplace for companies to view your content and hire you!</h6>
+    </div>
+    <div class="col m6 s12">
+      <div class="col m3 s12">
+        <div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
+          <span class="white-text">
+            <h6 class="center" style="font-weight: 900;">Gaming</h6>
+            <p style="font-size: 12px;">Watch student streamers compete to be the best on Colegium. We work with big brands so sposnorships are up for grabs :)</p>
+
+          </span>
+        </div>
+      </div>
+      <div class="col m3 s12">
+        <div class="card-panel black z-depth-5" style="height: 250px;">
+          <span class="white-text">
+            <h6 class="center" style="font-weight: 900;">Music</h6>
+              <p style="font-size: 12px;">Drop your beats on Collegium. We'd love to hear them. COMING IN 2 WEEKS!</p>
+          </span>
+        </div>
+      </div>
+      <div class="col m3 s12">
+        <div class="card-panel amber z-depth-5" style="height: 250px;">
+          <span class="white-text">
+            <h6 class="center" style="font-weight: 900;">Entertainment</h6>
+              <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. COMING IN 2 WEEKS!</p>
+
+          </span>
+        </div>
+      </div>
+      <div class="col m3 s12">
+        <div class="card-panel white z-depth-5" style="height: 250px;">
+          <span class="black-text center-align">
+            <h6 style="font-weight: 900;">Become a Creator</h6>
+            <p style="font-size: 12px;">Click the plus below to become a creator. We'll see you there :)</p>
+            <div class="center-align"><i class="medium material-icons center-align">add</i></div>
+            <br>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br>
+  <section class="black">
+    <div class="row container" style="margin-top: 0%;">
+      <br>
+      <h1 class="white-text" style="font-weight: 900">Top Streamers</h1>
+      <div class="col m3 s12">
+        <a data-playerName="madeinmex" onclick="openPlayerPage(this)">
+          <div class="card z-depth-5">
+            <div class="card-image">
+              <img style="object-fit: cover;" height="350px;" width="100%" src="https://cdn.discordapp.com/attachments/483717265905287169/533392303809888276/Snapchat-972704796.jpg">
+              <span class="card-title">madeinmex</span>
+            </div>
+
+          </div>
+        </a>
+      </div>
+      <div class="col m3 s12">
+        <a data-playerName="varunvegad" onclick="openPlayerPage(this)">
+          <div class="card z-depth-5">
+            <div class="card-image">
+              <img style="object-fit: cover;" height="350px;" width="100%" src="https://yt3.ggpht.com/a-/AAuE7mAwZCeePjEN-vS4n68DfQWp66KR2tdlU9b1kA=s288-mo-c-c0xffffffff-rj-k-no">
+              <span class="card-title">Varun Vegad</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col m3 s12">
+        <a data-playerName="" onclick="openPlayerPage(this)">
+          <div class="card z-depth-5">
+            <div class="card-image">
+              <img style="object-fit: cover;" height="350px;" width="100%" src="https://yt3.ggpht.com/a-/AAuE7mCkqRMcR41FQNsOEWcQwyN5xG-sxvvJSpgNxA=s900-mo-c-c0xffffffff-rj-k-no">
+              <span class="card-title">Ninja</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col m3 s12">
+        <a href="player.html">
+          <div class="card z-depth-5">
+            <div class="card-image">
+              <img style="object-fit: cover;" height="350px;" width="100%" src="https://scontent-ams3-1.cdninstagram.com/vp/0a8031508e0e450c4864337dd397850b/5CD018B0/t51.2885-19/s320x320/37427449_287438715340097_4285099277924958208_n.jpg?_nc_ht=scontent-ams3-1.cdninstagram.com">
+              <span class="card-title">TSM Myth</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link rel="icon" href="../img/poolIcon.png">
+
+  <title>Gaming | collegium</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/init.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC6GRrWQ0v-xzvfHg32xgTP9fxSZB9Skb8",
+      authDomain: "collegium-a3676.firebaseapp.com",
+      databaseURL: "https://collegium-a3676.firebaseio.com",
+      projectId: "collegium-a3676",
+      storageBucket: "collegium-a3676.appspot.com",
+      messagingSenderId: "852316993941"
+    };
+    firebase.initializeApp(config);
+    const settings = {
+      timestampsInSnapshots: true
+    };
+    firebase.firestore().settings(settings);
+    var db = firebase.firestore();
+  </script>
+  <style>
+    .card-panel {
+      border-radius: 25px;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<ul id="slide-out" class="sidenav sidenav-fixed center"><br>
+  <li><a href="home.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
+  <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
+  <li><a href="story.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
+  <li><a href="manage.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
+  <li><a href="org.html" class="tooltipped" data-position="right" data-tooltip="Organizations"><i class="material-icons small">group</i></a></li>
+  <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
+
+</ul>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper black-text" style="background-color: #29243D;">
+      <a href="home.html" class="brand-logo left" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="home.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Settings</b></span></a>
+
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+      <ul class="right hide-on-med-and-down black-text">
+        <li>
+          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
+        </li>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<body class="grey darken-4" onload="loadSettingsData();">
+  <br><br>
+  <div style="margin-left: 6%;" class="row">
+    <div class="col m6 s12">
+      <div class="card-panel white z-depth-5">
+        <h5 class="black-text">Personal Information</h5>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <div id="name"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <div id="twitch"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <div id="bio"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <div id="bannerImage"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="col m6 s12">
+      <div class="card-panel white z-depth-5">
+        <h5 class="black-text">Page Stats</h5>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div id="featuredVideos"></div>
+            </div>
+            <div class="row">
+              <div id="myGames"></div>
+            </div>
+            <div class="row">
+              <div id="instagram"></div>
+              <div id="twitter"></div>
+              <div id="youtube"></div>
+            </div>
+          </form>
+        </div>
+        <div class="center">
+          <a class="btn-floating btn-large waves-effect waves-light green center-align" onclick="updateSettings()"><i class="material-icons">check</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- Modal Structure -->
+<script>
+  function loadSettingsData() {
+    var docRef = db.collection("gamers").doc("marcoflores");
+
+    docRef.get().then(function(doc) {
+      if (doc.exists) {
+
+        //header
+        var name = '<label for="name">Name</label><input id="nameInput" type="text" class="validate" value="' + doc.data().name + '"></input>';
+        var twitch = '<label for="twitch">Twitch</label><input id="twitchInput" type="text" class="validate" value="' + doc.data().twitch + '"></input>';
+        var bio = '<label for="textarea1">Bio</label><textarea id="bioInput" class="materialize-textarea" value="">' + doc.data().bio + '</textarea>';
+        var bannerImage = '<label for="bannerImageInput">Banner Image Input</label><input id="bannerImageInput" type="text" class="validate" value="' + doc.data().bannerImage + '"></input>';
+
+        $('#twitch').append(twitch);
+        $('#name').append(name);
+        $('#bio').append(bio);
+        $('#bannerImage').append(bannerImage);
+
+        for (var i = 0; i < doc.data().featured.length; i++) {
+          var video = '<div class="input-field col s4"><label for="video">Video ' + (i + 1) + '</label><input id="video' + (i + 1) + '" type="text" class="validate" value="' + doc.data().featured[i].youtubeID+ '"></input></div>';
+          console.log(video, doc.data().featured[i]);
+          $('#featuredVideos').append(video);
+        }
+        for (var i = 0; i < doc.data().featured.length; i++) {
+          var games = '<div class="input-field col s4"><label for="game">Game ' + (i + 1) + '</label><input id="game' + (i + 1) + '" type="text" class="validate" value="' + doc.data().mygames[i] + '"></input></div>';
+          console.log(video, doc.data().featured[i]);
+          $('#myGames').append(games);
+        }
+        var instagram = '<div class="input-field col s4"><label for="instagram">Instagram</label><input id="instagramInput" type="text" class="validate" value="' + doc.data().instagram + '"></input></div>';
+        var twitter = '<div class="input-field col s4"><label for="twitter">Twitter</label><input id="twitterInput" type="text" class="validate" value="' + doc.data().twitter + '"></input></div>';
+        var youtube = '<div class="input-field col s4"><label for="youtube">Youtube</label><input id="youtubeInput" type="text" class="validate" value="' + doc.data().youtube + '"></input></div>';
+        $('#instagram').append(instagram);
+        $('#twitter').append(twitter);
+        $('#youtube').append(youtube);
+        //squads
+
+
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+
+  }
+
+  function updateSettings() {
+    var nameUpdate = document.getElementById('nameInput');
+    var twitchUpdate = document.getElementById('twitchInput');
+    var bioUpdate = document.getElementById('bioInput');
+    var bannerImageUpdate = document.getElementById('bannerImageInput');
+    var video1 = document.getElementById('video1');
+    var video2 = document.getElementById('video2');
+    var video3 = document.getElementById('video3');
+    var game1 = document.getElementById('game1');
+    var game2 = document.getElementById('game2');
+    var game3 = document.getElementById('game3');
+    var instagram = document.getElementById('instagramInput');
+    var twitter = document.getElementById('twitterInput');
+    var youtube = document.getElementById('youtubeInput');
+    var featuredVideoArray = [video1, video2, video3];
+    db.collection("gamers").doc("marcoflores").update({
+        "bannerImage": bannerImageUpdate.value,
+        "bio": bioUpdate.value,
+        "name": nameUpdate.value,
+        "twitch": twitchUpdate.value,
+        "instagram": instagram.value,
+        "twitter": twitter.value,
+        "youtube": youtube.value,
+        "featured.0": video1.value,
+        "featured.1": video2.value,
+        "featured.2": video3.value,
+
+        // featured[0]: video1.value,
+
+      })
+      .then(function() {
+        console.log("Document successfully updated!");
+      });
+
+  }
+</script>
+
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+
+
+
+</html>
