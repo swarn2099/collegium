@@ -30,6 +30,10 @@ body {
   padding: 0px;
   margin: none;
 }
+label.required::before{
+  content: '*';
+  color: red;
+}
 
 @keyframes pastelRainbow {
   0% {

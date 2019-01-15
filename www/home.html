@@ -3,7 +3,6 @@
 
 <head>
   <!--Import Google Icon Font-->
-  <link rel="icon" href="../img/poolIcon.png">
 
   <title>Home | collegium</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,9 +14,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/init.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-auth.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script type="text/javascript" src="../js/create.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+
   <script>
     // Initialize Firebase
     var config = {
@@ -34,7 +37,6 @@
     };
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
-    document.getElementById('video').play();
   </script>
   <style>
     .carousel {
@@ -67,8 +69,8 @@
   <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
   <li><a href="story.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
   <li><a href="manage.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
-  <li><a href="org.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">group</i></a></li>
-
+  <li><a href="org.html" class="tooltipped" data-position="right" data-tooltip="Organizations"><i class="material-icons small">group</i></a></li>
+  <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
 </ul>
 
 <div class="navbar-fixed">
@@ -76,13 +78,9 @@
     <div class="nav-wrapper black-text color-page3">
       <a href="home.html" class="brand-logo center" style=""><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul class="right hide-on-med-and-down black-text">
-        <li>
-          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
-        </li>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
-        </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="modal-trigger" href="#creator">Become a Creator</a></li>
+        <!-- <li><a class="modal-trigger" href="#login">Create Account | Login</a></li> -->
       </ul>
     </div>
   </nav>
@@ -92,64 +90,67 @@
   <div class="carousel carousel-slider" style="z-index: -1">
     <div class="carousel-item transparent white-text" href="#one!">
       <div class="container123">
-        <video style="width: 100%; height: 100%" autoplay loop muted poster="screenshot.jpg" id="background">
+        <video style="width: 100%; height: 100%" autoplay loop muted id="background">
         <source src="../img/movie.mp4">
         </video>
         <div class="overlay"></div>
       </div>
     </div>
   </div>
-  <br>
-  <div class="row white transparent">
-    <div class="col m6 s12">
-      <h3 class="black-text container " style="font-weight: 900;">The College Creator Platform</h3><br>
-      <h6 class="container">Collegium is a platform that allows for college creators to showcase their skill. It works as an accelerator platform to allow you to generate views quickly as well as a marketplace for companies to view your content and hire you!</h6>
-    </div>
-    <div class="col m6 s12">
-      <div class="col m3 s12">
-        <div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
-          <span class="white-text">
+  <section class="black">
+    <br>
+    <div class="row transparent">
+      <div class="col m6 s12" style="margin-top: -3%;">
+        <h3 class="white-text container " style="font-weight: 900;">The College Creator Platform</h3><br>
+        <h6 class="container white-text" style="line-height: 25px;">Collegium is a platform that allows for college creators to showcase their skill. It works as an accelerator platform to allow you to generate views quickly as well as a marketplace for companies to view your content and hire you!</h6>
+      </div>
+      <div class="col m6 s12" style="margin-top: -5%;">
+        <div class="col m4 s12">
+          <div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
+            <span class="white-text">
             <h6 class="center" style="font-weight: 900;">Gaming</h6>
             <p style="font-size: 12px;">Watch student streamers compete to be the best on Colegium. We work with big brands so sposnorships are up for grabs :)</p>
 
           </span>
+          </div>
         </div>
-      </div>
-      <div class="col m3 s12">
-        <div class="card-panel black z-depth-5" style="height: 250px;">
-          <span class="white-text">
+        <div class="col m4 s12">
+          <div class="card-panel white z-depth-5" style="height: 250px;">
+            <span class="black-text">
             <h6 class="center" style="font-weight: 900;">Music</h6>
               <p style="font-size: 12px;">Drop your beats on Collegium. We'd love to hear them. COMING IN 2 WEEKS!</p>
           </span>
+          </div>
         </div>
-      </div>
-      <div class="col m3 s12">
-        <div class="card-panel amber z-depth-5" style="height: 250px;">
-          <span class="white-text">
+        <div class="col m4 s12">
+          <div class="card-panel amber darken-2 z-depth-5" style="height: 250px;">
+            <span class="white-text">
             <h6 class="center" style="font-weight: 900;">Entertainment</h6>
               <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. COMING IN 2 WEEKS!</p>
 
           </span>
+          </div>
         </div>
-      </div>
-      <div class="col m3 s12">
+        <!-- <div class="col m3 s12">
         <div class="card-panel white z-depth-5" style="height: 250px;">
           <span class="black-text center-align">
             <h6 style="font-weight: 900;">Become a Creator</h6>
             <p style="font-size: 12px;">Click the plus below to become a creator. We'll see you there :)</p>
-            <div class="center-align"><i class="medium material-icons center-align">add</i></div>
+            <div class="center-align">
+              <a class="waves-effect waves-light btn-large transparent modal-trigger z-depth-0 black-text" href="#modal1"><i class="large material-icons center-align">add</i></a>
+            </div>
             <br>
           </span>
         </div>
+      </div> -->
       </div>
     </div>
-  </div>
+  </section>
 
-  <br><br><br>
   <section class="black">
     <div class="row container" style="margin-top: 0%;">
       <br>
-      <h1 class="white-text" style="font-weight: 900">Top Streamers</h1>
+      <h1 class="white-text right-align" style="font-weight: 900">Top Streamers</h1>
       <div class="col m3 s12">
         <a data-playerName="madeinmex" onclick="openPlayerPage(this)">
           <div class="card z-depth-5">
@@ -192,7 +193,132 @@
         </a>
       </div>
     </div>
+
+    <!-- Modal Structure -->
+    <div id="creator" class="modal black">
+      <div class="modal-content">
+        <h4 class="white-text" style="font-weight: 900;">Become a <span class="amber-text">Creator</span></h4>
+        <br>
+        <ul class="collapsible">
+          <li class="active">
+            <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">videogame_asset</i>Gaming</div>
+            <div class="collapsible-body white">
+              <div class="row">
+                <form class="col s12">
+                  <h6 style="font-weight: 900;">Personal Information</h6>
+                  <blockquote class=red-text>*Required</blockquote>
+                  <hr/><br>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input placeholder="John" id="first_name" type="text" class="validate">
+                      <label class="required" for="first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input placeholder="Smith" id="last_name" type="text" class="validate">
+                      <label class="required" for="last_name">Last Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="email" type="email" class="validate">
+                      <label class="required" for="email">Email</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="password" type="password" class="validate">
+                      <label class="required" for="password">Password</label>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 900;">Twitch Information</h6>
+                  <hr/><br>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input placeholder="ex. Ninja" id="twitch" type="text" class="validate">
+                      <label class="required" for="twitch">Twitch Username</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="miniBio" type="text" class="validate">
+                      <label for="miniBio">Mini Bio</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <input id="twitchClip1" type="text" class="validate">
+                      <label for="first_name">Twitch Clip 1 Link</label>
+                    </div>
+                    <div class="input-field col s4">
+                      <input id="twitchClip2" type="text" class="validate">
+                      <label for="miniBio">Twitch Clip 2 Link</label>
+                    </div>
+                    <div class="input-field col s4">
+                      <input id="twitchClip3" type="text" class="validate">
+                      <label for="miniBio">Twitch Clip 3 Link</label>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 900;">Additional Information</h6>
+                  <hr/><br>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="unslpashphotography is a great place to start :)" id="bannerImage" type="text" class="validate">
+                      <label for="bannerImage">Banner Image Link</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <form class="col s12">
+                        <div class="input-field col s12">
+                          <textarea id="bio" placeholder="Tell us about yourself" class="materialize-textarea"></textarea>
+                          <label for="textarea1">Bio</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <input placeholder="Fortnite" id="favGame1" type="text" class="validate">
+                      <label for="favGame1">Favorite Game 1</label>
+                    </div>
+                    <div class="input-field col s4">
+                      <input placeholder="CSGO" id="favGame2" type="text" class="validate">
+                      <label for="favGame2">Favorite Game 2</label>
+                    </div>
+                    <div class="input-field col s4">
+                      <input placeholder="Overwatch" id="favGame3" type="text" class="validate">
+                      <label for="favGame3">Favorite Game 3</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <input id="instagram" type="text" class="validate">
+                      <label for="instagram">Instagram Link</label>
+                    </div>
+                    <div class="input-field col s4">
+                      <input id="twitter" type="text" class="validate">
+                      <label for="twitter">Twitter Link</label>
+                    </div>
+                    <div class="input-field col s4">
+                      <input id="youtube" type="text" class="validate">
+                      <label for="youtube">Youtube Link</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="center"><a onclick="createGamer()" class="btn-floating btn-large waves-effect waves-light green darken-4"><i class="material-icons">check</i></a></div>
+
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">music_note</i>Music</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          </li>
+          <li>
+            <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">play_circle_outline</i>Entertainment</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
+
 
 </body>
 
