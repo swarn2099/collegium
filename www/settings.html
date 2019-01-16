@@ -35,13 +35,7 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
-  <style>
-    .card-panel {
-      border-radius: 25px;
-    }
-  </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center"><br>
@@ -51,101 +45,107 @@
   <li><a href="manage.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
   <li><a href="org.html" class="tooltipped" data-position="right" data-tooltip="Organizations"><i class="material-icons small">group</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
-
 </ul>
 <div class="navbar-fixed">
   <nav>
-    <div class="nav-wrapper black-text" style="background-color: #29243D;">
-      <a href="home.html" class="brand-logo left" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
-      <a href="home.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Settings</b></span></a>
-
+    <div class="nav-wrapper black-text color-page3">
+      <a href="#" class="brand-logo left" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="#" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Settings</b></span></a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul class="right hide-on-med-and-down black-text">
-        <li>
-          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
-        </li>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
-        </ul>
-      </ul>
     </div>
   </nav>
 </div>
 
-<body class="black" >
-  <br><br>
+<body class="black">
+
   <h3 style="font-weight: 900; margin-left: 10%;" class="white-text">Creator Settings</h3>
   <div class="row" style="margin-left: 10%;">
-    <div class="col s12 m6">
+    <div class="col s12 m6" id="loginCard">
       <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+        <div class="input-field col s12 white-text">
+          <input id="email" type="email" class="validate white-text">
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
+        <div class="input-field col s12 white-text">
+          <input id="password" type="password" class="validate white-text">
           <label for="password">Password</label>
         </div>
       </div>
       <div class="left">
-        <a style="border-radius: 20px;" class="waves-effect waves-light btn white black-text" onclick="login();"><i class="material-icons right">check</i>Go to Settings</a>
+        <a style="border-radius: 20px;" class="waves-effect waves-light btn white black-text" onclick="loadSettingsData();"><i class="material-icons right">check</i>Go to Settings</a>
       </div>
-
     </div>
   </div>
-  <div style="margin-left: 6%;" class="row" id="showSettings">
-    <div class="col m6 s12">
-      <div class="card-panel white z-depth-5">
-        <h5 class="black-text">Personal Information</h5>
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <div id="name"></div>
+  <div class="row">
+    <div class="col s12 m10 push-m1" id="showSettings">
+      <div class="card white">
+        <div class="card-content black-text">
+          <div class="row">
+            <form class="col s12">
+              <h6 style="font-weight: 900;">Twitch Information</h6>
+              <hr/><br>
+              <div class="row">
+                <div class="input-field col s6">
+                  <div id="twitch"></div>
+                </div>
+                <div class="input-field col s6">
+                  <div id="miniBio"></div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <div id="twitch"></div>
+              <div class="row">
+                <div class="input-field col s4">
+                  <div id="twitch1"></div>
+                </div>
+                <div class="input-field col s4">
+                  <div id="twitch2"></div>
+                </div>
+                <div class="input-field col s4">
+                  <div id="twitch3"></div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <div id="bio"></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <div id="bannerImage"></div>
-              </div>
-            </div>
-          </form>
-        </div>
+              <h6 style="font-weight: 900;">Additional Information</h6>
+              <hr/><br>
+              <div class="row">
+                <div class="input-field col s12">
+                  <div id="bannerImage"></div>
 
-      </div>
-    </div>
-    <div class="col m6 s12">
-      <div class="card-panel white z-depth-5">
-        <h5 class="black-text">Page Stats</h5>
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div id="featuredVideos"></div>
-            </div>
-            <div class="row">
-              <div id="myGames"></div>
-            </div>
-            <div class="row">
-              <div id="instagram"></div>
-              <div id="twitter"></div>
-              <div id="youtube"></div>
-            </div>
-          </form>
-        </div>
-        <div class="center">
-          <a style="border-radius: 20px;" class="btn-floating btn-large waves-effect waves-light green center-align" onclick="updateSettings()"><i class="material-icons">go to settings</i></a>
+                </div>
+              </div>
+              <div class="row">
+                <form class="col s12">
+                  <div class="input-field col s12">
+                    <div id="bio"></div>
+                  </div>
+                </form>
+              </div>
+              <div class="row">
+                <div class="input-field col s4">
+                  <div id="game1"></div>
+                </div>
+                <div class="input-field col s4">
+                  <div id="game2"></div>
+                </div>
+                <div class="input-field col s4">
+                  <div id="game3"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s4">
+                  <div id="instagram"></div>
+                </div>
+                <div class="input-field col s4">
+                  <div id="twitter"></div>
+                </div>
+                <div class="input-field col s4">
+                  <div id="youtube"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="center"><a onclick="updateValues()" class="btn-floating btn-large waves-effect waves-light green darken-4"><i class="material-icons">check</i></a></div>
+
         </div>
       </div>
     </div>
@@ -154,114 +154,83 @@
 
 <!-- Modal Structure -->
 <script>
-$( document ).ready(function() {
-  $("#showSettings").hide();
-});
+  $(document).ready(function() {
+    $("#showSettings").hide();
+  });
 
   function loadSettingsData() {
     var email = document.getElementById('email').value;
-    var docRef = db.collection("gamers").where("email", "==", email);
-
-    docRef.get().then(function(doc) {
-      if (doc.exists) {
-        //header
-        var name = '<label for="name">Name</label><input id="nameInput" type="text" class="validate" value="' + doc.data().name + '"></input>';
-        var twitch = '<label for="twitch">Twitch</label><input id="twitchInput" type="text" class="validate" value="' + doc.data().twitch + '"></input>';
-        var bio = '<label for="textarea1">Bio</label><textarea id="bioInput" class="materialize-textarea" value="">' + doc.data().bio + '</textarea>';
-        var bannerImage = '<label for="bannerImageInput">Banner Image Input</label><input id="bannerImageInput" type="text" class="validate" value="' + doc.data().bannerImage + '"></input>';
-
-        $('#twitch').append(twitch);
-        $('#name').append(name);
-        $('#bio').append(bio);
-        $('#bannerImage').append(bannerImage);
-
-        for (var i = 0; i < doc.data().featured.length; i++) {
-          var video = '<div class="input-field col s4"><label for="video">Video ' + (i + 1) + '</label><input id="video' + (i + 1) + '" type="text" class="validate" value="' + doc.data().featured[i].youtubeID + '"></input></div>';
-          console.log(video, doc.data().featured[i]);
-          $('#featuredVideos').append(video);
-        }
-        for (var i = 0; i < doc.data().featured.length; i++) {
-          var games = '<div class="input-field col s4"><label for="game">Game ' + (i + 1) + '</label><input id="game' + (i + 1) + '" type="text" class="validate" value="' + doc.data().mygames[i] + '"></input></div>';
-          console.log(video, doc.data().featured[i]);
-          $('#myGames').append(games);
-        }
-        var instagram = '<div class="input-field col s4"><label for="instagram">Instagram</label><input id="instagramInput" type="text" class="validate" value="' + doc.data().instagram + '"></input></div>';
-        var twitter = '<div class="input-field col s4"><label for="twitter">Twitter</label><input id="twitterInput" type="text" class="validate" value="' + doc.data().twitter + '"></input></div>';
-        var youtube = '<div class="input-field col s4"><label for="youtube">Youtube</label><input id="youtubeInput" type="text" class="validate" value="' + doc.data().youtube + '"></input></div>';
-        $('#instagram').append(instagram);
-        $('#twitter').append(twitter);
-        $('#youtube').append(youtube);
-        //squads
-
-
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }).catch(function(error) {
-      console.log("Error getting document:", error);
-    });
-
-  }
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // User is signed in.
-      M.toast({
-        html: 'Signing In',
-        classes: 'rounded green white-text'
-      });
-      //Start loading up settings
-      loadSettingsData();
-    }
-  });
-
-  function login() {
-    var email = document.getElementById("email").value;
     var password = document.getElementById('password').value;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message
-      M.toast({
-        html: 'Incorrect Email or Password',
-        classes: 'rounded red white-text'
+
+    db.collection("gamers").where("email", "==", email).get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        if (doc.data().password = password) {
+          console.log(doc.id, " => ", doc.data());
+          $("#loginCard").hide();
+          $("#showSettings").show();
+          var twitch = '<label for="twitch">Twitch Username</label><input disabled placeholder="ex. Ninja" id="twitchInput" type="text" class="validate" value="' + doc.data().twitch + '">';
+          $('#twitch').append(twitch);
+          var miniBio = '<label for="miniBio">Mini Bio</label><input placeholder="Sophmore | Mechanical Engineering" id="miniBioInput" type="text" class="validate" value="' + doc.data().miniBio + '">';
+          $('#miniBio').append(miniBio);
+          var twitch1 = '<label for="twitchClip1">Twitch Clip 1 Link</label><input id="twitchClip1Input" type="text" class="validate" value="'+ doc.data().twitchClip1 +'">';
+          $('#twitch1').append(twitch1);
+          var twitch2 = '<label for="twitchClip2">Twitch Clip 2 Link</label><input id="twitchClip2Input" type="text" class="validate" value="'+ doc.data().twitchClip2 +'">';
+          $('#twitch2').append(twitch2);
+          var twitch3 = '<label for="twitchClip1">Twitch Clip 3 Link</label><input id="twitchClip3Input" type="text" class="validate" value="'+ doc.data().twitchClip3 +'">';
+          $('#twitch3').append(twitch3);
+          var bannerImage = '<label for="bannerImage">Banner Image Link</label><input placeholder="unslpashphotography is a great place to start :)" id="bannerImageInput" type="text" class="validate" value="'+doc.data().bannerImage+'">';
+          $('#bannerImage').append(bannerImage);
+          var bio = '<label for="textarea1">Bio</label><textarea id="bioInput" placeholder="Tell us about yourself" class="materialize-textarea"></textarea>';
+          $('#bio').append(bio);
+          var game1 = '<label for="favGame1">Favorite Game 1</label><input placeholder="Fortnite" id="favGame1Input" type="text" class="validate" value="'+doc.data().game1+'">';
+          $('#game1').append(game1);
+          var game2 = '<label for="favGame2">Favorite Game 2</label><input placeholder="CSGO" id="favGame2Input" type="text" class="validate" value="'+doc.data().game2+'">';
+          $('#game2').append(game2);
+          var game3 = '<label for="favGame3">Favorite Game 3</label><input placeholder="Overwatch" id="favGame3Input" type="text" class="validate" value="'+doc.data().game3+'">';
+          $('#game3').append(game3);
+          var instagram = '<label for="instagram">Instagram Link</label><input id="instagramInput" type="text" class="validate" value="'+doc.data().instagram+'">';
+          $('#instagram').append(instagram);
+          var twitter = '<label for="twitter">Twitter Link</label><input id="twitterInput" type="text" class="validate" value="'+doc.data().twitter+'">';
+          $('#twitter').append(twitter);
+          var youtube = '<label for="youtube">Youtube Link</label><input id="youtubeInput" type="text" class="validate" value="'+doc.data().youtube+'">';
+          $('#youtube').append(youtube);
+        }
       });
     });
-  };
-  function updateSettings() {
-    var nameUpdate = document.getElementById('nameInput');
+  }
+  function updateValues() {
     var twitchUpdate = document.getElementById('twitchInput');
+    var miniBioUpdate = document.getElementById('miniBioInput');
     var bioUpdate = document.getElementById('bioInput');
     var bannerImageUpdate = document.getElementById('bannerImageInput');
-    var video1 = document.getElementById('video1');
-    var video2 = document.getElementById('video2');
-    var video3 = document.getElementById('video3');
-    var game1 = document.getElementById('game1');
-    var game2 = document.getElementById('game2');
-    var game3 = document.getElementById('game3');
+    var video1 = document.getElementById('twitchClip1Input');
+    var video2 = document.getElementById('twitchClip2Input');
+    var video3 = document.getElementById('twitchClip3Input');
+    var game1 = document.getElementById('favGame1Input');
+    var game2 = document.getElementById('favGame2Input');
+    var game3 = document.getElementById('favGame3Input');
     var instagram = document.getElementById('instagramInput');
     var twitter = document.getElementById('twitterInput');
     var youtube = document.getElementById('youtubeInput');
-    var featuredVideoArray = [video1, video2, video3];
-    db.collection("gamers").doc("marcoflores").update({
-        "bannerImage": bannerImageUpdate.value,
+    db.collection("gamers").doc(twitchUpdate.value).update({
+
         "bio": bioUpdate.value,
-        "name": nameUpdate.value,
         "twitch": twitchUpdate.value,
+        "miniBio": miniBioUpdate.value,
+        "bannerImage": bannerImageUpdate.value,
+        "twitchClip1": video1.value,
+        "twitchClip2": video2.value,
+        "twitchClip3": video3.value,
+        "game1": game1.value,
+        "game2": game2.value,
+        "game3": game3.value,
         "instagram": instagram.value,
         "twitter": twitter.value,
         "youtube": youtube.value,
-        "featured.0": video1.value,
-        "featured.1": video2.value,
-        "featured.2": video3.value,
-
-        // featured[0]: video1.value,
-
       })
       .then(function() {
         console.log("Document successfully updated!");
       });
-
   }
 </script>
 
