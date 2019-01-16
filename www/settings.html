@@ -45,7 +45,7 @@
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center"><br>
-  <li><a href="home.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
+  <li><a href="../index.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
   <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
   <li><a href="story.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
   <li><a href="manage.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
@@ -72,9 +72,30 @@
   </nav>
 </div>
 
-<body class="grey darken-4" onload="loadSettingsData();">
+<body class="black" >
   <br><br>
-  <div style="margin-left: 6%;" class="row">
+  <h3 style="font-weight: 900; margin-left: 10%;" class="white-text">Creator Settings</h3>
+  <div class="row" style="margin-left: 10%;">
+    <div class="col s12 m6">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="left">
+        <a style="border-radius: 20px;" class="waves-effect waves-light btn white black-text" onclick="login();"><i class="material-icons right">check</i>Go to Settings</a>
+      </div>
+
+    </div>
+  </div>
+  <div style="margin-left: 6%;" class="row" id="showSettings">
     <div class="col m6 s12">
       <div class="card-panel white z-depth-5">
         <h5 class="black-text">Personal Information</h5>
@@ -124,7 +145,7 @@
           </form>
         </div>
         <div class="center">
-          <a class="btn-floating btn-large waves-effect waves-light green center-align" onclick="updateSettings()"><i class="material-icons">check</i></a>
+          <a style="border-radius: 20px;" class="btn-floating btn-large waves-effect waves-light green center-align" onclick="updateSettings()"><i class="material-icons">go to settings</i></a>
         </div>
       </div>
     </div>
@@ -133,12 +154,16 @@
 
 <!-- Modal Structure -->
 <script>
+$( document ).ready(function() {
+  $("#showSettings").hide();
+});
+
   function loadSettingsData() {
-    var docRef = db.collection("gamers").doc("marcoflores");
+    var email = document.getElementById('email').value;
+    var docRef = db.collection("gamers").where("email", "==", email);
 
     docRef.get().then(function(doc) {
       if (doc.exists) {
-
         //header
         var name = '<label for="name">Name</label><input id="nameInput" type="text" class="validate" value="' + doc.data().name + '"></input>';
         var twitch = '<label for="twitch">Twitch</label><input id="twitchInput" type="text" class="validate" value="' + doc.data().twitch + '"></input>';
@@ -151,7 +176,7 @@
         $('#bannerImage').append(bannerImage);
 
         for (var i = 0; i < doc.data().featured.length; i++) {
-          var video = '<div class="input-field col s4"><label for="video">Video ' + (i + 1) + '</label><input id="video' + (i + 1) + '" type="text" class="validate" value="' + doc.data().featured[i].youtubeID+ '"></input></div>';
+          var video = '<div class="input-field col s4"><label for="video">Video ' + (i + 1) + '</label><input id="video' + (i + 1) + '" type="text" class="validate" value="' + doc.data().featured[i].youtubeID + '"></input></div>';
           console.log(video, doc.data().featured[i]);
           $('#featuredVideos').append(video);
         }
@@ -178,7 +203,31 @@
     });
 
   }
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      M.toast({
+        html: 'Signing In',
+        classes: 'rounded green white-text'
+      });
+      //Start loading up settings
+      loadSettingsData();
+    }
+  });
 
+  function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById('password').value;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message
+      M.toast({
+        html: 'Incorrect Email or Password',
+        classes: 'rounded red white-text'
+      });
+    });
+  };
   function updateSettings() {
     var nameUpdate = document.getElementById('nameInput');
     var twitchUpdate = document.getElementById('twitchInput');

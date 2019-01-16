@@ -246,7 +246,7 @@
         querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, " => ", doc.data());
-          var streamerAll = '<li data-playerName="'+doc.data().twitch+'" onclick="openPlayerPage(this)" class="collection-item purple darken-4 white-text"><h6>'+doc.data().twitch+'</h6></li>'
+          var streamerAll = '<li data-playerName="' + doc.data().twitch + '" onclick="openPlayerPage(this)" class="collection-item purple darken-4 white-text"><h6>' + doc.data().twitch + '</h6></li>'
           $('#allplayers').append(streamerAll);
         });
       });
