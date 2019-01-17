@@ -3,7 +3,6 @@
 
 <head>
   <!--Import Google Icon Font-->
-  <link rel="icon" href="../img/poolIcon.png">
 
   <title>Gaming | collegium</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,8 +11,11 @@
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
   <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="collegium">
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/init.js"></script>
   <script type="text/javascript" src="../js/player.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -81,14 +83,15 @@
 <div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper black-text" style="background-color: #29243D;">
-      <a href="#" class="brand-logo left" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
-      <a href="#" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
+      <a href="#" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
     </div>
   </nav>
 </div>
 
 <body onload="loadAllStreamers()">
+  <section class="hide-on-med-and-down">
   <div class="carousel carousel-slider left">
     <div class="carousel-item  white-text" href="#one!">
       <div class="container123">
@@ -121,7 +124,7 @@
     </div>
     <br>
     <div class="row container">
-      <div class="col s3">
+      <div class="col s12 m3">
         <div class="card white black-text z-depth-5">
           <a onclick="loadOverwatch();">
             <div class="card-image">
@@ -131,7 +134,7 @@
         </div>
         </a>
       </div>
-      <div class="col s3">
+      <div class="col s12 m3">
         <div class="card white black-text z-depth-5">
           <a onclick="loadLeague();">
             <div class="card-image">
@@ -141,7 +144,7 @@
           </a>
         </div>
       </div>
-      <div class="col s3">
+      <div class="col s12 m3">
         <div class="card white black-text z-depth-5">
           <a onclick="loadFortnite();">
             <div class="card-image">
@@ -151,7 +154,7 @@
           </a>
         </div>
       </div>
-      <div class="col s3">
+      <div class="col s12 m3">
         <div class="card white black-text z-depth-5">
           <a onclick="loadCSGO();">
             <div class="card-image">
@@ -176,99 +179,188 @@
       <div id="csgo"></div>
     </div>
   </section>
+</section>
+<section class="hide-on-med-and-up">
 
+<div class="z-depth-5" style="padding: 40px; padding-right: 50px; background-color: #051937;">
+  <h5 style="margin-left: %;" class="white-text">Featured Streamer</h5>
+  <h3 style="margin-left: 0%; font-weight: 900;" class="white-text">madeinmex</h3>
+  <hr color="white" />
+  <h6 style="margin-left: 0%;" class="white-text">Live Stream from 7pm to 1am</h6>
+</div>
+<section class="black">
+  <br>
+  <div class="row transparent">
+    <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
+      <h3 class="white-text container " style="font-weight: 900;">Popular Games</h3><br>
+      <h6 class="container white-text" style="line-height: 25px;">Here are the games popping on the platform now. If you scroll down, youll find a list of all the streamers. Happy viewing :)</h6>
+    </div>
+    <div class="col m6 s12" style="margin-top: 2%;">
 
-  <!-- Modal Structure -->
-  <script>
-    function loadAllStreamers() {
-      db.collection("gamers").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-          var streamerAll = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-            '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
-            '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-          $('#allplayers').append(streamerAll);
-        });
-      });
-    }
+    </div>
+  </div>
+  <br>
+  <div class="row container">
+    <div class="col s12 m3">
+      <div class="card white black-text z-depth-5">
+        <a onclick="loadOverwatch();">
+          <div class="card-image">
+            <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
+            <span class="card-title"></span>
+          </div>
+      </div>
+      </a>
+    </div>
+    <div class="col s12 m3">
+      <div class="card white black-text z-depth-5">
+        <a onclick="loadLeague();">
+          <div class="card-image">
+            <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
+            <span class="card-title"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="card white black-text z-depth-5">
+        <a onclick="loadFortnite();">
+          <div class="card-image">
+            <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
+            <span class="card-title"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="card white black-text z-depth-5">
+        <a onclick="loadCSGO();">
+          <div class="card-image">
+            <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
+            <span class="card-title"></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br>
+</section>
+<section class="white">
+  <br>
+  <h3 class="black-text right-align container " style="font-weight: 900;">All Streamers</h3><br>
 
-    function loadOverwatch() {
-      $('#allplayers').hide();
-      $('#league').hide();
-      $('#fortnite').hide();
-      $('#csgo').hide();
-      $('#overwatch').show();
-      console.log("Overwatch clicked!");
-      db.collection("gamers").where("game1", "==", "Overwatch").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log("Overwatch", " => ", doc.data());
-          var overwatch = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-            '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
-            '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-          $('#overwatch').append(overwatch);
-        });
-      });
-    }
-
-    function loadLeague() {
-      $('#allplayers').hide();
-      $('#league').hide();
-      $('#overwatch').hide();
-      $('#fortnite').hide();
-      $('#league').show();
-      console.log("League clicked!");
-      db.collection("gamers").where("game1", "==", "League of Legends").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          var league = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-            '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
-            '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-          $('#league').append(league);
-        });
-      });
-    }
-
-    function loadFortnite() {
-      $('#allplayers').hide();
-      $('#league').hide();
-      $('#overwatch').hide();
-      $('#csgo').hide();
-      $('#fortnite').show();
-      console.log("Fortnite clicked!");
-      db.collection("gamers").where("game1", "==", "Fortnite").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          var fortnite = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-            '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
-            '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-          $('#fortnite').append(fortnite);
-        });
-      });
-    }
-
-    function loadCSGO() {
-      $('#allplayers').hide();
-      $('#league').hide();
-      $('#overwatch').hide();
-      $('#fortnite').hide();
-      $('#csgo').show();
-      console.log("CSGO clicked!");
-      db.collection("gamers").where("game1", "==", "Counter-Strike: Global Offensive").get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          var csgo = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-            '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
-            '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-          $('#csgo').append(csgo);
-        });
-      });
-    }
-  </script>
-
-  <script type="text/javascript" src="../js/materialize.min.js"></script>
-
+  <div class="row container" >
+    <div id="allplayers" style="margin-left: 15%;"></div>
+    <div id="overwatch" style="margin-left: 15%;"></div>
+    <div id="league" style="margin-left: 15%;"></div>
+    <div id="fortnite" style="margin-left: 15%;"></div>
+    <div id="csgo" style="margin-left: 15%;"></div>
+    <div id="allplayersMobile"></div>
+    <div id="overwatchMobile"></div>
+    <div id="leagueMobile"></div>
+    <div id="fortniteMobile"></div>
+    <div id="csgoMobile"></div>
+  </div>
+</section>
+</section>
 </body>
+<!-- Modal Structure -->
+<script>
+  function loadAllStreamers() {
+    db.collection("gamers").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        var streamerAll = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
+          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+        $('#allplayers').append(streamerAll);
+        $('#allplayersMobile').append(streamerAll);
 
+      });
+    });
+  }
+
+  function loadOverwatch() {
+    $('#allplayers').hide();
+    $('#league').hide();
+    $('#fortnite').hide();
+    $('#csgo').hide();
+    $('#overwatch').show();
+    console.log("Overwatch clicked!");
+    db.collection("gamers").where("game1", "==", "Overwatch").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log("Overwatch", " => ", doc.data());
+        var overwatch = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
+          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+        $('#overwatch').append(overwatch);
+        $('#overwatchMobile').append(overwatch);
+
+      });
+    });
+  }
+
+  function loadLeague() {
+    $('#allplayers').hide();
+    $('#league').hide();
+    $('#overwatch').hide();
+    $('#fortnite').hide();
+    $('#league').show();
+    console.log("League clicked!");
+    db.collection("gamers").where("game1", "==", "League of Legends").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        var league = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
+          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+        $('#league').append(league);
+        $('#leagueMobile').append(league);
+
+      });
+    });
+  }
+
+  function loadFortnite() {
+    $('#allplayers').hide();
+    $('#league').hide();
+    $('#overwatch').hide();
+    $('#csgo').hide();
+    $('#fortnite').show();
+    console.log("Fortnite clicked!");
+    db.collection("gamers").where("game1", "==", "Fortnite").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        var fortnite = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
+          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+        $('#fortnite').append(fortnite);
+        $('#fortniteMobile').append(fortnite);
+
+      });
+    });
+  }
+
+  function loadCSGO() {
+    $('#allplayers').hide();
+    $('#league').hide();
+    $('#overwatch').hide();
+    $('#fortnite').hide();
+    $('#csgo').show();
+    console.log("CSGO clicked!");
+    db.collection("gamers").where("game1", "==", "Counter-Strike: Global Offensive").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        var csgo = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 250px;   object-fit: cover;" src="' + doc.data().gameImage +
+          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+        $('#csgo').append(csgo);
+        $('#csgoMobile').append(csgo);
+
+      });
+    });
+  }
+</script>
+
+<script type="text/javascript" src="../js/materialize.min.js"></script>
 </html>

@@ -1,10 +1,10 @@
-
 function openPlayerPage(d) {
   window.open("player.html", "_self")
 
   console.log(d.getAttribute("data-playerName"));
   sessionStorage.setItem("playerDataName", d.getAttribute("data-playerName"));
 }
+
 function openPlayerPagefromHome(d) {
   window.open("www/player.html", "_self")
 
@@ -15,7 +15,7 @@ function openPlayerPagefromHome(d) {
 function loadPlayer() {
 
   var playerName = sessionStorage.getItem("playerDataName");
-console.log("SESSION PLAYER NAME IS: ", playerName);
+  console.log("SESSION PLAYER NAME IS: ", playerName);
   var docRef = db.collection("gamers").doc(playerName);
 
   docRef.get().then(function(doc) {
@@ -23,8 +23,16 @@ console.log("SESSION PLAYER NAME IS: ", playerName);
       console.log("Document data:", doc.data());
 
       //header
-      var banner = '<header style="position: relative; height: 450px; background: linear-gradient(30deg, #004092, transparent, transparent), url(' + doc.data().bannerImage + ');   background-size: cover; "><div class="row"><div class="col s4"><h3 class="white-text" style="margin-left: 25%;">' + doc.data().twitch + '</h3><h6 class="white-text" style="margin-left: 25%;">'+doc.data().miniBio+'</h6><hr color="white" /><div class="row" style="margin-left: 25%;"><div class="col s6"></div></div><div class="row" style="margin-left: 25%;"><div class="col s3"><a href="'+doc.data().instagram+'"><img width="50%" src="https://cdn2.iconfinder.com/data/icons/instagram-new/512/instagram-logo-color-512.png"></img></a></div><div class="col s3 "><a href="'+doc.data().twitter+'"><img width="50%" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"></img></a></div><div class="col s3 "><a href="'+doc.data().youtube+'"><img width="50%" src="https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo-by-vexels.png"></img></a></div><div class="col s3"><a class="waves-effect waves-light btn white black-text" style="margin-left: 25%; border-radius: 20px;"></a></div></div></div><div class="col s3 push-s1"><!-- Twitch Live Stream --><div id="twitch-embed" style="margin-top: 5%;"></div></div><div class="row s6 right-align"><iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/'+doc.data().twitch+'/chat" height="400" width="300" style="margin-top: 1%; margin-right: 1%;"></iframe></div></div></header>';
+      var banner = '<header style="position: relative; height: 450px; background: linear-gradient(30deg, #004092, transparent, transparent), url(' + doc.data().bannerImage + ');   background-size: cover; "><div class="row"><div class="col s4"><h3 class="white-text" style="margin-left: 25%;">' + doc.data().twitch + '</h3><h6 class="white-text" style="margin-left: 25%;">' + doc.data().miniBio + '</h6><hr color="white" /><div class="row" style="margin-left: 25%;"><div class="col s6"></div></div><div class="row" style="margin-left: 25%;"><div class="col s3"><a href="' + doc.data().instagram + '"><img width="50%" src="https://cdn2.iconfinder.com/data/icons/instagram-new/512/instagram-logo-color-512.png"></img></a></div><div class="col s3 "><a href="' + doc.data().twitter + '"><img width="50%" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"></img></a></div><div class="col s3 "><a href="' + doc.data().youtube + '"><img width="50%" src="https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo-by-vexels.png"></img></a></div><div class="col s3"><a class="waves-effect waves-light btn white black-text" style="margin-left: 25%; border-radius: 20px;"></a></div></div></div><div class="col s3 push-s1"><!-- Twitch Live Stream --><div id="twitch-embed" style="margin-top: 5%;"></div></div><div class="row s6 right-align"><iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/' + doc.data().twitch + '/chat" height="400" width="300" style="margin-top: 1%; margin-right: 1%;"></iframe></div></div></header>';
+      var bannerMobile = '<header style="position: relative; height: 400px; background: linear-gradient(30deg, #004092, transparent, transparent), url(' + doc.data().bannerImage + ');   background-size: cover; "><div class="row"><div class="col s4"><h3 class="white-text" style="margin-left: 25%;">' + doc.data().twitch + '</h3><h6 class="white-text" style="margin-left: 25%;">' + doc.data().miniBio + '</h6><hr color="white" /><div class="row" style="margin-left: 25%;"><div class="col s6"></div></div><div class="row" style="margin-left: 25%;"><div class="col s3"><a href="' + doc.data().instagram + '"><img width="50%" src="https://cdn2.iconfinder.com/data/icons/instagram-new/512/instagram-logo-color-512.png"></img></a></div><div class="col s3 "><a href="' + doc.data().twitter + '"><img width="50%" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png"></img></a></div><div class="col s3 "><a href="' + doc.data().youtube + '"><img width="50%" src="https://images.vexels.com/media/users/3/137425/isolated/preview/f2ea1ded4d037633f687ee389a571086-youtube-icon-logo-by-vexels.png"></img></a></div><div class="col s3"><a class="waves-effect waves-light btn white black-text" style="margin-left: 25%; border-radius: 20px;"></a></div></div></div><div class="col s3 push-s1"><!-- Twitch Live Stream --><div id="twitch-embed" style="margin-top: 5%;"></div></div><div class="row s6 right-align"><iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/' + doc.data().twitch + '/chat" height="400" width="300" style="margin-top: 1%; margin-right: 1%;"></iframe></div></div></header>';
       $('#banner').append(banner);
+
+
+      var bannerMobile = '<header style="position: relative; height: 400px; background: linear-gradient(30deg, #004092, transparent, transparent), url(' + doc.data().bannerImage + ');   background-size: cover; "><div class="row"><div class="col s12"><h4 class="white-text" style="">'+doc.data().twitch+'</h4><hr color="white" /><h6 class="white-text" style="">'+doc.data().miniBio+'</h6></div><div class="col s12"><div id="twitch-embedMobile" style=""></div></div></div></header>'
+      var streamChat = '<iframe frameborder="0" scrolling="no" id="chat_embed" src="https://www.twitch.tv/embed/' + doc.data().twitch + '/chat" height="350" width="100%" scrolling="yes" style="margin-top: 1%; margin-right: 1%;"></iframe>';
+      $('#bannerMobile').append(bannerMobile);
+      $('#streamChat').append(streamChat);
+
 
 
       //squads
@@ -37,10 +45,19 @@ console.log("SESSION PLAYER NAME IS: ", playerName);
         channel: doc.data().twitch,
         layout: "video"
       });
-      if(doc.data().twitchClip1 == ""){
+      new Twitch.Embed("twitch-embedMobile", {
+        width: "100%",
+        height: 400,
+        channel: doc.data().twitch,
+        layout: "video"
+      });
+
+      if (doc.data().twitchClip1 == "") {
         console.log("Something is there");
-      }else{
+      } else {
         $('#twitchClips').hide();
+        $('#twitchClipsMobile').hide();
+
         //twitch clips
         var clip1 = doc.data().twitchClip1;
         var clip12 = clip1.split("clip/");
@@ -62,17 +79,25 @@ console.log("SESSION PLAYER NAME IS: ", playerName);
 
         console.log("SPLIT STRING => ", clip12345);
         var twitch1 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clip12345 + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
-        var twitch2 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE  + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
-        var twitch3 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE1  + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        var twitch2 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        var twitch3 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE1 + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+
+        //Twitch Clips Mobile
+        var twitch1 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clip12345 + '" width="100%" height="300" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        var twitch2 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE + '" width="100%" height="300" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        var twitch3 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE1 + '" width="100%" height="300" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
 
         $('#twitch1').append(twitch1);
         $('#twitch2').append(twitch2);
         $('#twitch3').append(twitch3);
+        $('#twitch1Mobile').append(twitch1);
+        $('#twitch2Mobile').append(twitch2);
+        $('#twitch3Mobile').append(twitch3);
       }
 
-      if(doc.data().bio == ""){
+      if (doc.data().bio == "") {
         console.log("Something isn't there");
-      }else{
+      } else {
         $('#bioHide').hide();
         //twitch clips
         //my bio
@@ -90,19 +115,19 @@ console.log("SESSION PLAYER NAME IS: ", playerName);
       var game1 = '<div class="left-align"><div class="card   black-text " style="width: 50%; margin-left: 5%;"><div class="card-content black-text"><span class="card-title center-align"><h6><b>' + doc.data().game1 + '</b></h6></span></div></div></div>';
       var game2 = '<div class="left-align"><div class="card   black-text " style="width: 50%; margin-left: 5%;"><div class="card-content black-text"><span class="card-title center-align"><h6><b>' + doc.data().game2 + '</b></h6></span></div></div></div>';
       var game3 = '<div class="left-align"><div class="card   black-text " style="width: 50%; margin-left: 5%;"><div class="card-content black-text"><span class="card-title center-align"><h6><b>' + doc.data().game3 + '</b></h6></span></div></div></div>';
-      if(doc.data().game1 == ""){
+      if (doc.data().game1 == "") {
         console.log("nothing here");
       } else {
         $('#gameHide').hide();
         $('#game1').append(game1);
       }
-      if(doc.data().game2 == ""){
+      if (doc.data().game2 == "") {
         console.log("nothing here");
       } else {
         $('#gameHide').hide();
         $('#game2').append(game2);
       }
-      if(doc.data().game3 == ""){
+      if (doc.data().game3 == "") {
         console.log("nothing here");
       } else {
         $('#gameHide').hide();
