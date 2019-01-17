@@ -37,39 +37,50 @@ console.log("SESSION PLAYER NAME IS: ", playerName);
         channel: doc.data().twitch,
         layout: "video"
       });
+      if(doc.data().twitchClip1 == ""){
+        console.log("Something is there");
+      }else{
+        $('#twitchClips').hide();
+        //twitch clips
+        var clip1 = doc.data().twitchClip1;
+        var clip12 = clip1.split("clip/");
+        var clip123 = clip12[1];
+        var clip1234 = clip123.split("?");
+        var clip12345 = clip1234[0];
+        //
+        var clipA = doc.data().twitchClip2;
+        var clipAB = clipA.split("clip/");
+        var clipABC = clipAB[1];
+        var clipABCD = clipABC.split("?");
+        var clipABCDE = clipABCD[0];
+        //
+        var clipA1 = doc.data().twitchClip3;
+        var clipAB1 = clipA1.split("clip/");
+        var clipABC1 = clipAB1[1];
+        var clipABCD1 = clipABC1.split("?");
+        var clipABCDE1 = clipABCD1[0];
 
-      //twitch clips
-      var clip1 = doc.data().twitchClip1;
-      var clip12 = clip1.split("clip/");
-      var clip123 = clip12[1];
-      var clip1234 = clip123.split("?");
-      var clip12345 = clip1234[0];
-      //
-      var clipA = doc.data().twitchClip2;
-      var clipAB = clipA.split("clip/");
-      var clipABC = clipAB[1];
-      var clipABCD = clipABC.split("?");
-      var clipABCDE = clipABCD[0];
-      //
-      var clipA1 = doc.data().twitchClip3;
-      var clipAB1 = clipA1.split("clip/");
-      var clipABC1 = clipAB1[1];
-      var clipABCD1 = clipABC1.split("?");
-      var clipABCDE1 = clipABCD1[0];
+        console.log("SPLIT STRING => ", clip12345);
+        var twitch1 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clip12345 + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        var twitch2 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE  + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        var twitch3 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE1  + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
 
-      console.log("SPLIT STRING => ", clip12345);
-      var twitch1 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clip12345 + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
-      var twitch2 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE  + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
-      var twitch3 = '<iframe src="https://clips.twitch.tv/embed?clip=' + clipABCDE1  + '" width="400" height="360" frameborder="0" scrolling="no" allowfullscreen="true" autoplay="false"> </iframe>';
+        $('#twitch1').append(twitch1);
+        $('#twitch2').append(twitch2);
+        $('#twitch3').append(twitch3);
+      }
 
-      $('#twitch1').append(twitch1);
-      $('#twitch2').append(twitch2);
-      $('#twitch3').append(twitch3);
+      if(doc.data().bio == ""){
+        console.log("Something isn't there");
+      }else{
+        $('#bioHide').hide();
+        //twitch clips
+        //my bio
+        console.log("bio", " => ", doc.data().bio);
+        var bio = doc.data().bio
+        $('#bio').append(bio);
+      }
 
-      //my bio
-      console.log("bio", " => ", doc.data().bio);
-      var bio = doc.data().bio
-      $('#bio').append(bio);
 
 
 
@@ -79,10 +90,25 @@ console.log("SESSION PLAYER NAME IS: ", playerName);
       var game1 = '<div class="left-align"><div class="card   black-text " style="width: 50%; margin-left: 5%;"><div class="card-content black-text"><span class="card-title center-align"><h6><b>' + doc.data().game1 + '</b></h6></span></div></div></div>';
       var game2 = '<div class="left-align"><div class="card   black-text " style="width: 50%; margin-left: 5%;"><div class="card-content black-text"><span class="card-title center-align"><h6><b>' + doc.data().game2 + '</b></h6></span></div></div></div>';
       var game3 = '<div class="left-align"><div class="card   black-text " style="width: 50%; margin-left: 5%;"><div class="card-content black-text"><span class="card-title center-align"><h6><b>' + doc.data().game3 + '</b></h6></span></div></div></div>';
+      if(doc.data().game1 == ""){
+        console.log("nothing here");
+      } else {
+        $('#gameHide').hide();
+        $('#game1').append(game1);
+      }
+      if(doc.data().game2 == ""){
+        console.log("nothing here");
+      } else {
+        $('#gameHide').hide();
+        $('#game2').append(game2);
+      }
+      if(doc.data().game3 == ""){
+        console.log("nothing here");
+      } else {
+        $('#gameHide').hide();
+        $('#game3').append(game3);
+      }
 
-      $('#game1').append(game1);
-      $('#game2').append(game2);
-      $('#game3').append(game3);
 
     } else {
       // doc.data() will be undefined in this case

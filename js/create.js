@@ -16,6 +16,8 @@ function createGamer() {
   var instagram = document.getElementById('instagram');
   var twitter = document.getElementById('twitter');
   var youtube = document.getElementById('youtube');
+  var gameImage = document.getElementById('gameImage');
+
   if(!bannerImage){
     console.log("They dont want a picture, we'll add one");
   }
@@ -37,7 +39,9 @@ function createGamer() {
       squad: 0,
       instagram: instagram.value,
       twitter: twitter.value,
-      youtube: youtube.value
+      youtube: youtube.value,
+      gameImage: gameImage.value
+
     })
     .then(function() {
       console.log("Document successfully written!");

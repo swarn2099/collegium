@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link rel="icon" href="../img/poolIcon.png">
+
+  <title>Gaming | collegium</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/init.js"></script>
+  <script type="text/javascript" src="../js/player.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC6GRrWQ0v-xzvfHg32xgTP9fxSZB9Skb8",
+      authDomain: "collegium-a3676.firebaseapp.com",
+      databaseURL: "https://collegium-a3676.firebaseio.com",
+      projectId: "collegium-a3676",
+      storageBucket: "collegium-a3676.appspot.com",
+      messagingSenderId: "852316993941"
+    };
+    firebase.initializeApp(config);
+    const settings = {
+      timestampsInSnapshots: true
+    };
+    firebase.firestore().settings(settings);
+    var db = firebase.firestore();
+  </script>
+  <style>
+    .carousel {
+      height: 400px;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+</head>
+
+<ul id="slide-out" class="sidenav sidenav-fixed center"><br>
+  <li><a href="../index.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
+  <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Organizations"><i class="material-icons small">group</i></a></li>
+  <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
+
+</ul>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper black-text color-page3">
+      <a href="#" class="brand-logo left" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="#" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Entertainment</b></span></a>
+
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+      <ul class="right hide-on-med-and-down black-text">
+        <li>
+          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
+        </li>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<body onload="loadAllStreamers()">
+
+  <div class="carousel carousel-slider left">
+    <div class="carousel-item  white-text" href="#one!" style="background: linear-gradient(60deg, #000000, #000000, #000000, transparent,transparent, transparent, transparent), url('https://i.pinimg.com/originals/fc/d8/6c/fcd86cea9b199bec0fa7759578711e28.jpg'); background-size: 100% 100%; object-fit: cover;">
+      <h1 style="margin-left: 10%;" class="white-text">Marco Flores</h1>
+      <h2 style="margin-left: 10%;" class="white-text">Live Stream from 7 p.m. to 1 a.m. weekdays </h2>
+    </div>
+  </div>
+  <hr color="white" />
+
+  <section class="white">
+
+    <div class="row">
+      <div class="col s6">
+        <br>
+        <h4 class="left-align container black-text"><b>All Streamers</b></h4>
+        <br>
+        <hr class="container" />
+        <br>
+        <div style="margin-left: 15%;">
+          <div id="allplayers"></div>
+        </div>
+
+      </div>
+      <div class="col s6"></div>
+
+  </section>
+
+
+  <!-- Modal Structure -->
+  <script>
+    function loadAllStreamers() {
+
+      db.collection("gamers").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+          var streamerAll = '<a data-playerName="'+doc.data().twitch+'" onclick="openPlayerPage(this)" <div class="col s12 m4"><div class="card-panel white z-depth-5"><span class="black-text center" style="font-weight: 900;">'+doc.data().twitch+'</span></div></div>';
+          $('#allplayers').append(streamerAll);
+        });
+      });
+
+    }
+  </script>
+
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+
+</body>
+
+
+</html>
