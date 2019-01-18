@@ -337,7 +337,15 @@
           url: 'https://api.twitch.tv/kraken/streams/madeinmex',
           data: {client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'},
           error: function(response) { console.log("IT DIDNT WORK");},
-          success: function(response) {console.log(response) }
+          success: function(response) {
+
+          console.log(doc.data().twitch, " => ", response.stream_type) 
+
+
+
+
+          }
+
         });
       });
     });
