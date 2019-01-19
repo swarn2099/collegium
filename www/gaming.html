@@ -101,11 +101,12 @@
         <source src="../img/marco.mp4">
         </video>
           <div class="overlay">
-            <div class="z-depth-5" style="padding: 40px; padding-right: 50px; background-color: #051937;">
-              <h5 style="margin-left: 30%;" class="white-text">Featured Streamer</h5>
-              <h3 style="margin-left: 30%; font-weight: 900;" class="white-text">madeinmex</h3>
+            <div class="z-depth-5 white" style="padding: 40px; padding-right: 50px;">
+              <h6 style="margin-left: 30%;" class="black-text">Featured Streamer</h6>
+              <h4 style="margin-left: 30%; font-weight: 900;" class="black-text">madeinmex</h4>
               <hr color="white" />
-              <h6 style="margin-left: 30%;" class="white-text">Live Stream from 7pm to 1am</h6>
+              <p style="margin-left: 30%;" class="black-text">Live Stream from 7pm to 1am</p>
+              <a data-playerName="madeinmex" onclick="openPlayerPage(this);" style="margin-left: 30%; border-radius: 20px;"class="waves-effect waves-light btn black white-text">Take me there</a>
             </div>
 
           </div>
@@ -169,50 +170,10 @@
         <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
           <h3 class="white-text container " style="font-weight: 900;">Live Now</h3><br>
         </div>
-        <div class="col m6 s12" style="margin-top: 2%;">
-        </div>
-      </div>
-      <br>
-
-      <div class="row container">
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a onclick="loadOverwatch();">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-                <span class="card-title"></span>
-              </div>
-          </div>
-          </a>
-        </div>
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a onclick="loadLeague();">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-                <span class="card-title"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a onclick="loadFortnite();">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-                <span class="card-title"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a onclick="loadCSGO();">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-                <span class="card-title"></span>
-              </div>
-            </a>
+        <div class="col m12 s12" style="margin-top: 2%;">
+          <div class="row container" style="margin-left: 15%;">
+            <div id="noLive"><h6 style="font-weight: 900; margin-left: -5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
+            <div id="livePlayers"></div>
           </div>
         </div>
       </div>
@@ -239,10 +200,9 @@
       <hr color="white" />
       <h6 style="margin-left: 0%;" class="white-text">Live Stream from 7pm to 1am</h6>
     </div>
-    <section class="black">
-      <br>
+    <section class="black"6
       <div class="row transparent">
-        <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
+        <div class="col m6 s12" style="margin-top: %; z-index: 1;">
           <h3 class="white-text container " style="font-weight: 900;">Popular Games</h3><br>
           <h6 class="container white-text" style="line-height: 25px;">Here are the games popping on the platform now. If you scroll down, youll find a list of all the streamers. Happy viewing :)</h6>
         </div>
@@ -334,12 +294,21 @@
         var twitchLive = 'https://api.twitch.tv/helix/streams/' + doc.data().twitch;
         //client id: urff2tmjj5swnbqlltvic62bwpn96f
         $.get({
-          url: 'https://api.twitch.tv/kraken/streams/madeinmex',
+          url: 'https://api.twitch.tv/kraken/streams/' + doc.data().twitch,
           data: {client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'},
           error: function(response) { console.log("IT DIDNT WORK");},
           success: function(response) {
 
-          console.log(doc.data().twitch, " => ", response.stream_type) 
+          console.log(doc.data().twitch, " => ", response)
+          if(response.stream.stream_type == "live"){
+            console.log("EVERYTHING IS GUCCI");
+            $('#noLive').hide();
+            var livePlayers = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+              '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 200px;   object-fit: cover;" src="' + doc.data().gameImage +
+              '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+            $('#livePlayers').append(livePlayers);
+
+          }
 
 
 
