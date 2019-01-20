@@ -20,6 +20,7 @@
   <script type="text/javascript" src="js/create.js"></script>
   <script type="text/javascript" src="js/player.js"></script>
 
+
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
@@ -42,6 +43,8 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
+  <script type="text/javascript" src="js/subscriptions.js"></script>
+
   <style>
     .carousel {
       height: 600px;
@@ -63,6 +66,10 @@
       left: 0;
       z-index: 1;
     }
+
+    /* .bottom-sheet {
+      min-height: 80%;
+    } */
   </style>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
@@ -84,14 +91,29 @@
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li>
-        <!-- <li><a class="modal-trigger" href="#login">Create Account | Login</a></li> -->
+        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
+        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
+        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
+
       </ul>
     </div>
   </nav>
 </div>
 
+<div id="subscriptionsModal" class="modal bottom-sheet" style="background-color: #141414;">
+  <div class="modal-content">
+    <!--  Your subscriptions go here -->
+    <br>
+    <h3 class="white-text " style="font-weight: 900;">Your communities</h3>
+    <div class="row">
+      <h6 id="alreadySignedin" class="white-text">Sign in to see your subscriptions :) </h6>
+      <div id="yourSubs"></div>
+    </div>
+  </div>
+</div>
+
 <body class="black">
-  <section class="hide-on-med-and-down">
+
   <div class="carousel carousel-slider " style="z-index: -1">
     <div class="carousel-item transparent white-text" href="#one!">
       <div class="container123">
@@ -111,12 +133,14 @@
       </div>
       <div class="col m6 s12" style="margin-top: -5%;">
         <div class="col m4 s12">
-          <a href="www/gaming.html"><div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
-            <span class="white-text">
+          <a href="www/gaming.html">
+            <div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
+              <span class="white-text">
             <h6 class="center" style="font-weight: 900;">Gaming</h6>
             <p style="font-size: 12px;">Watch student streamers compete to be the best on Colegium. We work with big brands so sposnorships are up for grabs :)</p>
           </span>
-        </div></a>
+            </div>
+          </a>
         </div>
         <div class="col m4 s12">
           <div class="card-panel black z-depth-5" style="height: 250px;">
@@ -127,7 +151,7 @@
           </div>
         </div>
         <div class="col m4 s12">
-          <div class="card-panel z-depth-5" style="height: 250px; background-color: #051937;" >
+          <div class="card-panel z-depth-5" style="height: 250px; background-color: #051937;">
             <span class="white-text">
             <h6 class="center" style="font-weight: 900;">Entertainment</h6>
               <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. <br><br> <h6>COMING IN 2 WEEKS!</h6></p>
@@ -135,275 +159,207 @@
           </span>
           </div>
         </div>
-        <!-- <div class="col m3 s12">
-        <div class="card-panel white z-depth-5" style="height: 250px;">
-          <span class="black-text center-align">
-            <h6 style="font-weight: 900;">Become a Creator</h6>
-            <p style="font-size: 12px;">Click the plus below to become a creator. We'll see you there :)</p>
-            <div class="center-align">
-              <a class="waves-effect waves-light btn-large transparent modal-trigger z-depth-0 black-text" href="#modal1"><i class="large material-icons center-align">add</i></a>
-            </div>
-            <br>
-          </span>
-        </div>
-      </div> -->
       </div>
     </div>
   </section>
-<br><br>
+  <br><br>
   <section class="black">
-      <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Games</h2>
-      <div class="row container">
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
+    <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Games</h2>
+    <div class="row container">
+      <div class="col s3">
+        <div class="card white black-text z-depth-5">
+          <a href="www/gaming.html">
+            <div class="card-image">
               <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
               <span class="card-title"></span>
             </div>
-          </div></a>
         </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
+        </a>
+      </div>
+      <div class="col s3">
+        <div class="card white black-text z-depth-5">
+          <a href="www/gaming.html">
+            <div class="card-image">
               <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
               <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
+            </div>
+          </a>
         </div>
       </div>
+      <div class="col s3">
+        <div class="card white black-text z-depth-5">
+          <a href="www/gaming.html">
+            <div class="card-image">
+              <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
+              <span class="card-title"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col s3">
+        <div class="card white black-text z-depth-5">
+          <a href="www/gaming.html">
+            <div class="card-image">
+              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
+              <span class="card-title"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
     </div>
   </section>
   <br><br>
   <section class="purple darken-4">
     <br>
-      <h2 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h2>
-      <div class="row container purple darken-4">
-        <br>
-        <h4 class="white-text left-align" style="font-weight: 900">Coming Soon</h4>
-        <br><br>
-
-        <!-- <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-              <span class="card-title"></span>
-            </div>
-          </div></a>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div> -->
-      </div>
+    <h2 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h2>
+    <div class="row container purple darken-4">
+      <br>
+      <h4 class="white-text left-align" style="font-weight: 900">Coming Soon</h4>
+      <br><br>
+    </div>
     </div>
   </section>
   <section class="amber darken-4">
     <br><br>
 
-      <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h2>
-      <div class="row container">
-        <br><br>
-        <h4 class="white-text right-align" style="font-weight: 900">Coming Soon</h4>
-        <br><br>
-        <!-- <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-              <span class="card-title"></span>
-            </div>
-          </div></a>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div>
-        <div class="col s3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html"><div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-              <span class="card-title"></span>
-            </div></a>
-          </div>
-        </div> -->
-      </div>
+    <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h2>
+    <div class="row container">
+      <br><br>
+      <h4 class="white-text right-align" style="font-weight: 900">Coming Soon</h4>
+      <br><br>
+    </div>
     </div>
   </section>
-    <!-- Modal Structure -->
-    <div id="creator" class="modal black">
-      <div class="modal-content">
-        <h4 class="white-text" style="font-weight: 900;">Become a <span class="amber-text">Creator</span></h4>
-        <br>
-        <ul class="collapsible">
-          <li class="active">
-            <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">videogame_asset</i>Gaming</div>
-            <div class="collapsible-body white">
-              <div class="row">
-                <form class="col s12">
-                  <h6 style="font-weight: 900;">Personal Information</h6>
-                  <blockquote class=red-text>*Required</blockquote>
-                  <hr/><br>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input placeholder="John" id="first_name" type="text" class="validate">
-                      <label class="required" for="first_name">First Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input placeholder="Smith" id="last_name" type="text" class="validate">
-                      <label class="required" for="last_name">Last Name</label>
-                    </div>
+  <!-- Modal Structure -->
+  <div id="creator" class="modal black">
+    <div class="modal-content">
+      <h4 class="white-text" style="font-weight: 900;">Become a <span class="amber-text">Creator</span></h4>
+      <br>
+      <ul class="collapsible">
+        <li class="active">
+          <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">videogame_asset</i>Gaming</div>
+          <div class="collapsible-body white">
+            <div class="row">
+              <form class="col s12">
+                <h6 style="font-weight: 900;">Personal Information</h6>
+                <blockquote class=red-text>*Required</blockquote>
+                <hr/><br>
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="John" id="first_name" type="text" class="validate">
+                    <label class="required" for="first_name">First Name</label>
                   </div>
-                  <div class="row">
+                  <div class="input-field col s6">
+                    <input placeholder="Smith" id="last_name" type="text" class="validate">
+                    <label class="required" for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="email" type="text" class="validate">
+                    <label class="required" for="email">Email</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label class="required" for="password">Password</label>
+                  </div>
+                </div>
+                <h6 style="font-weight: 900;">Twitch Information</h6>
+                <hr/><br>
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input placeholder="ex. Ninja" id="twitch" type="text" class="validate">
+                    <label class="required" for="twitch">Twitch Username</label>
+                  </div>
+                  <div class="input-field col s4">
+                    <input id="miniBio" type="text" class="validate">
+                    <label for="miniBio">Mini Bio</label>
+                  </div>
+                  <div class="input-field col s4">
+                    <input id="gameImage" type="text" class="validate">
+                    <label for="gameImage">Image for Favorite Game</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input id="twitchClip1" type="text" class="validate">
+                    <label for="first_name">Twitch Clip 1 Link</label>
+                  </div>
+                  <div class="input-field col s4">
+                    <input id="twitchClip2" type="text" class="validate">
+                    <label for="miniBio">Twitch Clip 2 Link</label>
+                  </div>
+                  <div class="input-field col s4">
+                    <input id="twitchClip3" type="text" class="validate">
+                    <label for="miniBio">Twitch Clip 3 Link</label>
+                  </div>
+                </div>
+                <h6 style="font-weight: 900;">Additional Information</h6>
+                <hr/><br>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input placeholder="unslpashphotography is a great place to start :)" id="bannerImage" type="text" class="validate">
+                    <label for="bannerImage">Banner Image Link</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <form class="col s12">
                     <div class="input-field col s12">
-                      <input id="email" type="text" class="validate">
-                      <label class="required" for="email">Email</label>
+                      <textarea id="bio" placeholder="Tell us about yourself" class="materialize-textarea"></textarea>
+                      <label for="textarea1">Bio</label>
                     </div>
+                  </form>
+                </div>
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input placeholder="Fortnite" id="favGame1" type="text" class="validate">
+                    <label for="favGame1">Favorite Game 1</label>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input id="password" type="password" class="validate">
-                      <label class="required" for="password">Password</label>
-                    </div>
+                  <div class="input-field col s4">
+                    <input placeholder="CSGO" id="favGame2" type="text" class="validate">
+                    <label for="favGame2">Favorite Game 2</label>
                   </div>
-                  <h6 style="font-weight: 900;">Twitch Information</h6>
-                  <hr/><br>
-                  <div class="row">
-                    <div class="input-field col s4">
-                      <input placeholder="ex. Ninja" id="twitch" type="text" class="validate">
-                      <label class="required" for="twitch">Twitch Username</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input id="miniBio" type="text" class="validate">
-                      <label for="miniBio">Mini Bio</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input id="gameImage" type="text" class="validate">
-                      <label for="gameImage">Image for Favorite Game</label>
-                    </div>
+                  <div class="input-field col s4">
+                    <input placeholder="Overwatch" id="favGame3" type="text" class="validate">
+                    <label for="favGame3">Favorite Game 3</label>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s4">
-                      <input id="twitchClip1" type="text" class="validate">
-                      <label for="first_name">Twitch Clip 1 Link</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input id="twitchClip2" type="text" class="validate">
-                      <label for="miniBio">Twitch Clip 2 Link</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input id="twitchClip3" type="text" class="validate">
-                      <label for="miniBio">Twitch Clip 3 Link</label>
-                    </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s4">
+                    <input id="instagram" type="text" class="validate">
+                    <label for="instagram">Instagram Link</label>
                   </div>
-                  <h6 style="font-weight: 900;">Additional Information</h6>
-                  <hr/><br>
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <input placeholder="unslpashphotography is a great place to start :)" id="bannerImage" type="text" class="validate">
-                      <label for="bannerImage">Banner Image Link</label>
-                    </div>
+                  <div class="input-field col s4">
+                    <input id="twitter" type="text" class="validate">
+                    <label for="twitter">Twitter Link</label>
                   </div>
-                  <div class="row">
-                    <form class="col s12">
-                        <div class="input-field col s12">
-                          <textarea id="bio" placeholder="Tell us about yourself" class="materialize-textarea"></textarea>
-                          <label for="textarea1">Bio</label>
-                      </div>
-                    </form>
+                  <div class="input-field col s4">
+                    <input id="youtube" type="text" class="validate">
+                    <label for="youtube">Youtube Link</label>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s4">
-                      <input placeholder="Fortnite" id="favGame1" type="text" class="validate">
-                      <label for="favGame1">Favorite Game 1</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input placeholder="CSGO" id="favGame2" type="text" class="validate">
-                      <label for="favGame2">Favorite Game 2</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input placeholder="Overwatch" id="favGame3" type="text" class="validate">
-                      <label for="favGame3">Favorite Game 3</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s4">
-                      <input id="instagram" type="text" class="validate">
-                      <label for="instagram">Instagram Link</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input id="twitter" type="text" class="validate">
-                      <label for="twitter">Twitter Link</label>
-                    </div>
-                    <div class="input-field col s4">
-                      <input id="youtube" type="text" class="validate">
-                      <label for="youtube">Youtube Link</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="center"><a onclick="createGamer()" class="btn-floating btn-large waves-effect waves-light green darken-4"><i class="material-icons">check</i></a></div>
-
+                </div>
+              </form>
             </div>
-          </li>
-          <li>
-            <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">music_note</i>Music</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
-          <li>
-            <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">play_circle_outline</i>Entertainment</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
-        </ul>
-      </div>
+            <div class="center"><a onclick="createGamer()" class="btn-floating btn-large waves-effect waves-light green darken-4"><i class="material-icons">check</i></a></div>
+
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">music_note</i>Music</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header" style="font-weight: 900;"><i class="material-icons">play_circle_outline</i>Entertainment</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+      </ul>
     </div>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+  </div>
+
+
   </section>
   <section class="hide-on-med-and-up">
     <section class="black">
@@ -415,12 +371,14 @@
         </div>
         <div class="col m6 s12" style="margin-top:%;">
           <div class="col m4 s12">
-            <a href="www/gaming.html"><div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
-              <span class="white-text">
+            <a href="www/gaming.html">
+              <div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
+                <span class="white-text">
               <h6 class="center" style="font-weight: 900;">Gaming</h6>
               <p style="font-size: 12px;">Watch student streamers compete to be the best on Colegium. We work with big brands so sposnorships are up for grabs :)</p>
             </span>
-          </div></a>
+              </div>
+            </a>
           </div>
           <div class="col m4 s12">
             <div class="card-panel black z-depth-5" style="height: 250px;">
@@ -431,7 +389,7 @@
             </div>
           </div>
           <div class="col m4 s12">
-            <div class="card-panel z-depth-5" style="height: 250px; background-color: #051937;" >
+            <div class="card-panel z-depth-5" style="height: 250px; background-color: #051937;">
               <span class="white-text">
               <h6 class="center" style="font-weight: 900;">Entertainment</h6>
                 <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. <br><br> <h6>COMING IN 2 WEEKS!</h6></p>
@@ -454,55 +412,63 @@
         </div>
       </div>
     </section>
-  <br><br>
+    <br><br>
     <section class="black">
-        <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Games</h2>
-        <div class="row container">
-          <div class="col s12 m3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
+      <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Games</h2>
+      <div class="row container">
+        <div class="col s12 m3">
+          <div class="card white black-text z-depth-5">
+            <a href="www/gaming.html">
+              <div class="card-image">
                 <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
                 <span class="card-title"></span>
               </div>
-            </div></a>
           </div>
-          <div class="col s12 m3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
+          </a>
+        </div>
+        <div class="col s12 m3">
+          <div class="card white black-text z-depth-5">
+            <a href="www/gaming.html">
+              <div class="card-image">
                 <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
                 <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div>
-          <div class="col s12 m3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div>
-          <div class="col s12 m3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
+              </div>
+            </a>
           </div>
         </div>
+        <div class="col s12 m3">
+          <div class="card white black-text z-depth-5">
+            <a href="www/gaming.html">
+              <div class="card-image">
+                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
+                <span class="card-title"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col s12 m3">
+          <div class="card white black-text z-depth-5">
+            <a href="www/gaming.html">
+              <div class="card-image">
+                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
+                <span class="card-title"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
     <br><br>
     <section class="purple darken-4">
       <br>
-        <h4 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h4>
-        <div class="row container purple darken-4">
-          <br>
-          <h6 class="white-text center-align" style="font-weight: 900">Coming Soon</h6>
-          <br><br>
+      <h4 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h4>
+      <div class="row container purple darken-4">
+        <br>
+        <h6 class="white-text center-align" style="font-weight: 900">Coming Soon</h6>
+        <br><br>
 
-          <!-- <div class="col s3">
+        <!-- <div class="col s3">
             <div class="card white black-text z-depth-5">
               <a href="www/gaming.html"><div class="card-image">
                 <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
@@ -534,18 +500,18 @@
               </div></a>
             </div>
           </div> -->
-        </div>
+      </div>
       </div>
     </section>
     <section class="amber darken-4">
       <br><br>
 
-        <h4 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h4>
-        <div class="row container">
-          <br><br>
-          <h6 class="white-text center-align" style="font-weight: 900">Coming Soon</h6>
-          <br><br>
-          <!-- <div class="col s3">
+      <h4 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h4>
+      <div class="row container">
+        <br><br>
+        <h6 class="white-text center-align" style="font-weight: 900">Coming Soon</h6>
+        <br><br>
+        <!-- <div class="col s3">
             <div class="card white black-text z-depth-5">
               <a href="www/gaming.html"><div class="card-image">
                 <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
@@ -577,12 +543,77 @@
               </div></a>
             </div>
           </div> -->
-        </div>
+      </div>
       </div>
     </section>
-
   </section>
+  <div class="card animated flipInY modal white" id="login" style="max-width: 500px;">
+    <div class="card-content">
+      <form id="loginSection">
+        <h5 class="center">Login to <span class="blue-text">collegium</span></h5>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="emailLogin" type="email" class="validate">
+            <label for="emailLogin">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="passwordLogin" type="password" class="validate">
+            <label for="passwordLogin">Password</label>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            Don't have an account?
+            <a onclick="hideLogin();"> &nbspCreate one here</a>
+          </div>
+        </div>
+      </form>
+      <form id="signupSection">
+        <h5 class="center">Create account on<span class="blue-text"> collegium</span></h5>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="firstSingup" type="text" class="validate">
+            <label for="firstSignup">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="lastSignup" type="text" class="validate">
+            <label for="lastSignup">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="emailSingup" type="email" class="validate">
+            <label for="emailSignup">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="passwordSignup" type="password" class="validate">
+            <label for="passwordSignup">Password</label>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            Already have an account?<a onclick="hideSignup();"> &nbspSignin here</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 
 
 </html>

@@ -18,11 +18,13 @@
   <meta name="apple-mobile-web-app-title" content="collegium">
     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/init.js"></script>
+  <script type="text/javascript" src="../js/subscriptions.js"></script>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
   <script>
     // Initialize Firebase
     var config = {
@@ -68,13 +70,11 @@
       <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
 
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul class="right hide-on-med-and-down black-text">
-        <li>
-          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
-        </li>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
-        </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li>
+        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
+        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
+        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
       </ul>
     </div>
   </nav>
@@ -159,7 +159,83 @@
   </section>
 
 
-
+  <!-- Modal Structure -->
+  <div id="subscriptionsModal" class="modal bottom-sheet" style="background-color: #141414;">
+    <div class="modal-content">
+      <!--  Your subscriptions go here -->
+      <br>
+      <h3 class="white-text " style="font-weight: 900;">Your communities</h3>
+      <div class="row">
+        <h6 id="alreadySignedin" class="white-text">Sign in to see your subscriptions :) </h6>
+        <div id="yourSubs"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card animated flipInY modal white" id="login" style="max-width: 500px;">
+    <div class="card-content">
+      <form id="loginSection">
+        <h5 class="center">Login to <span class="blue-text">collegium</span></h5>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="emailLogin" type="email" class="validate">
+            <label for="emailLogin">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="passwordLogin" type="password" class="validate">
+            <label for="passwordLogin">Password</label>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            Don't have an account?
+            <a onclick="hideLogin();"> &nbspCreate one here</a>
+          </div>
+        </div>
+      </form>
+      <form id="signupSection">
+        <h5 class="center">Create account on<span class="blue-text"> collegium</span></h5>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="firstSingup" type="text" class="validate">
+            <label for="firstSignup">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="lastSignup" type="text" class="validate">
+            <label for="lastSignup">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="emailSingup" type="email" class="validate">
+            <label for="emailSignup">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="passwordSignup" type="password" class="validate">
+            <label for="passwordSignup">Password</label>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="input-field col s12">
+            Already have an account?<a onclick="hideSignup();"> &nbspSignin here</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 <!-- Load the Twitch embed script -->
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
