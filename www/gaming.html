@@ -48,7 +48,7 @@
 
   <style>
     .carousel {
-      height: 600px;
+      height: 500px;
     }
 
     .container123 {
@@ -97,7 +97,6 @@
         <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
         <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
         <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
-
       </ul>
     </div>
   </nav>
@@ -105,6 +104,8 @@
 
 <body onload="loadAllStreamers()">
   <section class="hide-on-med-and-down">
+    <section class="black">
+    </section>
     <div class="carousel carousel-slider left">
       <div class="carousel-item  white-text" href="#one!">
         <div class="container123">
@@ -125,7 +126,7 @@
       </div>
     </div>
 
-    <section class="black">
+    <section class="" style="background-color: #141414;">
       <br>
       <!-- Twitch Live Stream -->
       <div class="row">
@@ -390,9 +391,7 @@
           if(response.stream.stream_type == "live"){
             console.log("EVERYTHING IS GUCCI");
             $('#noLive').hide();
-            var livePlayers = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-              '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 200px;   object-fit: cover;" src="' + doc.data().gameImage +
-              '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
+            var livePlayers = '<div class="col s4"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage + '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
             $('#livePlayers').append(livePlayers);
 
           }

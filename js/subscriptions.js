@@ -9,10 +9,7 @@ $(document).ready(function() {
       // User is signed in.
       $('#loginButton').hide();
       $('#signoutButton').show();
-      M.toast({
-        html: 'Signing In',
-        classes: 'rounded green white-text'
-      });
+
       console.log(user.email);
       var docRef = db.collection("users").doc(user.email);
       docRef.get().then(function(doc) {
@@ -62,6 +59,10 @@ function addSubscription(d) {
     // Atomically add a new region to the "regions" array field.
     washingtonRef.update({
       gamerSubs: firebase.firestore.FieldValue.arrayUnion(toSubscribe)
+    });
+    M.toast({
+      html: 'Added to communities :)',
+      classes: 'rounded black white-text'
     });
   } else {
     // No user is signed in.
