@@ -84,6 +84,8 @@ function login() {
   var email = document.getElementById("emailLogin").value;
   var password = document.getElementById('passwordLogin').value;
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    $('.modal').modal('close');
+
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message
@@ -93,13 +95,21 @@ function login() {
     });
   });
 };
+function createUser() {
+  var emailCreate = document.getElementById("emailSignup").value;
+  var passwordCreate = document.getElementById('passwordSignup').value;
+  firebase.auth().createUserWithEmailAndPassword(emailCreate, passwordCreate).then(function(user) {
+  }).catch(function(error) {
+    console.log(error);
+  });
+};
 
 function signout() {
   firebase.auth().signOut().then(function() {
     console.log('Signed Out');
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 
   }, function(error) {
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
   });
 }

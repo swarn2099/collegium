@@ -391,7 +391,7 @@
           if(response.stream.stream_type == "live"){
             console.log("EVERYTHING IS GUCCI");
             $('#noLive').hide();
-            var livePlayers = '<div class="col s4"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage + '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
+            var livePlayers = '<div class="col s4"><a onclick="openPlayerPage(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage + '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
             $('#livePlayers').append(livePlayers);
 
           }
