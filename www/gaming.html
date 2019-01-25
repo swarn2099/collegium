@@ -48,7 +48,7 @@
 
   <style>
     .carousel {
-      height: 500px;
+      height: 650px;
     }
 
     .container123 {
@@ -73,8 +73,6 @@
       /* background: linear-gradient(135deg, #051937, #051937, #051937, transparent, transparent, transparent, transparent, transparent, transparent, transparent); */
     }
   </style>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center"><br>
@@ -82,7 +80,7 @@
   <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
   <li><a href="splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
   <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
-  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Organizations"><i class="material-icons small">group</i></a></li>
+  <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
 
 </ul>
@@ -93,7 +91,7 @@
       <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li>
+        <!-- <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li> -->
         <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
         <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
         <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
@@ -118,7 +116,7 @@
               <h4 style="margin-left: 30%; font-weight: 900;" class="black-text">madeinmex</h4>
               <hr color="white" />
               <p style="margin-left: 30%;" class="black-text">Live Stream from 7pm to 1am</p>
-              <a data-playerName="madeinmex" onclick="openPlayerPage(this);" style="margin-left: 30%; border-radius: 20px;"class="waves-effect waves-light btn black white-text">Take me there</a>
+              <a data-playerName="madeinmex" onclick="openPlayerPage(this);" style="margin-left: 30%; border-radius: 20px;" class="waves-effect waves-light btn black white-text">Take me there</a>
             </div>
 
           </div>
@@ -128,8 +126,24 @@
 
     <section class="" style="background-color: #141414;">
       <br>
-      <!-- Twitch Live Stream -->
       <div class="row">
+        <div class="col m7 s12" style="margin-left: 10%;">
+          <h3 class="white-text " style="font-weight: 900;">Live Now</h3><br>
+          <div id="noLive">
+            <h6 style="font-weight: 900; margin-left: 5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
+          <div id="livePlayers"></div>
+        </div>
+        <div class="col m3 s12 " style="margin-left: 5%;">
+          <h5 class="white-text right-align" style="font-weight: 900; ">Upcoming Events</h5><br>
+          <div class="collection black">
+            <a href="gameEvent.html"  style="border-color: black;" class="collection-item black white-text center-align">EP CometClash  &nbsp &nbsp | &nbsp &nbsp Smash Tournament</a>
+          </div>
+          <!-- <h5 class="white-text right-align" style="font-weight: 900; ">Create your own page</h5><br> -->
+          <div class="card-panel black" style="border-radius: 20px;"><span class="white-text center-align">Are you a streamer? <br>Create your collegium page<i class="material-icons right">add</i></span></div>
+
+        </div>
+      </div>
+      <div class="row black">
         <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
           <h3 class="white-text container " style="font-weight: 900;">Twitch Always On</h3><br>
           <div id="twitch-embed" style="margin-left: 15%;"></div>
@@ -178,23 +192,10 @@
           layout: "video"
         });
       </script>
-      <div class="row transparent">
-        <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
-          <h3 class="white-text container " style="font-weight: 900;">Live Now</h3><br>
-        </div>
-        <div class="col m12 s12" style="margin-top: 2%;">
-          <div class="row container" style="margin-left: 15%;">
-            <div id="noLive"><h6 style="font-weight: 900; margin-left: -5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
-            <div id="livePlayers"></div>
-          </div>
-        </div>
-      </div>
-      <br>
     </section>
     <section class="white">
       <br>
-      <h3 class="black-text right-align container " style="font-weight: 900;">All Streamers</h3><br>
-
+      <h3 class="black-text center-align container " style="font-weight: 900;">All Streamers</h3><br><br>
       <div class="row container" style="margin-left: 15%;">
         <div id="allplayers"></div>
         <div id="overwatch"></div>
@@ -212,15 +213,14 @@
       <hr color="white" />
       <h6 style="margin-left: 0%;" class="white-text">Live Stream from 7pm to 1am</h6>
     </div>
-    <section class="black"6
-      <div class="row transparent">
-        <div class="col m6 s12" style="margin-top: %; z-index: 1;">
-          <h3 class="white-text container " style="font-weight: 900;">Popular Games</h3><br>
-          <h6 class="container white-text" style="line-height: 25px;">Here are the games popping on the platform now. If you scroll down, youll find a list of all the streamers. Happy viewing :)</h6>
-        </div>
-        <div class="col m6 s12" style="margin-top: 2%;">
+    <section class="black" 6 <div class="row transparent">
+      <div class="col m6 s12" style="margin-top: %; z-index: 1;">
+        <h3 class="white-text container " style="font-weight: 900;">Popular Games</h3><br>
+        <h6 class="container white-text" style="line-height: 25px;">Here are the games popping on the platform now. If you scroll down, youll find a list of all the streamers. Happy viewing :)</h6>
+      </div>
+      <div class="col m6 s12" style="margin-top: 2%;">
 
-        </div>
+      </div>
       </div>
       <br>
       <div class="row container">
@@ -291,7 +291,7 @@
   <div class="modal-content">
     <!--  Your subscriptions go here -->
     <br>
-    <h3 class="white-text " style="font-weight: 900;">Your communities</h3>
+    <h3 class="white-text " style="font-weight: 900;">Gaming Communities</h3>
     <div class="row">
       <h6 id="alreadySignedin" class="white-text">Sign in to see your subscriptions :) </h6>
       <div id="yourSubs"></div>
@@ -383,24 +383,23 @@
         //client id: urff2tmjj5swnbqlltvic62bwpn96f
         $.get({
           url: 'https://api.twitch.tv/kraken/streams/' + doc.data().twitch,
-          data: {client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'},
-          error: function(response) { console.log("IT DIDNT WORK");},
+          data: {
+            client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'
+          },
+          error: function(response) {
+            console.log("IT DIDNT WORK");
+          },
           success: function(response) {
 
-          console.log(doc.data().twitch, " => ", response)
-          if(response.stream.stream_type == "live"){
-            console.log("EVERYTHING IS GUCCI");
-            $('#noLive').hide();
-            var livePlayers = '<div class="col s4"><a onclick="openPlayerPage(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage + '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
-            $('#livePlayers').append(livePlayers);
-
+            console.log(doc.data().twitch, " => ", response)
+            if (response.stream.stream_type == "live") {
+              console.log("EVERYTHING IS GUCCI");
+              $('#noLive').hide();
+              var livePlayers = '<div class="col s4"><a onclick="openPlayerPage(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage +
+                '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
+              $('#livePlayers').append(livePlayers);
+            }
           }
-
-
-
-
-          }
-
         });
       });
     });

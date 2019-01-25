@@ -1,20 +1,10 @@
 $(document).ready(function(){
   $('.collapsible').collapsible();
+  $('.scrollspy').scrollSpy();
 
     $('.parallax').parallax();
 
-    $('.your-class').slick({
-      infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      autoplay: true,
-      // arrows: true,
-      // dots: true,
-      // centerPadding: 10,
-
-    });
     $('.tabs').tabs();
-    $('.scrollspy').scrollSpy();
     M.updateTextFields();
     $('.carousel.carousel-slider').carousel({
       fullWidth: true,

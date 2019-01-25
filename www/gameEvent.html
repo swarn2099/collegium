@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+
+  <title>Event | collegium.me</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="collegium">
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/init.js"></script>
+  <script type="text/javascript" src="../js/player.js"></script>
+  <script type="text/javascript" src="../js/subscriptions.js"></script>
+  <script type="text/javascript" src="../js/event.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC6GRrWQ0v-xzvfHg32xgTP9fxSZB9Skb8",
+      authDomain: "collegium-a3676.firebaseapp.com",
+      databaseURL: "https://collegium-a3676.firebaseio.com",
+      projectId: "collegium-a3676",
+      storageBucket: "collegium-a3676.appspot.com",
+      messagingSenderId: "852316993941"
+    };
+    firebase.initializeApp(config);
+    const settings = {
+      timestampsInSnapshots: true
+    };
+    firebase.firestore().settings(settings);
+    var db = firebase.firestore();
+  </script>
+</head>
+
+<ul id="slide-out" class="sidenav sidenav-fixed center"><br>
+  <li><a href="../index.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small">home</i></a></li>
+  <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
+  <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small">event</i></a></li>
+  <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
+
+</ul>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper black-text" style="background-color: #29243D;">
+      <a href="../index.html" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li> -->
+        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
+        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
+        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<body onload="loadEventDetails()" style="background-color: #141414;">
+  <section class="hide-on-med-and-down">
+    <section class="black banner" style="background-size: 100%;">
+      <div class="row container">
+        <div class="col m4 s12 pull-m1">
+          <h2 class="white-text" id="welcome"></h2>
+          <h6 class="white-text" id="venue"></h6>
+          <h6 class="white-text" id="dateTime"></h6>
+          <br>
+          <div class="row">
+            <div class="col m4 s12">
+              <a class="waves-effect waves-light btn" style="background-color: #3B5998; border-radius: 20px;" href="https://www.facebook.com/EastParkTournaments/?eid=ARCJC3J2n2BmJ7lb7wI4BVElCt1b8ko5Dc3bZxJpLHvvce7_BLjF87Vvvoj52W2AJU1050ykDF_YE6Cd">Facebook</a>
+            </div>
+            <div class="col m4 s12">
+              <a class="waves-effect waves-light btn" style="background-color: #7289da; border-radius: 20px;">Discord</a>
+            </div>
+            <div class="col m4 s12">
+              <a class="waves-effect waves-light btn" style="background-color: #1db954; border-radius: 20px;">Spotify</a>
+            </div>
+          </div>
+        </div>
+        <div class="col m8 s12 push-m2">
+          <!-- Live Stream Embed -->
+          <div id="twitch-embed"></div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="cards container">
+      <div class="row">
+        <div class="col m4 s12">
+          <a class="typeform-share" href="https://swarnsingh.typeform.com/to/bkYNMw" data-mode="drawer_right" style="display:inline-block;text-decoration:none;"
+            target="_blank">
+          <div class="card horizontal black z-depth-5">
+            <div class="card-image">
+              <img style="height: 150px;" src="https://www.ssbwiki.com/images/thumb/4/44/Mario_SSBU.png/250px-Mario_SSBU.png">
+            </div>
+            <div class="card-stacked">
+
+              <script>
+                (function() {
+                  var qs, js, q, s, d = document,
+                    gi = d.getElementById,
+                    ce = d.createElement,
+                    gt = d.getElementsByTagName,
+                    id = "typef_orm_share",
+                    b = "https://embed.typeform.com/";
+                  if (!gi.call(d, id)) {
+                    js = ce.call(d, "script");
+                    js.id = id;
+                    js.src = b + "embed.js";
+                    q = gt.call(d, "script")[0];
+                    q.parentNode.insertBefore(js, q)
+                  }
+                })()
+              </script>
+              <div class="card-content white-text">
+                <h5 style="font-weight: 900;">Reserve your spot</h5>
+              </div>
+            </div>
+          </div></a>
+        </div>
+        <div class="col m4 s12 section">
+          <a href="#points"><div class="card horizontal black z-depth-5">
+            <div class="card-image">
+              <img style="height: 150px;" src="https://vignette.wikia.nocookie.net/mario-bros/images/4/45/498px-CoinMK8.png/revision/latest?cb=20170909020428">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content white-text">
+                <h5 style="font-weight: 900;">Check the rankings</h5>
+              </div>
+            </div>
+          </div></a>
+        </div>
+        <div class="col m4 s12">
+          <div class="card horizontal black z-depth-5">
+            <div class="card-image">
+              <img style="height: 150px;" src="https://vignette.wikia.nocookie.net/nintendo/images/0/03/DDR_Mario_Mix_Luigi.png/revision/latest?cb=20170626024317&path-prefix=en">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content white-text">
+                <h5 style="font-weight: 900;">Talk to a rep</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="white-text" style="font-weight: 900;">Tournament Bracket</h2>
+      <br>
+      <div id="bracket"></div>
+      <br>
+      <section class="section scrollspy" id="points">
+        <h2 class="white-text" style="font-weight: 900;">Player Rankings</h2>
+      </section>
+
+    </section>
+
+  </section>
+  <section class="hide-on-med-and-up">
+  </section>
+</body>
+
+<!-- Load the Twitch embed script -->
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+<!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+
+</html>

@@ -26,12 +26,14 @@
   <script type="text/javascript" src="js/init.js"></script>
   <script type="text/javascript" src="js/create.js"></script>
   <script type="text/javascript" src="js/player.js"></script>
+  <script type="text/javascript" src="js/event.js"></script>
 
 
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
   <script>
     // Initialize Firebase
@@ -87,7 +89,7 @@
   <li><a href="www/gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small">videogame_asset</i></a></li>
   <li><a href="www/splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
   <li><a href="www/splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
-  <li><a href="www/splash.html" class="tooltipped" data-position="right" data-tooltip="Organizations"><i class="material-icons small">group</i></a></li>
+  <li><a href="www/eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small">event</i></a></li>
   <li><a href="www/settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
 </ul>
 
@@ -97,10 +99,10 @@
       <a href="home.html" class="brand-logo center" style=""><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li>
+        <!-- <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li> -->
         <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
         <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
-        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
+        <li id="signoutButton"><a onclick="signoutHome();">Sign Out</a></li>
 
       </ul>
     </div>
@@ -111,7 +113,14 @@
   <div class="modal-content">
     <!--  Your subscriptions go here -->
     <br>
-    <h3 class="white-text " style="font-weight: 900;">Your communities</h3>
+    <div class="row">
+      <div class="col s8">
+        <h3 class="white-text " style="font-weight: 900;">Your communities</h3>
+      </div>
+      <div class="col s4 push-s2">
+        <a class="waves-effect waves-light btn white black-text" style="border-radius: 20px;">manage communities</a>
+      </div>
+    </div>
     <div class="row">
       <h6 id="alreadySignedin" class="white-text">Sign in to see your subscriptions :) </h6>
       <div id="yourSubs"></div>
@@ -131,8 +140,15 @@
       </div>
     </div>
   </div>
-  <section class="black">
-    <br>
+
+    <section style="background-color: #141414;">
+      <h3 class="white-text" style="margin-left: 10%; margin-color: #141414;">Your Communities</h3>
+    <div class="row" style="margin-left: 10%;">
+      <h6 id="alreadySignedinHome" class="white-text">Sign in to see your subscriptions :) </h6>
+      <div id="yourSubsHome"></div>
+    </div>
+  </section>
+    <br><br><br><br>
     <div class="row transparent">
       <div class="col m6 s12" style="margin-top: -3%;">
         <h3 class="white-text container " style="font-weight: 900;">The College Creator Platform</h3><br>
@@ -170,12 +186,31 @@
     </div>
   </section>
   <br><br>
-  <section class="black">
-    <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Games</h2>
-    <div class="row container">
-      <div class="col s3">
+  <div class="row">
+    <div class="col m7 s12" style="margin-left: 10%;">
+      <h3 class="white-text " style="font-weight: 900;">Live Now</h3><br>
+      <div id="noLive">
+        <h6 style="font-weight: 900; margin-left: -5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
+      <div id="livePlayers"></div>
+    </div>
+    <div class="col m3 s12" style="margin-left: 5%;">
+      <h5 class="white-text right-align" style="font-weight: 900; ">Upcoming Events</h5><br>
+      <div class="collection black">
+        <a onclick="loadGameEventPageFromHome(this);" data-eventName="epCometClash" style="border-color: black;" class="collection-item black white-text center-align">EP CometClash  &nbsp &nbsp | &nbsp &nbsp Smash Tournament</a>
+      </div>
+    </div>
+  </div>
+  <div class="row black">
+    <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
+      <h3 class="white-text container " style="font-weight: 900;">Twitch Always On</h3><br>
+      <div id="twitch-embed" style="margin-left: 15%;"></div>
+    </div>
+    <div class="col m6 s12 right-align" style="margin-top: 2%; z-index: 1;">
+
+      <h3 class="white-text  " style="font-weight: 900;">Popular Games</h3><br>
+      <div class="col s12 m4">
         <div class="card white black-text z-depth-5">
-          <a href="www/gaming.html">
+          <a onclick="loadOverwatch();">
             <div class="card-image">
               <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
               <span class="card-title"></span>
@@ -183,9 +218,9 @@
         </div>
         </a>
       </div>
-      <div class="col s3">
+      <div class="col s12 m4">
         <div class="card white black-text z-depth-5">
-          <a href="www/gaming.html">
+          <a onclick="loadLeague();">
             <div class="card-image">
               <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
               <span class="card-title"></span>
@@ -193,9 +228,9 @@
           </a>
         </div>
       </div>
-      <div class="col s3">
+      <div class="col s12 m4">
         <div class="card white black-text z-depth-5">
-          <a href="www/gaming.html">
+          <a onclick="loadFortnite();">
             <div class="card-image">
               <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
               <span class="card-title"></span>
@@ -203,19 +238,18 @@
           </a>
         </div>
       </div>
-      <div class="col s3">
-        <div class="card white black-text z-depth-5">
-          <a href="www/gaming.html">
-            <div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-              <span class="card-title"></span>
-            </div>
-          </a>
-        </div>
-      </div>
     </div>
-    </div>
-  </section>
+  </div>
+
+  <script>
+    new Twitch.Embed("twitch-embed", {
+      width: 500,
+      height: 400,
+      channel: "twitchpresents",
+      layout: "video"
+    });
+  </script>
+
   <br><br>
   <section class="purple darken-4">
     <br>
@@ -586,7 +620,7 @@
         <h5 class="center">Create account on<span class="blue-text"> collegium</span></h5>
         <div class="row">
           <div class="input-field col s6">
-            <input id="firstSingup" type="text" class="validate">
+            <input id="firstSignup" type="text" class="validate">
             <label for="firstSignup">First Name</label>
           </div>
           <div class="input-field col s6">
@@ -596,7 +630,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="emailSingup" type="email" class="validate">
+            <input id="emailSignup" type="email" class="validate">
             <label for="emailSignup">Email</label>
           </div>
         </div>
@@ -608,7 +642,7 @@
         </div>
         <div class="row center">
           <div class="input-field col s12">
-            <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
+            <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="createUser()"><i class="material-icons left">pool</i>Create Account</a>
           </div>
         </div>
         <div class="row center">
@@ -621,6 +655,33 @@
   </div>
 </body>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+db.collection("gamers").get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    var twitchLive = 'https://api.twitch.tv/helix/streams/' + doc.data().twitch;
+    //client id: urff2tmjj5swnbqlltvic62bwpn96f
+    $.get({
+      url: 'https://api.twitch.tv/kraken/streams/' + doc.data().twitch,
+      data: {
+        client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'
+      },
+      error: function(response) {
+        console.log("IT DIDNT WORK");
+      },
+      success: function(response) {
 
+        console.log(doc.data().twitch, " => ", response)
+        if (response.stream.stream_type == "live") {
+          console.log("EVERYTHING IS GUCCI");
+          $('#noLive').hide();
+          var livePlayers = '<div class="col s4"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage +
+            '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
+          $('#livePlayers').append(livePlayers);
+        }
+      }
+    });
+  });
+});
+</script>
 
 </html>

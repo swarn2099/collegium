@@ -22,10 +22,13 @@ $(document).ready(function() {
             gamerRef.get().then(function(doc) {
               if (doc.exists) {
                 $('#alreadySignedin').hide();
+                $('#alreadySignedinHome').hide();
+
                 console.log("Document data:", doc.data());
                 $().hide();
                 var gamerSubCard = '<div class="col s3"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage + '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
                 $('#yourSubs').append(gamerSubCard);
+                $('#yourSubsHome').append(gamerSubCard);
 
               } else {
                 // doc.data() will be undefined in this case
@@ -96,18 +99,50 @@ function login() {
   });
 };
 function createUser() {
-  var emailCreate = document.getElementById("emailSignup").value;
-  var passwordCreate = document.getElementById('passwordSignup').value;
-  firebase.auth().createUserWithEmailAndPassword(emailCreate, passwordCreate).then(function(user) {
+  var first = document.getElementById("firstSignup").value;
+  var last = document.getElementById("lastSignup").value;
+  var email = document.getElementById("emailSignup").value;
+  var password = document.getElementById('passwordSignup').value;
+  firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
+    db.collection("users").doc(email).set({
+        first: first,
+        last: last,
+        email: email,
+        password: password,
+        university: "utd",
+        gamerSubs: [],
+        entSubs: [],
+        musicSubs: []
+    })
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+
   }).catch(function(error) {
-    console.log(error);
-  });
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
+
 };
 
 function signout() {
   firebase.auth().signOut().then(function() {
     console.log('Signed Out');
     window.location.href = "../index.html";
+
+  }, function(error) {
+    window.location.href = "../index.html";
+  });
+}
+function signoutHome() {
+  firebase.auth().signOut().then(function() {
+    console.log('Signed Out');
+    window.location.href = "index.html";
 
   }, function(error) {
     window.location.href = "../index.html";

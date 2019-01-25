@@ -2,10 +2,7 @@
 <html>
 
 <head>
-  <!--Import Google Icon Font-->
-  <link rel="icon" href="../img/poolIcon.png">
-
-  <title>Gaming | collegium</title>
+  <title>Events| collegium.me</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <!--Import materialize.css-->
@@ -16,13 +13,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="collegium">
-    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/init.js"></script>
   <script type="text/javascript" src="../js/player.js"></script>
+  <script type="text/javascript" src="../js/subscriptions.js"></script>
+  <script type="text/javascript" src="../js/event.js"></script>
+
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
   <script>
     // Initialize Firebase
     var config = {
@@ -40,13 +44,6 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
-  <style>
-    .carousel {
-      height: 550px;
-    }
-  </style>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center"><br>
@@ -59,32 +56,43 @@
 
 </ul>
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black-text color-page3" >
-      <a href="../index.html" class="brand-logo left" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
-      <a href="#" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b></b></span></a>
-
+  <nav class="color-page3">
+    <div class="nav-wrapper black-text">
+      <a href="../index.html" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
+      <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Events</b></span></a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul class="right hide-on-med-and-down black-text">
-        <li>
-          <a class="dropdown-trigger black-text" href="#!" data-target="dropdown1" id="welcomeMessage">
-        </li>
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!" onclick="signOut()">Sign Out</a></li>
-        </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li> -->
+        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
+        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
+        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
       </ul>
     </div>
   </nav>
 </div>
 
-<body class="black" onload="loadAllStreamers()">
-  <div style=" position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
-    <h3 class="white-text">Coming in 2 weeks</h3>
-  </div>
+<body onload="loadGamingEvents();" class="" style="background-color: #141414;">
+  <section class="hide-on-med-and-down">
+    <section class="container" >
+      <br>
+      <h4 style="font-weight: 900;" class="white-text">Upcoming Gaming Events</h4>
+      <hr color="white"/>
+      <br>
+      <div class="row" id="gameEventList">
 
-  <script type="text/javascript" src="../js/materialize.min.js"></script>
 
+      </div>
+
+    </section>
+    <section class="hide-on-med-and-up">
+    </section>
 </body>
+<script>
 
+
+
+</script>
+
+<script type="text/javascript" src="../js/materialize.min.js"></script>
 
 </html>
