@@ -10,6 +10,8 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/animate.css" media="screen,projection" />
+
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -60,7 +62,7 @@
     .container123 video {
       position: relative;
       z-index: -1;
-
+      width: 100%;
       height: 100%;
     }
 
@@ -68,8 +70,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
-      width: 425px;
+      height: 70%;
+      width: 280%;
       /* background: linear-gradient(135deg, #051937, #051937, #051937, transparent, transparent, transparent, transparent, transparent, transparent, transparent); */
     }
   </style>
@@ -81,7 +83,7 @@
   <li><a href="splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
   <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small">event</i></a></li>
-  <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
+  <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small">settings</i></a></li>
 
 </ul>
 <div class="navbar-fixed">
@@ -108,14 +110,12 @@
       <div class="carousel-item  white-text" href="#one!">
         <div class="container123">
           <video style="width: 100%; height: 100%" autoplay loop muted id="background">
-        <source src="../img/marco.mp4">
+        <source src="../img/varun.mp4">
         </video>
           <div class="overlay">
-            <div class="z-depth-5 white" style="padding: 40px; padding-right: 50px;">
-              <h6 style="margin-left: 30%;" class="black-text">Featured Streamer</h6>
-              <h4 style="margin-left: 30%; font-weight: 900;" class="black-text">madeinmex</h4>
-              <hr color="white" />
-              <p style="margin-left: 30%;" class="black-text">Live Stream from 7pm to 1am</p>
+            <div class="" style="padding: 0px;">
+              <br><br>
+              <h5 style="font-weight: 900; margin-left: 30%;">VarunOnTwitch</h5>
               <a data-playerName="madeinmex" onclick="openPlayerPage(this);" style="margin-left: 30%; border-radius: 20px;" class="waves-effect waves-light btn black white-text">Take me there</a>
             </div>
 
@@ -126,21 +126,80 @@
 
     <section class="" style="background-color: #141414;">
       <br>
-      <div class="row">
-        <div class="col m7 s12" style="margin-left: 10%;">
-          <h3 class="white-text " style="font-weight: 900;">Live Now</h3><br>
+      <div class="row container">
+        <div class="col m12 s12" style="margin-left: 0%;">
+          <h3 class="white-text " style="font-weight: 900;">Live Now</h3>
+          <hr color="white" />
           <div id="noLive">
             <h6 style="font-weight: 900; margin-left: 5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
           <div id="livePlayers"></div>
         </div>
-        <div class="col m3 s12 " style="margin-left: 5%;">
-          <h5 class="white-text right-align" style="font-weight: 900; ">Upcoming Events</h5><br>
-          <div class="collection black">
-            <a href="gameEvent.html"  style="border-color: black;" class="collection-item black white-text center-align">EP CometClash  &nbsp &nbsp | &nbsp &nbsp Smash Tournament</a>
-          </div>
-          <!-- <h5 class="white-text right-align" style="font-weight: 900; ">Create your own page</h5><br> -->
+        <!-- <div class="col m3 s12 " style="margin-left: 5%; margin-top: 7%;">
           <div class="card-panel black" style="border-radius: 20px;"><span class="white-text center-align">Are you a streamer? <br>Create your collegium page<i class="material-icons right">add</i></span></div>
-
+        </div> -->
+      </div>
+      <div class="row container">
+        <h3 class="white-text " style="font-weight: 900; margin-left: 5%;">Collegium's Weekly</h3><br>
+        <hr color="white" />
+        <div class="col m3 s12" style="margin-left: 0%;">
+          <div class="card white z-depth-5 animated fadeInLeft slow" style="height: 250px;">
+            <div class="card-content black-text">
+              <span class="card-title" style="font-weight: 900;">Let's Get Started</span>
+              <p>Welcome to Collegium's Weekly.<br><br> This week we're gonna be playing Fortnite. Duos with highest kills gets some mula.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col m3 s12" style="margin-left: 0%;">
+          <div class="card light-blue darken-4 z-depth-5 animated fadeInLeft" style="height: 250px;">
+            <div class="card-content white-text">
+              <span class="card-title" style="font-weight: 900;">Monday</span>
+              <h6 style="font-weight: 900;">7:00 p.m.</h6>
+              <p>0/16 Reservations</p>
+              <br>
+              <!-- <a class="typeform-share button"  style="display:inline-block;text-decoration:none;background-color:#267DDD;color:white;cursor:pointer;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:50px;text-align:center;margin:0;height:50px;padding:0px 33px;border-radius:25px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:bold;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;"
+                target="_blank">Launch me </a> -->
+              <script>
+                (function() {
+                  var qs, js, q, s, d = document,
+                    gi = d.getElementById,
+                    ce = d.createElement,
+                    gt = d.getElementsByTagName,
+                    id = "typef_orm_share",
+                    b = "https://embed.typeform.com/";
+                  if (!gi.call(d, id)) {
+                    js = ce.call(d, "script");
+                    js.id = id;
+                    js.src = b + "embed.js";
+                    q = gt.call(d, "script")[0];
+                    q.parentNode.insertBefore(js, q)
+                  }
+                })()
+              </script>
+              <a class="waves-effect waves-light btn z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/reg7uM" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
+            </div>
+          </div>
+        </div>
+        <div class="col m3 s12" style="margin-left: 0%;">
+          <div class="card cyan darken-4 z-depth-5 animated fadeInLeft slow" style="height: 250px;">
+            <div class="card-content white-text">
+              <span class="card-title" style="font-weight: 900;">Wednesday</span>
+              <h6 style="font-weight: 900;">7:00 p.m.</h6>
+              <p>0/16 Reservations</p>
+              <br>
+              <a class="waves-effect waves-light btn z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/Rq0mTk" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
+            </div>
+          </div>
+        </div>
+        <div class="col m3 s12" style="margin-left: 0%;">
+          <div class="card black z-depth-5 animated fadeInLeft slower" style="height: 250px;">
+            <div class="card-content white-text">
+              <span class="card-title" style="font-weight: 900;">Friday</span>
+              <h6 style="font-weight: 900;">7:00 p.m.</h6>
+              <p>0/16 Reservations</p>
+              <br>
+              <a class="waves-effect waves-light btn z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/aQWe0s" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row black">
@@ -369,7 +428,7 @@
       querySnapshot.forEach(function(doc) {
         // doc.data() is never undefined for query doc snapshots
         console.log(doc.id, " => ", doc.data());
-        var streamerAll = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
+        var streamerAll = '<div class="col s12 m3 animated fadeIn"><a data-playerName="' + doc.data().twitch +
           '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 200px;   object-fit: cover;" src="' + doc.data().gameImage +
           '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
         $('#allplayers').append(streamerAll);
@@ -395,7 +454,7 @@
             if (response.stream.stream_type == "live") {
               console.log("EVERYTHING IS GUCCI");
               $('#noLive').hide();
-              var livePlayers = '<div class="col s4"><a onclick="openPlayerPage(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage +
+              var livePlayers = '<div class="col s4 animated fadeInRight"><a onclick="openPlayerPage(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage +
                 '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
               $('#livePlayers').append(livePlayers);
             }

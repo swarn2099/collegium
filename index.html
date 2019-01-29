@@ -90,7 +90,10 @@
   <li><a href="www/splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small">music_note</i></a></li>
   <li><a href="www/splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small">play_circle_outline</i></a></li>
   <li><a href="www/eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small">event</i></a></li>
-  <li><a href="www/settings.html" class="tooltipped" data-position="right" data-tooltip="Settings"><i class="material-icons small">settings</i></a></li>
+  <li><a href="www/settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small">settings</i></a></li>
+  <!-- <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li> -->
+  <!-- <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
+  <li id="signoutButton"><a onclick="signoutHome();">Sign Out</a></li> -->
 </ul>
 
 <div class="navbar-fixed">
@@ -129,25 +132,25 @@
 </div>
 
 <body class="black">
-
-  <div class="carousel carousel-slider " style="z-index: -1">
-    <div class="carousel-item transparent white-text" href="#one!">
-      <div class="container123">
-        <video style="width: 100%; height: 100%" autoplay loop muted id="background">
+  <section class="hide-on-med-and-down">
+    <div class="carousel carousel-slider " style="z-index: -1">
+      <div class="carousel-item transparent white-text" href="#one!">
+        <div class="container123">
+          <video style="width: 100%; height: 100%" autoplay loop muted id="background">
         <source src="img/banner.mp4">
         </video>
-        <div class="overlay"></div>
+          <div class="overlay"></div>
+        </div>
       </div>
     </div>
-  </div>
 
     <section style="background-color: #141414;">
       <h3 class="white-text" style="margin-left: 10%; margin-color: #141414;">Your Communities</h3>
-    <div class="row" style="margin-left: 10%;">
-      <h6 id="alreadySignedinHome" class="white-text">Sign in to see your subscriptions :) </h6>
-      <div id="yourSubsHome"></div>
-    </div>
-  </section>
+      <div class="row" style="margin-left: 10%;">
+        <h6 id="alreadySignedinHome" class="white-text">Sign in to see your subscriptions :) </h6>
+        <div id="yourSubsHome"></div>
+      </div>
+    </section>
     <br><br><br><br>
     <div class="row transparent">
       <div class="col m6 s12" style="margin-top: -3%;">
@@ -178,99 +181,164 @@
             <span class="white-text">
             <h6 class="center" style="font-weight: 900;">Entertainment</h6>
               <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. <br><br> <h6>COMING IN 2 WEEKS!</h6></p>
-
           </span>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <br><br>
-  <div class="row">
-    <div class="col m7 s12" style="margin-left: 10%;">
-      <h3 class="white-text " style="font-weight: 900;">Live Now</h3><br>
-      <div id="noLive">
-        <h6 style="font-weight: 900; margin-left: -5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
-      <div id="livePlayers"></div>
-    </div>
-    <div class="col m3 s12" style="margin-left: 5%;">
-      <h5 class="white-text right-align" style="font-weight: 900; ">Upcoming Events</h5><br>
-      <div class="collection black">
-        <a onclick="loadGameEventPageFromHome(this);" data-eventName="epCometClash" style="border-color: black;" class="collection-item black white-text center-align">EP CometClash  &nbsp &nbsp | &nbsp &nbsp Smash Tournament</a>
-      </div>
-    </div>
-  </div>
-  <div class="row black">
-    <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
-      <h3 class="white-text container " style="font-weight: 900;">Twitch Always On</h3><br>
-      <div id="twitch-embed" style="margin-left: 15%;"></div>
-    </div>
-    <div class="col m6 s12 right-align" style="margin-top: 2%; z-index: 1;">
-
-      <h3 class="white-text  " style="font-weight: 900;">Popular Games</h3><br>
-      <div class="col s12 m4">
-        <div class="card white black-text z-depth-5">
-          <a onclick="loadOverwatch();">
-            <div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-              <span class="card-title"></span>
-            </div>
-        </div>
-        </a>
-      </div>
-      <div class="col s12 m4">
-        <div class="card white black-text z-depth-5">
-          <a onclick="loadLeague();">
-            <div class="card-image">
-              <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-              <span class="card-title"></span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col s12 m4">
-        <div class="card white black-text z-depth-5">
-          <a onclick="loadFortnite();">
-            <div class="card-image">
-              <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-              <span class="card-title"></span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    new Twitch.Embed("twitch-embed", {
-      width: 500,
-      height: 400,
-      channel: "twitchpresents",
-      layout: "video"
-    });
-  </script>
-
-  <br><br>
-  <section class="purple darken-4">
-    <br>
-    <h2 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h2>
-    <div class="row container purple darken-4">
-      <br>
-      <h4 class="white-text left-align" style="font-weight: 900">Coming Soon</h4>
-      <br><br>
-    </div>
-    </div>
-  </section>
-  <section class="amber darken-4">
     <br><br>
+    <div class="row">
+      <div class="col m12 s12" style="margin-left: 10%;">
+        <h3 class="white-text " style="font-weight: 900;">Live Now</h3><br>
+        <div id="noLive">
+          <h6 style="font-weight: 900; margin-left: -5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
+        <div id="livePlayers"></div>
+      </div>
+      <!-- <div class="col m3 s12" style="margin-left: 5%;">
+        <h5 class="white-text right-align" style="font-weight: 900; ">Upcoming Events</h5><br>
+        <div class="collection black">
+          <a onclick="loadGameEventPageFromHome(this);" data-eventName="epCometClash" style="border-color: black;" class="collection-item black white-text center-align">EP CometClash  &nbsp &nbsp | &nbsp &nbsp Smash Tournament</a>
+        </div>
+      </div> -->
+    </div>
+    <div class="row black">
+      <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
+        <h3 class="white-text container " style="font-weight: 900;">Twitch Always On</h3><br>
+        <div id="twitch-embed" style="margin-left: 15%;"></div>
+      </div>
+      <div class="col m6 s12 right-align" style="margin-top: 2%; z-index: 1;">
 
-    <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h2>
-    <div class="row container">
-      <br><br>
-      <h4 class="white-text right-align" style="font-weight: 900">Coming Soon</h4>
-      <br><br>
+        <h3 class="white-text  " style="font-weight: 900;">Popular Games</h3><br>
+        <div class="col s12 m4">
+          <div class="card white black-text z-depth-5">
+            <a onclick="loadOverwatch();">
+              <div class="card-image">
+                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
+                <span class="card-title"></span>
+              </div>
+          </div>
+          </a>
+        </div>
+        <div class="col s12 m4">
+          <div class="card white black-text z-depth-5">
+            <a onclick="loadLeague();">
+              <div class="card-image">
+                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
+                <span class="card-title"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="card white black-text z-depth-5">
+            <a onclick="loadFortnite();">
+              <div class="card-image">
+                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
+                <span class="card-title"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <script>
+      new Twitch.Embed("twitch-embed", {
+        width: 500,
+        height: 400,
+        channel: "twitchpresents",
+        layout: "video"
+      });
+    </script>
+
+    <br><br>
+    <section class="purple darken-4">
+      <br>
+      <h2 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h2>
+      <div class="row container purple darken-4">
+        <br>
+        <h4 class="white-text left-align" style="font-weight: 900">Coming Soon</h4>
+        <br><br>
+      </div>
+      </div>
+    </section>
+    <section class="amber darken-4">
+      <br><br>
+
+      <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h2>
+      <div class="row container">
+        <br><br>
+        <h4 class="white-text right-align" style="font-weight: 900">Coming Soon</h4>
+        <br><br>
+      </div>
+      </div>
+    </section>
+  </section>
+  <section class="hide-on-med-and-up">
+    <div class="row transparent">
+      <div class="col m6 s12" style="margin-top: 5%;">
+        <h3 class="white-text container " style="font-weight: 900;">The College Creator Platform</h3><br>
+        <h6 class="container white-text" style="line-height: 25px;">Collegium is a platform that allows for college creators to showcase their skill. It works as an accelerator platform to allow you to generate views quickly as well as a marketplace for companies to view your content and hire you!</h6>
+      </div>
+      <div class="col m6 s12" style="margin-top: 0%;">
+        <div class="col m4 s12">
+          <a href="www/gaming.html">
+            <div class="card-panel purple darken-4 z-depth-5" >
+              <span class="white-text">
+            <h6 class="center" style="font-weight: 900;">Gaming</h6>
+            <p style="font-size: 12px;">Watch student streamers compete to be the best on Colegium. We work with big brands so sposnorships are up for grabs :)</p>
+          </span>
+            </div>
+          </a>
+        </div>
+        <div class="col m4 s12">
+          <div class="card-panel black z-depth-5" style="">
+            <span class="white-text">
+            <h6 class="center" style="font-weight: 900;">Music</h6>
+              <p style="font-size: 12px;">Drop your beats on Collegium. We'd love to hear them. <br><br><br><h6>COMING IN 2 WEEKS!</h6></p>
+          </span>
+          </div>
+        </div>
+        <div class="col m4 s12">
+          <div class="card-panel z-depth-5" style=" background-color: #051937;">
+            <span class="white-text">
+            <h6 class="center" style="font-weight: 900;">Entertainment</h6>
+              <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. <br><br> <h6>COMING IN 2 WEEKS!</h6></p>
+          </span>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="row">
+      <div class="col s12" style="margin-left: 0%;">
+        <h3 class="white-text " style="font-weight: 900;">Live Now</h3><br>
+        <div id="noLiveMobile">
+          <h6 style="font-weight: 900; margin-left: 5%;" class="white-text left-text">No one's online now &nbsp :( </h6></div>
+        <div id="livePlayersMobile"></div>
+      </div>
+      <div class="col s12" style="margin-left: 0%;">
+        <h3 class="white-text " style="font-weight: 900; ">Upcoming Events</h3><br>
+        <div class="collection black">
+          <a onclick="loadGameEventPageFromHome(this);" data-eventName="epCometClash" style="border-color: black;" class="collection-item black white-text center-align">EP CometClash  &nbsp &nbsp | &nbsp &nbsp Smash Tournament</a>
+        </div>
+      </div>
+    </div>
+    <div class="row black">
+      <div class="col m6 s12" style="margin-top: 2%; z-index: 1;">
+        <h4 class="white-text container " style="font-weight: 900;">Twitch Always On</h4><br>
+        <div id="twitch-embedMobile" style="margin-left: 15%;"></div>
+      </div>
+    </div>
+
+    <script>
+      new Twitch.Embed("twitch-embedMobile", {
+        width: 300,
+        height: 400,
+        channel: "twitchpresents",
+        layout: "video"
+      });
+    </script>
+
   </section>
   <!-- Modal Structure -->
   <div id="creator" class="modal black">
@@ -399,195 +467,8 @@
       </ul>
     </div>
   </div>
-
-
   </section>
-  <section class="hide-on-med-and-up">
-    <section class="black">
-      <br>
-      <div class="row transparent">
-        <div class="col m6 s12" style="margin-top: %;">
-          <h3 class="white-text container " style="font-weight: 900;">The College Creator Platform</h3><br>
-          <h6 class="container white-text" style="line-height: 25px;">Collegium is a platform that allows for college creators to showcase their skill. It works as an accelerator platform to allow you to generate views quickly as well as a marketplace for companies to view your content and hire you!</h6>
-        </div>
-        <div class="col m6 s12" style="margin-top:%;">
-          <div class="col m4 s12">
-            <a href="www/gaming.html">
-              <div class="card-panel purple darken-4 z-depth-5" style="height: 250px;">
-                <span class="white-text">
-              <h6 class="center" style="font-weight: 900;">Gaming</h6>
-              <p style="font-size: 12px;">Watch student streamers compete to be the best on Colegium. We work with big brands so sposnorships are up for grabs :)</p>
-            </span>
-              </div>
-            </a>
-          </div>
-          <div class="col m4 s12">
-            <div class="card-panel black z-depth-5" style="height: 250px;">
-              <span class="white-text">
-              <h6 class="center" style="font-weight: 900;">Music</h6>
-                <p style="font-size: 12px;">Drop your beats on Collegium. We'd love to hear them. <br><br><br><h6>COMING IN 2 WEEKS!</h6></p>
-            </span>
-            </div>
-          </div>
-          <div class="col m4 s12">
-            <div class="card-panel z-depth-5" style="height: 250px; background-color: #051937;">
-              <span class="white-text">
-              <h6 class="center" style="font-weight: 900;">Entertainment</h6>
-                <p style="font-size: 12px;">Are you funny? Are you talented? Put your content on Collegium to allow us to enjoy. <br><br> <h6>COMING IN 2 WEEKS!</h6></p>
 
-            </span>
-            </div>
-          </div>
-          <!-- <div class="col m3 s12">
-          <div class="card-panel white z-depth-5" style="height: 250px;">
-            <span class="black-text center-align">
-              <h6 style="font-weight: 900;">Become a Creator</h6>
-              <p style="font-size: 12px;">Click the plus below to become a creator. We'll see you there :)</p>
-              <div class="center-align">
-                <a class="waves-effect waves-light btn-large transparent modal-trigger z-depth-0 black-text" href="#modal1"><i class="large material-icons center-align">add</i></a>
-              </div>
-              <br>
-            </span>
-          </div>
-        </div> -->
-        </div>
-      </div>
-    </section>
-    <br><br>
-    <section class="black">
-      <h2 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Games</h2>
-      <div class="row container">
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-                <span class="card-title"></span>
-              </div>
-          </div>
-          </a>
-        </div>
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-                <span class="card-title"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-                <span class="card-title"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col s12 m3">
-          <div class="card white black-text z-depth-5">
-            <a href="www/gaming.html">
-              <div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-                <span class="card-title"></span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
-    <br><br>
-    <section class="purple darken-4">
-      <br>
-      <h4 class="white-text left-align" style="font-weight: 900; margin-left: 10%;">Popular Videos</h4>
-      <div class="row container purple darken-4">
-        <br>
-        <h6 class="white-text center-align" style="font-weight: 900">Coming Soon</h6>
-        <br><br>
-
-        <!-- <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-                <span class="card-title"></span>
-              </div>
-            </div></a>
-          </div>
-          <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div>
-          <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div>
-          <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div> -->
-      </div>
-      </div>
-    </section>
-    <section class="amber darken-4">
-      <br><br>
-
-      <h4 class="white-text right-align" style="font-weight: 900; margin-right: 10%;">Popular Music</h4>
-      <div class="row container">
-        <br><br>
-        <h6 class="white-text center-align" style="font-weight: 900">Coming Soon</h6>
-        <br><br>
-        <!-- <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://blznav.akamaized.net/img/games/cards/card-overwatch-7eff92e1257149aa.jpg">
-                <span class="card-title"></span>
-              </div>
-            </div></a>
-          </div>
-          <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/League%20of%20Legends.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div>
-          <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px;   object-fit: cover;" src="https://static-cdn.jtvnw.net/ttv-boxart/Fortnite.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div>
-          <div class="col s3">
-            <div class="card white black-text z-depth-5">
-              <a href="www/gaming.html"><div class="card-image">
-                <img style="height: 350px; border-radius: 10px; object-fit: cover;" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/116397383/original/d77f5fa79378d8b4b43d2f17fa0422128e79b95d/a-coach-will-teach-you-how-to-play-counter-strike-global-offensive.jpg">
-                <span class="card-title"></span>
-              </div></a>
-            </div>
-          </div> -->
-      </div>
-      </div>
-    </section>
-  </section>
   <div class="card animated flipInY modal white" id="login" style="max-width: 500px;">
     <div class="card-content">
       <form id="loginSection">
@@ -656,32 +537,32 @@
 </body>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
-db.collection("gamers").get().then(function(querySnapshot) {
-  querySnapshot.forEach(function(doc) {
-    var twitchLive = 'https://api.twitch.tv/helix/streams/' + doc.data().twitch;
-    //client id: urff2tmjj5swnbqlltvic62bwpn96f
-    $.get({
-      url: 'https://api.twitch.tv/kraken/streams/' + doc.data().twitch,
-      data: {
-        client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'
-      },
-      error: function(response) {
-        console.log("IT DIDNT WORK");
-      },
-      success: function(response) {
+  db.collection("gamers").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      var twitchLive = 'https://api.twitch.tv/helix/streams/' + doc.data().twitch;
+      //client id: urff2tmjj5swnbqlltvic62bwpn96f
+      $.get({
+        url: 'https://api.twitch.tv/kraken/streams/' + doc.data().twitch,
+        data: {
+          client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'
+        },
+        error: function(response) {
+          console.log("IT DIDNT WORK");
+        },
+        success: function(response) {
 
-        console.log(doc.data().twitch, " => ", response)
-        if (response.stream.stream_type == "live") {
-          console.log("EVERYTHING IS GUCCI");
-          $('#noLive').hide();
-          var livePlayers = '<div class="col s4"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage +
-            '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
-          $('#livePlayers').append(livePlayers);
+          console.log(doc.data().twitch, " => ", response)
+          if (response.stream.stream_type == "live") {
+            console.log("EVERYTHING IS GUCCI");
+            $('#noLive').hide();
+            var livePlayers = '<div class="col s4"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage +
+              '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
+            $('#livePlayers').append(livePlayers);
+          }
         }
-      }
+      });
     });
   });
-});
 </script>
 
 </html>
