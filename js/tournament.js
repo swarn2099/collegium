@@ -27,19 +27,12 @@ function loadPlayer() {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       // https://fortnite.op.gg/api/v1/player/match/sync/marcoflowers?seasonId=7&platform=pc
-      // Using YQL and JSONP
-      $.ajax({
-        url: "https://fortnite.op.gg/api/v1/player/match/sync/marcoflowers?seasonId=7&platform=pc",
-        // The name of the callback parameter, as specified by the YQL service
-        jsonp: "callback",
-        // Tell jQuery we're expecting JSONP
-        dataType: "jsonp",
-        // Work with the response
-        success: function(response) {
-          console.log(response); // server response
-        }
-      });
-
+      const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      const url = "https://fortnite.op.gg/api/v1/player/match/sync/marcoflowers?seasonId=7&platform=pc"; // site that doesn’t send Access-Control-*
+      fetch(url) // https://cors-anywhere.herokuapp.com/https://example.com
+        .then(response => response.text())
+        .then(contents => console.log(contents))
+        .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
     });
   });
 }
