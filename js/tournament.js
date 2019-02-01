@@ -27,16 +27,9 @@ function loadPlayer() {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       // https://fortnite.op.gg/api/v1/player/match/sync/marcoflowers?seasonId=7&platform=pc
-      $.get({
-        url: 'https://fortnite.op.gg/api/v1/player/match/sync/marcoflowers?seasonId=7&platform=pc',
-        error: function(response) {
-          console.log("IT DIDNT WORK");
-        },
-        success: function(response) {
-          console.log(" => ", response)
-        }
+      $.getJSON('https://fortnite.op.gg/api/v1/player/match/sync/marcoflowers?seasonId=7&platform=pc', function(json_data){
+        console.log(JSON.stringify(json_data));
       });
-
     });
   });
 }
