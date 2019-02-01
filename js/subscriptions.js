@@ -10,21 +10,21 @@ $(document).ready(function() {
       $('#loginButton').hide();
       $('#signoutButton').show();
 
-      console.log(user.email);
+      // console.log(user.email);
       var docRef = db.collection("users").doc(user.email);
       docRef.get().then(function(doc) {
         if (doc.exists) {
           var subscriptionsArr = doc.data().gamerSubs;
-          console.log("Subscriptions: ", subscriptionsArr);
+          // console.log("Subscriptions: ", subscriptionsArr);
           for (var i = 0; i < subscriptionsArr.length; i++) {
-            console.log(subscriptionsArr[i]);
+            // console.log(subscriptionsArr[i]);
             var gamerRef = db.collection("gamers").doc(subscriptionsArr[i]);
             gamerRef.get().then(function(doc) {
               if (doc.exists) {
                 $('#alreadySignedin').hide();
                 $('#alreadySignedinHome').hide();
 
-                console.log("Document data:", doc.data());
+                // console.log("Document data:", doc.data());
                 $().hide();
                 var gamerSubCard = '<div class="col s3"><a onclick="openPlayerPagefromHome(this)" data-playerName="' + doc.data().twitch + '"<div class="card horizontal black z-depth-5"><div class="card-image"><img src="' + doc.data().gameImage + '" style="border-radius: 20px 0px 0px 20px; height: 100px;"></div><div class="card-content"><h5 class="center-align white-text"style="font-weight: 900;">' + doc.data().twitch + '</h5></div></div></a></div>';
                 $('#yourSubs').append(gamerSubCard);
@@ -55,7 +55,7 @@ function addSubscription(d) {
 
   firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    console.log(toSubscribe, "=>", user.email);
+    // console.log(toSubscribe, "=>", user.email);
     // User is signed in.
     var washingtonRef = db.collection("users").doc(user.email);
 
