@@ -10,6 +10,7 @@
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="../css/home.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/animate.css" media="screen,projection" />
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,55 +71,62 @@
   </nav>
 </div>
 
-<body class="black" onload="loadPlayer();">
+<body class="white" onload="loadPlayer();" style=" background: linear-gradient(to right, #dc2430, #7b4397);">
   <section class="hide-on-med-and-down">
     <div id="banner"></div>
-    <section class="" style="">
-      <h4 style="margin-left: 10%;" class="white-text">The Competition so far</h4>
-      <!--Ranking-->
-      <div id="ranking"></div>
-      <div class="row" style="margin-left: 6%;">
-        <div class="col s12 m3">
-          <div class="card grey darken-4">
-            <div class="card-content white-text center">
-              <span class="card-title">marcoflowers</span>
-              <p>17 kills &nbsp &nbsp | &nbsp &nbsp 18 Points</p>
-              <p></p>
-              <p></p>
-            </div>
-          </div>
+    <section class="black">
+      <br>
+      <div class="row center-align">
+        <div class="col m4">
+          <h5 class="white-text" style="margin-left: 20%; font-weight: 900;"> <div class="animated infinite flip delay-2s slower">$45</div>in pot</h5>
         </div>
-        <div class="col s12 m3">
-          <div class="card grey darken-4">
-            <div class="card-content white-text center">
-              <span class="card-title">marcoflowers</span>
-              <p>17 kills &nbsp &nbsp | &nbsp &nbsp 18 Points</p>
-            </div>
-          </div>
+        <div class="col m4">
+          <h5 class="white-text" style="margin-left: 20%; font-weight: 900;"><div class="animated jello infinite delay-2s slower">20</div>Competitors</h5>
         </div>
-        <div class="col s12 m3">
-          <div class="card grey darken-4">
-            <div class="card-content white-text center">
-              <span class="card-title">marcoflowers</span>
-              <p>17 kills &nbsp &nbsp | &nbsp &nbsp 18 Points</p>
-            </div>
-          </div>
+        <div class="col m4">
+          <h5 class="white-text animated infinite bounce delay-2s slower" style="margin-left: 20%; font-weight: 900;">24 hours &nbsp<i class="material-icons">timer</i></h5>
         </div>
-        <div class="col s12 m3">
-          <div class="card grey darken-4">
-            <div class="card-content white-text center">
-              <span class="card-title">marcoflowers</span>
-              <p>17 kills &nbsp &nbsp | &nbsp &nbsp 18 Points</p>
-            </div>
-          </div>
-        </div>
+      </div>
+      <br>
+    </section>
+
+    <!--Ranking-->
+    <section class="container">
+      <div class="row" id="playerRow">
       </div>
     </section>
   </section>
 
+
+
+  <section class="hide-on-med-and-up">
+    <div id="bannerMobile"></div>
+    
+    <div class="row" id="playerRowMobile"></div>
+  </section>
 </body>
 
 <!--  Modals ALL HERE-->
+<div id="start" class="animated flipInY modal black darken-4" style="max-width: 500px; border-radius: 20px;">
+  <div class="modal-content">
+    <form id="loginSection">
+      <h5 class="center white-text">Start Tournament</h5>
+
+      <div class="row white-text">
+        <div class="input-field col s12">
+          <input id="passwordLogin" type="text" class="validate white-text">
+          <label for="passwordLogin" class="white-text">Epic Name</label>
+        </div>
+      </div>
+      <div class="row center">
+        <div class="input-field col s12">
+          <a class="waves-effect waves-light btn-large cyan darken-4" style="border-radius: 20px;" onclick="startTournament()">Start</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div id="subscriptionsModal" class="modal bottom-sheet" style="background-color: #141414;">
   <div class="modal-content">
     <!--  Your subscriptions go here -->
