@@ -1,48 +1,52 @@
-function startTournament() {
-  var name = document.getElementById('epic');
-  var washingtonRef = db.collection("weekly").doc(name.value);
-  return washingtonRef.update({
-      ready: true
-  })
-  .then(function() {
-      console.log("Document successfully updated!");
-      M.toast({
-        html: 'You have started the tournament. Good luck :)',
-        classes: 'rounded green white-text'
-      });
-  })
-  .catch(function(error) {
-      // The document probably doesn't exist.
-      console.error("Error updating document: ", error);
-      M.toast({
-        html: 'Something went wrong. Try Again?',
-        classes: 'rounded red white-text'
-      });
-  });
-}
-
+var dateGod;
+var participants = 0;
 function loadPlayer() {
-
-
   var docRef = db.collection("tournaments").doc('A6W0IedLgBF6jz9cHaIr');
   docRef.get().then(function(doc) {
     if (doc.exists) {
       console.log("Document data:", doc.data());
       //header
-      var banner = '<header style="position: relative; height: 450px; background: linear-gradient(30deg, #004092, transparent, transparent), url(' + doc.data().bannerImage + ');   background-size: cover; "><div class="row"><div class="col m6"><h3 class="white-text" style="margin-left: 15%; border-radius: 900;">Fortnite Fugazi</h3><p class="white-text container" style="margin-left: 15%;">Welcome to Collegium Weeklys Fortnite Fugazi. Play 5 duo games with your partner and earn points. We will automatically pull your results and rank the winners. Prize money and Redbull is up for grabs</p><div class="col s12 m6 push-m2"><div class="card z-depth-5 hoverable animated fadeInLeft transparent" style="border-radius: 15px; "><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text left-align"style="font-weight: 900; padding-left: 20px; padding-top: 15px; padding-bottom: 15px;">Start Tournament</h5></section><div class="card-content white-text" style="padding-top: 2px;"><input id="epic" type="text" class="validate white-text" placeholder="Enter your EPIC name"><br><a class="waves-effect waves-light btn grey darken-4 z-depth-5" style="border-radius: 20px;" onclick="startTournament()"><i class="material-icons right">check</i>begin</a></div></div></div></div><div class="col m6 push-m1"><!-- Twitch Live Stream --><div id="twitch-embed" style="margin-top: 2%;"></div></div></div><header>';
+      dateGod = doc.data().date;
+      $('#prize').append("$" + doc.data().prize + " in Pot");
+      $('#bio').append(doc.data().bio);
+      $('#tournamentTitle').append(doc.data().tournamentTitle);
+      $('#image1').append('<img style="filter: blur(3px);" src="'
+      +doc.data().bannerImage+'">')
+       $("#image1").attr("src",doc.data().bannerImage);
+       $("#image2").attr("src",doc.data().bannerImage2);
 
-      var bannerMobile = '<header style="position: relative; background: linear-gradient(30deg, #004092, transparent, transparent), url(' + doc.data().bannerImage + ');   background-size: cover; "><div class="row"><div class="col s12"><h4 class="white-text" style="margin-left: 15%; border-radius: 900;">Fortnite Fugazi</h4><div class="col s12"><div class="card z-depth-5 hoverable animated fadeInLeft transparent" style="border-radius: 15px;"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text left-align"style="font-weight: 900; padding-left: 20px; padding-top: 15px; padding-bottom: 15px;">Start Tournament</h5></section><div class="card-content white-text" style="padding-top: 2px;"><input id="epic" type="text" class="validate white-text" placeholder="Enter your EPIC name"><br><a class="waves-effect waves-light btn grey darken-4 z-depth-5" style="border-radius: 20px;" onclick="startTournament()"><i class="material-icons right">check</i>begin</a></div></div></div></div></div><header>';
+      // Set the date we're counting down to
+      var countDownDate = new Date(doc.data().timer).getTime();
 
-      $('#banner').append(banner);
-      $('#bannerMobile').append(bannerMobile);
+      // Update the count down every 1 second
+      var x = setInterval(function() {
 
-      //twitch
-      new Twitch.Embed("twitch-embed", {
-        width: 650,
-        height: 400,
-        channel: doc.data().twitch,
-        layout: "video"
-      });
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("countdown").innerHTML = hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+
+
+
+
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -50,58 +54,56 @@ function loadPlayer() {
   }).catch(function(error) {
     console.log("Error getting document:", error);
   });
-  var path = db.collection("weekly");
+  var path = db.collection("fortnitefugazi");
+  var killCount = 0, gameCount = 0;
+
   // Weekly Ranking
-  path.orderBy("points", "desc").get().then(function(querySnapshot) {
+  path.orderBy("kills", "desc").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(player) {
+      participants += 1;
+      killCount += player.data().kills;
+      gameCount += player.data().games;
       // doc.data() is never undefined for query doc snapshots
       console.log(player.id, " => ", player.data());
-      if (player.data().ready && player.data().games > 0) {
-        $.get({
-          url: 'https://cors-anywhere.herokuapp.com/https://fortnite.op.gg/api/v1/player/match/sync/' + player.data().epic + '?seasonId=7',
-          success: function(response) {
-            var pointsFinal = player.data().points;
-            var lengthArr = response.data.records.length;
-            console.log("Length of arr: ", response.data.records.length);
-            if (player.data().key != response.data.records[lengthArr - 1].timestamp) {
-              for (var i = 0; i < response.data.records.length; i++) {
-                console.log("Plays " + i, response.data.records[i]);
-                pointsFinal += response.data.records[i].kills;
-
-                var gameLeft = player.data().games - response.data.records.length;
-                if (gameLeft < 0) {
-                  path.doc(player.id).update({
-                    games: 0,
-                  });
-                } else {
-                  path.doc(player.id).update({
-                    games: gameLeft,
-                  });
-                }
-
+      $.get({
+        url: 'https://fortnitemaster.com/p/stats/players/' + player.data().uid + '/match-summaries?limit=100&season=season-7',
+        success: function(response) {
+          console.log(response);
+          var killsGod = 0;
+          var gamesGod = 0;
+          var timestampGod = "";
+          for (var i = 0; i < response.matchSummaries.length; i++) {
+            if (dateGod == moment(response.matchSummaries[i].timestamp).format('MMMM Do')) {
+              if (player.data().timestamp != response.matchSummaries[i].timestamp) {
+                killsGod += response.matchSummaries[i].summary.kills;
+                gamesGod += response.matchSummaries[i].matchesPlayed;
+                timestampGod = response.matchSummaries[i].timestamp;
               }
-              console.log("pointsFinal: ", player.data().points);
-              return path.doc(player.id).update({
-                points: pointsFinal,
-                key: response.data.records[lengthArr - 1].timestamp,
-              });
             }
           }
-        });
-      } else {
-        console.log(player.data().epic, "is not ready");
-      }
-      var words = ["FF5733", "C70039", "900C3F", "581845"];
-      var word = words[Math.floor(Math.random() * words.length)];
-      console.log(word);
-      var playerCard = '<div class="col s12 m3"><div class="card z-depth-5 hoverable animated fadeInLeft" style="border-radius: 15px; background-color: #' + word + '"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text center-align"style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">' + player.data().epic + '</h5></section><div class="card-content white-text" style="padding-top: 2px;"><p class="center" style="font-size: 12px;"> Game ' + player.data().games + '</p><h5 class="center white-text" style="font-weight: 900;"><b>' + player.data().points + ' kills</b></h5><p class="center" style="font-size: 12px;">Duo with ' + player.data().partner + '</p></div></div></div>';
+          if (killsGod != 0 || gamesGod != 0) {
+            db.collection("fortnitefugazi").doc(player.id).update({
+              kills: killsGod,
+              games: gamesGod,
+              timestamp: timestampGod
+            });
+          }
 
+          var words = ["FF5733", "C70039", "900C3F", "581845"];
+          var word = words[Math.floor(Math.random() * words.length)];
+          var playerCard = '<div class="col s12 m3"><div class="card z-depth-5 hoverable animated fadeInLeft" style="border-radius: 15px; background-color: #' + word + ';"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h6 class="white-text center-align"style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">' + player.data().epic + '</h6></section><div class="card-content white-text" style="padding-top: 2px;"><p class="center" style="font-size: 12px;">' + (gamesGod + player.data().games) + ' Matches</p><h5 class="center white-text" style="font-weight: 900;"><b>' + (killsGod + player.data().kills) + ' kills</b></h5><p class="center-align"> Playing on ' + response.matchSummaries[0].platform + '</p></div></div></div>';
 
-      var playerCardMobile = '<div class="col s12"><div class="card z-depth-5 hoverable animated fadeInLeft" style="border-radius: 15px; background-color: #' + word + '"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text center-align"style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">' + player.data().epic + '</h5></section><div class="card-content white-text" style="padding-top: 2px;"><p class="center" style="font-size: 12px;"> Game ' + player.data().games + '</p><h5 class="center white-text" style="font-weight: 900;"><b>' + player.data().points + ' kills</b></h5><p class="center" style="font-size: 12px;">Duo with ' + player.data().partner + '</p></div></div></div>';
+          $('#playerRow').append(playerCard);
+          // $('#kills').prepend(killCount + " kills");
 
-      $('#playerRow').append(playerCard);
-      $('#playerRowMobile').append(playerCardMobile);
-
+        }
+      });
     });
+    $('#kills').append(killCount + " Kills");
+    $('#games').append(gameCount + " Games Played");
+
+    $('#participants').append(participants + " Participants");
   });
+
+
 }

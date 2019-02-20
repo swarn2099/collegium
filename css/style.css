@@ -1,5 +1,5 @@
 .sidenav {
-  width: 100px;
+  width: 100px !important;
 }
 @keyframes pastelRainbow {
   0% {

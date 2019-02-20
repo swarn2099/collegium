@@ -6,6 +6,7 @@
   <link rel="icon" href="../img/poolIcon.png">
   <title>Tournament | collegium</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
@@ -19,10 +20,12 @@
   <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/init.js"></script>
   <script type="text/javascript" src="../js/subscriptions.js"></script>
+  <script src="https://sdk.scoutsdk.com/1.0.0/js/Scout.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+  <script src="../js/moment.js"></script>
   <script>
     // Initialize Firebase
     var config = {
@@ -44,6 +47,15 @@
   <style>
     html {
       overflow-x: hidden;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .parallax-text {
+      font-size: 90px;
+      /* font-family: 'Barlow', sans-serif; */
+      /* letter-spacing: .11em; */
+      font-weight: 900;
+      text-rendering: optimizeLegibility;
     }
   </style>
 </head>
@@ -51,157 +63,82 @@
 <ul id="slide-out" class="sidenav sidenav-fixed center grey darken-4"><br>
   <li><a href="../index.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small white-text">home</i></a></li>
   <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small white-text">videogame_asset</i></a></li>
-  <li><a href="splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small white-text">music_note</i></a></li>
-  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small white-text">play_circle_outline</i></a></li>
+  <!-- <li><a href="musician.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small white-text">music_note</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small white-text">play_circle_outline</i></a></li> -->
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small white-text">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small white-text">settings</i></a></li>
 </ul>
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black-text" style="background-color: #29243D;">
-      <a href="../index.html" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
-      <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
-        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
-        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
-
-<body class="white" onload="loadPlayer();" style=" background: linear-gradient(to right, #dc2430, #7b4397);">
+<body class="z-depth-5" onload="loadPlayer();" style="background-color: #1A1B25;">
   <section class="hide-on-med-and-down">
-    <div id="banner"></div>
-    <section class="black">
-      <br>
-      <div class="row center-align">
-        <div class="col m4">
-          <h5 class="white-text" style="margin-left: 20%; font-weight: 900;"> <div class="animated infinite flip delay-2s slower">$45</div>in pot</h5>
-        </div>
-        <div class="col m4">
-          <h5 class="white-text" style="margin-left: 20%; font-weight: 900;"><div class="animated jello infinite delay-2s slower">20</div>Competitors</h5>
-        </div>
-        <div class="col m4">
-          <h5 class="white-text animated infinite flip  delay-2s slower" style="margin-left: 20%; font-weight: 900;">24 hours &nbsp<i class="material-icons">timer</i></h5>
+    <div class="parallax-container center valign-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col s12 white-text ">
+            <h2 class="white-text parallax-text left-align" id="tournamentTitle"></h2>
+            <h6 class="left-align" id="bio"></h6>
+          </div>
         </div>
       </div>
-      <br>
-    </section>
+      <div class="parallax" >
+        <img id="image1" style="filter: blur(3px);" src="">
+      </div>
+    </div>
 
     <!--Ranking-->
-    <section class="container">
-      <br><br>
-      <div class="row" id="playerRow">
-      </div>
+    <section style="background-color: #1A1B25; min-height: 500px;">
+      <section class="container">
+        <br>
+        <div style="margin-top: 0%;" class="row" id="playerRow">
+        </div>
+        <br>
+      </section>
     </section>
   </section>
+  <div class="parallax-container center valign-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 white-text">
+          <h2 class="white-text" style="font-weight: 900;">Tournament Stats</h2>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col m4 s12" style="margin-left: 0%;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #233142;">
+            <div class="card-content white-text" style="padding-top: 15%;">
+              <h3 id="kills"></h3>
+              <h6 id="games"></h6>
+            </div>
+          </div>
+        </div>
+        <div class="col m4 s12" style="margin-left: 0%;">
+          <a href="tournament.html">
+            <div class="card z-depth-5 animated infinite " style="height: 250px; border-radius: 15px; background-color: #4f9da6;">
+              <div class="card-content white-text" style="padding-top: 15%;">
+                <h5 id="participants"></h5>
+                <h5 id="prize"></h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col m4 s12" style="margin-left: 0%;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #facf5a;">
+            <div class="card-content white-text" style="padding-top: 15%;">
+              <h3 id="countdown"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+      <img id="image2" style="filter: blur(3px);" src="">
+    </div>
+  </div>
 
   <section class="hide-on-med-and-up">
     <div id="bannerMobile"></div>
     <div class="row" id="playerRowMobile"></div>
   </section>
 </body>
-
-<!--  Modals ALL HERE-->
-<div id="start" class="animated flipInY modal black darken-4" style="max-width: 500px; border-radius: 20px;">
-  <div class="modal-content">
-    <form id="loginSection">
-      <h5 class="center white-text">Start Tournament</h5>
-
-      <div class="row white-text">
-        <div class="input-field col s12">
-          <input id="passwordLogin" type="text" class="validate white-text">
-          <label for="passwordLogin" class="white-text">Epic Name</label>
-        </div>
-      </div>
-      <div class="row center">
-        <div class="input-field col s12">
-          <a class="waves-effect waves-light btn-large cyan darken-4" style="border-radius: 20px;" onclick="startTournament()">Start</a>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div id="subscriptionsModal" class="modal bottom-sheet" style="background-color: #141414;">
-  <div class="modal-content">
-    <!--  Your subscriptions go here -->
-    <br>
-    <h3 class="white-text " style="font-weight: 900;">Your communities</h3>
-    <div class="row">
-      <h6 id="alreadySignedin" class="white-text">Sign in to see your subscriptions :) </h6>
-      <div id="yourSubs"></div>
-    </div>
-  </div>
-</div>
-
-<div class="card animated flipInY modal white" id="login" style="max-width: 500px;">
-  <div class="card-content">
-    <form id="loginSection">
-      <h5 class="center">Login to <span class="blue-text">collegium</span></h5>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="emailLogin" type="email" class="validate">
-          <label for="emailLogin">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="passwordLogin" type="password" class="validate">
-          <label for="passwordLogin">Password</label>
-        </div>
-      </div>
-      <div class="row center">
-        <div class="input-field col s12">
-          <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
-        </div>
-      </div>
-      <div class="row center">
-        <div class="input-field col s12">
-          Don't have an account?
-          <a onclick="hideLogin();"> &nbspCreate one here</a>
-        </div>
-      </div>
-    </form>
-    <form id="signupSection">
-      <h5 class="center">Create account on<span class="blue-text"> collegium</span></h5>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="firstSingup" type="text" class="validate">
-          <label for="firstSignup">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="lastSignup" type="text" class="validate">
-          <label for="lastSignup">Last Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="emailSingup" type="email" class="validate">
-          <label for="emailSignup">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="passwordSignup" type="password" class="validate">
-          <label for="passwordSignup">Password</label>
-        </div>
-      </div>
-      <div class="row center">
-        <div class="input-field col s12">
-          <a class="waves-effect waves-light btn color-page3" style="border-radius: 20px;" onclick="login()"><i class="material-icons left">pool</i>Login</a>
-        </div>
-      </div>
-      <div class="row center">
-        <div class="input-field col s12">
-          Already have an account?<a onclick="hideSignup();"> &nbspSignin here</a>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 <!-- Load the Twitch embed script -->
 <script src="https://embed.twitch.tv/embed/v1.js"></script>
 <script type="text/javascript" src="../js/materialize.min.js"></script>

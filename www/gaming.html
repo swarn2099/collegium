@@ -22,7 +22,6 @@
   <script type="text/javascript" src="../js/player.js"></script>
   <script type="text/javascript" src="../js/subscriptions.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
@@ -47,44 +46,15 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
-
-  <style>
-    .carousel {
-      height: 650px;
-    }
-
-    .container123 {
-      position: relative;
-      z-index: -1;
-
-    }
-
-    .container123 video {
-      position: relative;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 70%;
-      width: 280%;
-      /* background: linear-gradient(135deg, #051937, #051937, #051937, transparent, transparent, transparent, transparent, transparent, transparent, transparent); */
-    }
-  </style>
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center grey darken-4"><br>
   <li><a href="../index.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small white-text">home</i></a></li>
   <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small white-text">videogame_asset</i></a></li>
-  <li><a href="musician.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small white-text">music_note</i></a></li>
-  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small white-text">play_circle_outline</i></a></li>
+  <!-- <li><a href="musician.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small white-text">music_note</i></a></li>
+  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small white-text">play_circle_outline</i></a></li> -->
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small white-text">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small white-text">settings</i></a></li>
-
 </ul>
 <div class="navbar-fixed">
   <nav>
@@ -104,15 +74,14 @@
 
 <body onload="loadAllStreamers()" style="background: linear-gradient(to right, #dc2430, #7b4397);">
   <section class="hide-on-med-and-down">
-
-
     <section class="" style="background: linear-gradient(to right, #dc2430, #7b4397);">
-      <section style="background: linear-gradient(30deg, #7b4397, transparent, transparent), url('https://images.unsplash.com/photo-1498736297812-3a08021f206f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1957&q=80');" class="z-depth-5">
+      <section style="background: linear-gradient(30deg, #7b4397, transparent, transparent), url('https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60');" class="z-depth-5">
         <div class="row container">
           <div class="col m12 s12" style="margin-left: 0%;">
             <div id="noLive">
             </div>
-            <div style="padding-top: 2%;"><h3 class="white-text" style="font-weight: 900;">Watch Now</h3><br></div>
+            <br>
+            <!-- <div style="padding-top: 2%;"><h3 class="white-text" style="font-weight: 900;">Watch Now</h3><br></div> -->
             <div class="col m3 animated fadeInRight">
               <div class="card z-depth-5 animated infinite slower" style=" border-radius: 15px; background-color: #2a0845; height: 200px;">
                 <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
@@ -134,7 +103,7 @@
             <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
               <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Let's Get Started</h5></section>
             <div class="card-content white-text">
-              <p>Welcome to Collegium's Weekly.<br> Online tournaments to showcase your skills and doesn't break the bank.</p>
+              <p> Online tournaments to showcase your skills and doesn't break the bank.</p>
             </div>
           </div>
         </div>
@@ -154,7 +123,7 @@
         <div class="col m3 s12" style="margin-left: 0%;">
           <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #900C3F;">
             <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Coming Soon</h5></section>
+              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Apex Legends</h5></section>
             <div class="card-content white-text">
               <!-- <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6> -->
               <br>

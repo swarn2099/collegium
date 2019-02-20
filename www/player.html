@@ -43,52 +43,58 @@
     var db = firebase.firestore();
   </script>
   <script type="text/javascript" src="../js/player.js"></script>
+    <style>
+      html {
+        overflow-x: hidden;
+        background-image: url("https://progameguides.com/wp-content/uploads/2018/05/fortnite-1920x1080-wallpaper-the-prisoner-002.jpg");
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover; /* Resize the background image to cover the entire container */
 
-  <style>
-    .slick-prev {
-      visibility: hidden;
-    }
 
-    .slick-next {
-      visibility: hidden;
-    }
+      }
+
+      .parallax-text {
+        font-size: 70px;
+        font-weight: 900;
+        text-rendering: optimizeLegibility;
+      }
   </style>
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center grey darken-4"><br>
   <li><a href="../index.html" class="tooltipped" data-position="right" data-tooltip="Go Home"><i class="material-icons small white-text">home</i></a></li>
   <li><a href="gaming.html" class="tooltipped" data-position="right" data-tooltip="Gaming"><i class="material-icons small white-text">videogame_asset</i></a></li>
-  <li><a href="splash.html" class="tooltipped" data-color="color" data-position="right" data-tooltip="Music"><i class="material-icons small white-text">music_note</i></a></li>
-  <li><a href="splash.html" class="tooltipped" data-position="right" data-tooltip="Entertainment"><i class="material-icons small white-text">play_circle_outline</i></a></li>
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small white-text">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small white-text">settings</i></a></li>
 </ul>
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black-text" style="background-color: #29243D;">
-      <a href="../index.html" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
-      <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
-
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li>
-        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
-        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
-        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
-
-<body style=" background: linear-gradient(to right, #dc2430, #7b4397);" onload="loadPlayer();">
+<body onload="loadPlayer();">
   <section class="hide-on-med-and-down">
-    <div id="banner"></div>
-    <section class="transparent" style="">
+    <div class="container">
+      <br><br>
+      <div class="row">
+        <div class="col s4 white-text pull-s1">
+          <h2 class="white-text parallax-text left-align" id="">VarunOnTwitch</h2>
+        </div>
+        <div class="col s8 push-s2">
+          <div id="twitch-embed" style="" class="z-depth-5"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m4">
+          <h3 class="white-text left-align"  style="font-weight: 900;"id="">Gamer Stats</h3>
+        </div>
+        <div class="col m4"></div>
+        <div class="col m4"></div>
+      </div>
+    </div>
+    <!-- <div id="banner"></div> -->
+    <!-- <section class="transparent" style="">
 
       <h4 class="white-text left-align" style="margin-left: 10%;"><b>Twitch Clips</b></h4>
       <br>
       <div class="row" style="margin-left: 10%;">
-        <!-- Featured Youtube Videos go here -->
         <div id="twitchClips">
           <h5 class="grey-text">No Twitch Clips yet :(</h5></div>
         <div class="row">
@@ -103,8 +109,8 @@
           </div>
         </div>
       </div>
-    </section>
-    <section class="black">
+    </section> -->
+    <!-- <section class="">
       <div class="row">
         <div class="col s7" style="margin-left: 10%;">
           <h4 class="white-text left-align" style="padding: 0px;"><b>My Favorite Games</b></h4>
@@ -127,7 +133,7 @@
       <div class="col s3" style="margin-left: -12%;">
         <br><br><br>
       </div>
-    </section>
+    </section> -->
   </section>
   <section class="hide-on-med-and-up">
     <div id="bannerMobile"></div>

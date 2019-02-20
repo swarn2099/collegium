@@ -42,9 +42,8 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
-  <script type="text/javascript" src="../js/player.js"></script>
+  <script type="text/javascript" src="../js/musician.js"></script>
   <style>
-
   </style>
 </head>
 
@@ -72,37 +71,32 @@
   </nav>
 </div>
 
-<body class="" onload="loadPlayer();">
-  <br><br>
-  <section class="hide-on-med-and-down container">
-    <div class="row" >
-      <div class="col s12 m6 pull-m1">
-        <div class="card z-depth-5" style="border-radius: 30px;">
-          <div class="card-image">
-            <img style="border-radius: 30px; filter: blur(0px);" src="https://images.unsplash.com/photo-1506157786151-b8491531f063?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80">
-            <span class="card-title">Farhaan Jagtap<br>
-              <iframe allowtransparency="true" scrolling="no" frameborder="no" src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fundefined&color=orange_white&size=32" style="width: 32px; height: 32px;"></iframe>
-            </span>
+<body class="" onload="loadMusician();" style="background: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size: cover;backdrop-filter: blur(5px);">
+  <section class="hide-on-med-and-down">
+    <div id="banner"></div>
+
+    <section class="z-depth-5 container" style="">
+      <div class="row">
+        <div class="col m4">
+          <div class="card z-depth-5 hoverable grey darken-4" style="background: linear-gradient(to right, #dc2430, #7b4397); border-radius: 20px;">
+            <div class="card-content white-text">
+              <iframe class="z-depth-5" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>              </div>
           </div>
         </div>
-        <div class="card black z-depth-5" style="border-radius: 20px;">
-          <div class="card-content white-text">
-            <span class="card-title" style="font-weight: 900;">About Me<br><br></span>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="col m4">
+          <div class="card z-depth-5 hoverable" style="background: linear-gradient(to right, #dc2430, #7b4397); border-radius: 20px;">
+            <div class="card-content white-text">
+              <iframe class="z-depth-5" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>              </div>
+          </div>
+        </div>
+        <div class="col m4">
+          <div class="card z-depth-5 hoverable" style="background: linear-gradient(to right, #dc2430, #7b4397); border-radius: 20px;">
+            <div class="card-content white-text">
+              <iframe class="z-depth-5" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>              </div>
           </div>
         </div>
       </div>
-      <div class="col m6">
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/562396551&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/562396551&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/562396551&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/34019569&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-        <iframe width="130%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/562396551&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-      </div>
-    </div>
+    </section>
   </section>
 
 
