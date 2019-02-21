@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="collegium">
-    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="../js/init.js"></script>
   <script type="text/javascript" src="../js/subscriptions.js"></script>
 
@@ -43,23 +43,18 @@
     var db = firebase.firestore();
   </script>
   <script type="text/javascript" src="../js/player.js"></script>
-    <style>
-      html {
-        overflow-x: hidden;
-        background-image: url("https://progameguides.com/wp-content/uploads/2018/05/fortnite-1920x1080-wallpaper-the-prisoner-002.jpg");
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-size: cover; /* Resize the background image to cover the entire container */
+  <style>
+    html {
+      overflow-x: hidden;
 
 
-      }
+    }
 
-      .parallax-text {
-        font-size: 70px;
-        font-weight: 900;
-        text-rendering: optimizeLegibility;
-      }
+    .parallax-text {
+      font-size: 70px;
+      font-weight: 900;
+      text-rendering: optimizeLegibility;
+    }
   </style>
 </head>
 
@@ -69,99 +64,45 @@
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small white-text">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small white-text">settings</i></a></li>
 </ul>
-<body onload="loadPlayer();">
-  <section class="hide-on-med-and-down">
+
+<body onload="loadPlayer();" style="background-color: #1A1B25;">
+  <div class="parallax-container center valign-wrapper">
     <div class="container">
-      <br><br>
       <div class="row">
-        <div class="col s4 white-text pull-s1">
-          <h2 class="white-text parallax-text left-align" id="">VarunOnTwitch</h2>
+        <div class="col s12 white-text ">
+          <h2 class="white-text parallax-text center-align" id="tournamentTitle">VarunOnTwitch</h2>
+          <h6 class="left-align" id="bio"></h6>
         </div>
-        <div class="col s8 push-s2">
-          <div id="twitch-embed" style="" class="z-depth-5"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col m4">
-          <h3 class="white-text left-align"  style="font-weight: 900;"id="">Gamer Stats</h3>
-        </div>
-        <div class="col m4"></div>
-        <div class="col m4"></div>
       </div>
     </div>
-    <!-- <div id="banner"></div> -->
-    <!-- <section class="transparent" style="">
+    <div class="parallax">
+      <img id="image1" style="filter: blur(3px);" src="https://progameguides.com/wp-content/uploads/2018/05/fortnite-1920x1080-wallpaper-truckn-oasis-816x459.jpg">
+    </div>
+  </div>
+  <section class="container" >
+    <br>
+    <div class="row">
+      <div class="col s4">
+        <div class="card horizontal" style="background-color: #1DB954">
+       <div class="card-image">
+         <img src="https://developer.spotify.com/assets/branding-guidelines/icon4@2x.png">
+       </div>
+       <div class="card-stacked">
+         <div class="card-content">
+           <h2 class="white-text center-align" id="tournamentTitle">Spotify</h2>
+         </div>
+       </div>
+     </div>
+      </div>
+      <div class="col s4">
 
-      <h4 class="white-text left-align" style="margin-left: 10%;"><b>Twitch Clips</b></h4>
-      <br>
-      <div class="row" style="margin-left: 10%;">
-        <div id="twitchClips">
-          <h5 class="grey-text">No Twitch Clips yet :(</h5></div>
-        <div class="row">
-          <div class="col s4">
-            <div id="twitch1"></div>
-          </div>
-          <div class="col s4">
-            <div id="twitch2"></div>
-          </div>
-          <div class="col s4">
-            <div id="twitch3"></div>
-          </div>
-        </div>
       </div>
-    </section> -->
-    <!-- <section class="">
-      <div class="row">
-        <div class="col s7" style="margin-left: 10%;">
-          <h4 class="white-text left-align" style="padding: 0px;"><b>My Favorite Games</b></h4>
-          <br><br>
-          <div id="gameHide">
-            <h5 class="grey-text">I love all games, can't pick :)</h5></div>
-          <div id="game1"></div>
-          <div id="game2"></div>
-          <div id="game3"></div>
-        </div>
-        <div class="col s5" style="margin-left: -12%;">
-          <h4 class="white-text right-align" style="margin-right:  1%;"><b>My Bio</b></h4>
-          <div id="bioHide" class="right-align">
-            <h5 class="grey-text">No Bio yet :(</h5></div>
+      <div class="col s4">
+        <div id="twitch-embed" style="" class=""></div>
 
-          <div id="bio" class="white-text right-align"></div>
-        </div>
-        <br>
       </div>
-      <div class="col s3" style="margin-left: -12%;">
-        <br><br><br>
-      </div>
-    </section> -->
-  </section>
-  <section class="hide-on-med-and-up">
-    <div id="bannerMobile"></div>
-    <div id="streamChat"></div>
-    <section class="grey darken-4" style="">
-      <h4 class="white-text left-align" style="margin-left: 10%;"><b>Twitch Clips</b></h4>
-      <br>
-      <div class="row" style="">
-        <!-- Featured Youtube Videos go here -->
-        <div id="twitchClipsMobile">
-          <h5 class="grey-text">No Twitch Clips yet :(</h5></div>
-        <div class="row">
-          <div class="col s12">
-            <div id="twitch1Mobile"></div>
-          </div>
-          <div class="col s12">
-            <div id="twitch2Mobile"></div>
-          </div>
-          <div class="col s12">
-            <div id="twitch3Mobile"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="black">
-      <div class="row">
+    </div>
 
-    </section>
   </section>
 
 

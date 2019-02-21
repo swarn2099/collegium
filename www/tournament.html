@@ -26,6 +26,8 @@
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
   <script src="../js/moment.js"></script>
+  <script src="https://sdk.scoutsdk.com/1.0.0/js/Scout.js"></script>
+
   <script>
     // Initialize Firebase
     var config = {
@@ -42,6 +44,11 @@
     };
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
+    Scout.configure({
+      clientId: "e3bc391a-2949-45d5-a200-b24c35dfec56"
+    }).then(() => {
+      // Perform Scout queries here
+    })
   </script>
   <script type="text/javascript" src="../js/tournament.js"></script>
   <style>
@@ -68,6 +75,7 @@
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small white-text">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small white-text">settings</i></a></li>
 </ul>
+
 <body class="z-depth-5" onload="loadPlayer();" style="background-color: #1A1B25;">
   <section class="hide-on-med-and-down">
     <div class="parallax-container center valign-wrapper">
@@ -79,7 +87,7 @@
           </div>
         </div>
       </div>
-      <div class="parallax" >
+      <div class="parallax">
         <img id="image1" style="filter: blur(3px);" src="">
       </div>
     </div>
@@ -88,9 +96,24 @@
     <section style="background-color: #1A1B25; min-height: 500px;">
       <section class="container">
         <br>
+        <h3 class="white-text  left-align" id="">Player Stats</h3>
+        <hr color="red" />
         <div style="margin-top: 0%;" class="row" id="playerRow">
         </div>
         <br>
+        <h3 class="white-text  left-align" id="">Streaming Now</h3>
+        <hr color="orange" />
+        <div class="row">
+          <div class="col m12 s12" style="margin-left: 0%;">
+            <div id="noLive">
+              <h6 class="white-text"> No one's live right now :(</h6>
+            </div>
+            <br>
+            <!-- <div style="padding-top: 2%;"><h3 class="white-text" style="font-weight: 900;">Watch Now</h3><br></div> -->
+
+            <div id="livePlayers"></div>
+          </div>
+        </div>
       </section>
     </section>
   </section>

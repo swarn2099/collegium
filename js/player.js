@@ -36,9 +36,10 @@ function loadPlayer() {
       });
       //twitch
       new Twitch.Embed("twitch-embed", {
-        width: 850,
-        height: 400,
+        width: 450,
+        height: 275,
         channel: doc.data().twitch,
+        layout: 'video'
       });
 
     } else {

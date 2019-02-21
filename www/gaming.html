@@ -46,6 +46,20 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
+  <style>
+    html {
+      overflow-x: hidden;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .parallax-text {
+      font-size: 60px;
+      /* font-family: 'Barlow', sans-serif; */
+      /* letter-spacing: .11em; */
+      font-weight: 900;
+      text-rendering: optimizeLegibility;
+    }
+  </style>
 </head>
 
 <ul id="slide-out" class="sidenav sidenav-fixed center grey darken-4"><br>
@@ -56,94 +70,128 @@
   <li><a href="eventPage.html" class="tooltipped" data-position="right" data-tooltip="Events"><i class="material-icons small white-text">event</i></a></li>
   <li><a href="settings.html" class="tooltipped" data-position="right" data-tooltip="Creator Settings"><i class="material-icons small white-text">settings</i></a></li>
 </ul>
-<div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black-text" style="background-color: #29243D;">
-      <a href="../index.html" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text heavy">.me</span></a>
-      <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
-      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <!-- <li><a class="" href="https://swarnsingh.typeform.com/to/jl42TN" target="_blank">Streamer Signup</a></li> -->
-        <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
-        <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
-        <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
 
-<body onload="loadAllStreamers()" style="background: linear-gradient(to right, #dc2430, #7b4397);">
-  <section class="hide-on-med-and-down">
-    <section class="" style="background: linear-gradient(to right, #dc2430, #7b4397);">
-      <section style="background: linear-gradient(30deg, #7b4397, transparent, transparent), url('https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60');" class="z-depth-5">
-        <div class="row container">
-          <div class="col m12 s12" style="margin-left: 0%;">
-            <div id="noLive">
-            </div>
-            <br>
-            <!-- <div style="padding-top: 2%;"><h3 class="white-text" style="font-weight: 900;">Watch Now</h3><br></div> -->
-            <div class="col m3 animated fadeInRight">
-              <div class="card z-depth-5 animated infinite slower" style=" border-radius: 15px; background-color: #2a0845; height: 200px;">
-                <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-                  <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Live Now</h5></section>
-                <div class="card-content white-text">
-                  <p style="font-weight: 900;" class="white-text">This section has all of the players on Collegium who are live on Twitch rn </p>
-                </div>
-              </div>
-            </div>
+
+<body onload="loadAllStreamers()" style="background-color: #1A1B25;">
+  <section class="">
+    <div class="parallax-container ">
+      <nav class="transparent z-depth-0">
+        <div class="nav-wrapper black-text">
+          <a href="../index.html" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%;"><span class="white-text text-lighten-2"><b>collegium</b></span><span class="blue-text text-darken-4"style="font-weight: 900;">.me</span></a>
+          <a href="gaming.html" class="brand-logo center" style="padding-right: 1%;"><span class="white-text text-lighten-2"><b>Gaming</b></span></a>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons white-text">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="modal-trigger" href="#subscriptionsModal">Communities</a></li>
+            <li id="loginButton"><a class="modal-trigger" href="#login">Login</a></li>
+            <li id="signoutButton"><a onclick="signout();">Sign Out</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 white-text ">
+            <h2 class="white-text parallax-text left-align" id="tournamentTitle">Live Now</h2>
             <div id="livePlayers"></div>
           </div>
         </div>
-        <br>
-      </section>
+      </div>
+      <div class="parallax" style="">
+        <img id="" style="filter: blur(4px);" src="https://progameguides.com/wp-content/uploads/2018/05/fortnite-1920x1080-wallpaper-truckn-oasis-816x459.jpg">
+      </div>
+    </div>
+    <section class="" style="background-color: #1A1B25;">
       <div class="row container">
-        <div style="padding-top: 2%;"><h3 class="white-text " style="font-weight: 900;">Collegium Weekly</h3><br></div>
-        <div class="col m3 s12" style="margin-left: 0%;">
-          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #FF5733;">
-            <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Let's Get Started</h5></section>
-            <div class="card-content white-text">
-              <p> Online tournaments to showcase your skills and doesn't break the bank.</p>
-            </div>
-          </div>
-        </div>
+        <h3 class="white-text " style="font-weight: 900;">Collegium Weekly</h3>
         <div class="col m3 s12" style="margin-left: 0%;">
           <a href="tournament.html">
-            <div class="card z-depth-5 animated infinite " style="height: 250px; border-radius: 15px; background-color: #C70039;">
+            <div class="card z-depth-5 animated infinite " style="height: 250px; border-radius: 15px; background-color: #003049;">
               <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
                 <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Fortnite Fugazi</h5></section>
-              <div class="card-content white-text">
-                <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6>
+              <div class="card-content white-text center-align">
+                <h6 style="font-size: 30px;font-weight: 900; text-rendering: optimizeLegibility; padding: 15px; margin-top: -5%;" class="white-text center-align z-depth-5 grey darken-4">2 | 21 | 19</h6>
                 <br>
-                <a class="waves-effect waves-light btn z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/reg7uM" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
+
+                <a class="typeform-share button center" href="https://swarnsingh.typeform.com/to/reg7uM" data-mode="drawer_right" style="font-weight: 900;"><h6 style="font-weight: 900; text-rendering: optimizeLegibility; padding: 15px; margin-top: -5%;" class="white-text center-align z-depth-5 cyan darken-3">Reserve Spot</h6></a>
               </div>
             </div>
           </a>
         </div>
         <div class="col m3 s12" style="margin-left: 0%;">
-          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #900C3F;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #D62828;">
             <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
               <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Apex Legends</h5></section>
             <div class="card-content white-text">
-              <!-- <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6> -->
-              <br>
-              <a class="waves-effect waves-light btn disabled z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/aQWe0s" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
+              <div class="valign-wrapper">
+                <h6 style="font-size: 35px;font-weight: 900; text-rendering: optimizeLegibility;" class="white-text center-align">Coming Soon</h6>
+              </div>
             </div>
           </div>
         </div>
         <div class="col m3 s12" style="margin-left: 0%;">
-          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #581845;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #F77F00;">
             <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Coming Soon</h5></section>
+              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Overwatch</h5></section>
             <div class="card-content white-text">
-              <!-- <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6> -->
+              <h6 style="font-size: 35px;font-weight: 900; text-rendering: optimizeLegibility;" class="white-text center-align">Coming Soon</h6>
+
+            </div>
+          </div>
+        </div>
+        <div class="col m3 s12" style="margin-left: 0%;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #E09F3E;">
+            <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
+              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Smash</h5></section>
+            <div class="card-content white-text">
+              <h6 style="font-size: 35px;font-weight: 900; text-rendering: optimizeLegibility;" class="white-text center-align">Coming Soon</h6>
               <br>
-              <a class="waves-effect waves-light btn disabled z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/aQWe0s" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <br>
+    </section>
+    <section class="" style="background:  url('https://images.unsplash.com/photo-1498736297812-3a08021f206f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1957&q=80');">
+      <div class="row container">
+        <br>
+        <h3 class="white-text " style="font-weight: 900;">Comet Clash</h3>
+        <div class="col m4 s12" style="margin-left: 0%;">
+          <a href="tournament.html">
+            <div class="card z-depth-5 animated infinite " style="height: 250px; border-radius: 15px; background-color: #581845;">
+              <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
+                <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Sign Up</h5></section>
+              <div class="card-content white-text center-align">
+                <h6 style="font-size: 30px;font-weight: 900; text-rendering: optimizeLegibility; padding: 15px; margin-top: -5%;" class="white-text center-align">2 | 21 | 19</h6>
+                <br>
+
+                <a class="typeform-share button center" href="https://swarnsingh.typeform.com/to/reg7uM" data-mode="drawer_right" style="font-weight: 900; border-radius: 20px;"><h6 style="font-weight: 900; text-rendering: optimizeLegibility; padding: 15px; margin-top: -5%;" class="white-text center-align z-depth-5 grey darken-4">Reserve Spot</h6></a>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col m4 s12" style="margin-left: 0%;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #900C3F;">
+            <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
+              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">View Stats</h5></section>
+            <div class="card-content white-text center-align">
+                <h6 style="font-size: 35px;font-weight: 900; text-rendering: optimizeLegibility;" class="white-text center-align">Coming Soon</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col m4 s12" style="margin-left: 0%;">
+          <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #C70039;">
+            <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
+              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">When & Where</h5></section>
+            <div class="card-content white-text">
+              <h6 style="font-size: 20px;font-weight: 900; text-rendering: optimizeLegibility; padding: 15px; margin-top: -5%;" class="white-text center-align ">Sundays at 3 p.m.</h6>
+              <br>
+              <h6 style="font-size: 20px;font-weight: 900; text-rendering: optimizeLegibility; padding: 15px; margin-top: -5%;" class="white-text center-align">Blackstone Launchpad</h6>
+
             </div>
           </div>
         </div>
       </div>
-      <div class="row z-depth-5" style="background: linear-gradient(30deg, #004092, transparent, transparent), url('https://images.unsplash.com/photo-1498736297812-3a08021f206f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1957&q=80');">
+      <!-- <div class="row z-depth-5" style="background: linear-gradient(30deg, #004092, transparent, transparent), url('https://images.unsplash.com/photo-1498736297812-3a08021f206f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1957&q=80');">
         <div class="col m6 s12 left-align" style="margin-top: 4%;">
           <h3 class="white-text container "style="font-weight: 900;">Twitch Always On</h3><br>
           <div id="twitch-embed" style="margin-left: 15%;"></div>
@@ -181,9 +229,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
-    <section class="z-depth-5 container" style="border-radius: 25px;">
+    <!-- <section class="z-depth-5 container" style="border-radius: 25px;">
       <br>
       <h3 class="white-text center-align container " style="font-weight: 900;">All Streamers</h3><br><br>
       <div class="row " style="margin-left: 0%;">
@@ -193,77 +241,10 @@
         <div id="fortnite"></div>
         <div id="csgo"></div>
       </div>
-    </section>
+    </section> -->
   </section>
 
-  <section class="hide-on-med-and-up grey darken-4">
 
-    <div class="row container" style="margin-top: -10%;">
-      <br>
-      <h3 class="white-text " style="font-weight: 900; margin-left: 5%;">Collegium's Weekly</h3><br>
-      <div class="col m3 s12" style="margin-left: 0%;">
-        <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #FF5733;">
-          <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-            <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Let's Get Started</h5></section>
-          <div class="card-content white-text">
-            <p>Welcome to Collegium's Weekly.<br><br> Online tournaments to showcase your skills and doesn't break the bank.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col m3 s12" style="margin-left: 0%;">
-        <a href="tournament.html">
-          <div class="card z-depth-5 animated infinite bounce slower" style="height: 250px; border-radius: 15px; background-color: #C70039;">
-            <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-              <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Fortnite Fugazi</h5></section>
-            <div class="card-content white-text">
-              <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6>
-              <br>
-              <a class="waves-effect waves-light btn z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/reg7uM" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col m3 s12" style="margin-left: 0%;">
-        <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #900C3F;">
-          <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-            <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Coming Soon</h5></section>
-          <div class="card-content white-text">
-            <!-- <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6> -->
-            <br>
-            <a class="waves-effect waves-light btn disabled z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/aQWe0s" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
-          </div>
-        </div>
-      </div>
-      <div class="col m3 s12" style="margin-left: 0%;">
-        <div class="card z-depth-5" style="height: 250px; border-radius: 15px; background-color: #581845;">
-          <section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;">
-            <h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">Coming Soon</h5></section>
-          <div class="card-content white-text">
-            <!-- <h6 style="font-weight: 900;" class="white-text">Saturday at 7:00 p.m.</h6> -->
-            <br>
-            <a class="waves-effect waves-light btn disabled z-depth-5 white black-text typeform-share button" href="https://swarnsingh.typeform.com/to/aQWe0s" data-mode="drawer_right" style="border-radius: 20px; font-weight: 900;">Reserve your spot</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section class="white">
-      <br>
-      <h3 class="black-text right-align container " style="font-weight: 900;">All Streamers</h3><br>
-      <div class="row container">
-        <div id="allplayers" style="margin-left: 15%;"></div>
-        <div id="overwatch" style="margin-left: 15%;"></div>
-        <div id="league" style="margin-left: 15%;"></div>
-        <div id="fortnite" style="margin-left: 15%;"></div>
-        <div id="csgo" style="margin-left: 15%;"></div>
-        <div id="allplayersMobile"></div>
-        <div id="overwatchMobile"></div>
-        <div id="leagueMobile"></div>
-        <div id="fortniteMobile"></div>
-        <div id="csgoMobile"></div>
-      </div>
-    </section>
-  </section>
 </body>
 <!-- Modal Structure -->
 <div id="subscriptionsModal" class="modal bottom-sheet" style="background-color: #141414;">
@@ -346,18 +327,6 @@
   function loadAllStreamers() {
     db.collection("gamers").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-        var streamerAll = '<div class="col s12 m3 animated fadeIn"><a data-playerName="' + doc.data().twitch +
-          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 200px;   object-fit: cover;" src="' + doc.data().gameImage +
-          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-        $('#allplayers').append(streamerAll);
-        $('#allplayersMobile').append(streamerAll);
-
-      });
-    });
-    db.collection("gamers").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
         var twitchLive = 'https://api.twitch.tv/helix/streams/' + doc.data().twitch;
         //client id: urff2tmjj5swnbqlltvic62bwpn96f
         $.get({
@@ -379,8 +348,6 @@
               var word = words[Math.floor(Math.random() * words.length)];
               console.log(word);
 
-
-
               var livePlayers = '<div class="col m3 animated fadeInRight"><a onclick="openPlayerPage(this)" data-playerName="' + doc.data().twitch +
                 '"><div class="card z-depth-5 animated infinite slower" style="height: 200px; border-radius: 15px; background-color: #' + word +
                 ';"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">' + doc.data().twitch +
@@ -391,88 +358,33 @@
         });
       });
     });
-  }
-  //
-  function loadOverwatch() {
-    $('#allplayers').hide();
-    $('#league').hide();
-    $('#fortnite').hide();
-    $('#csgo').hide();
-    $('#overwatch').show();
-    console.log("Overwatch clicked!");
-    db.collection("gamers").where("game1", "==", "Overwatch").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log("Overwatch", " => ", doc.data());
-        var overwatch = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 50px;   object-fit: cover;" src="' + doc.data().gameImage +
-          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-        $('#overwatch').append(overwatch);
-        $('#overwatchMobile').append(overwatch);
+    var countDownDate = new Date("Feb 21, 2019 23:59:59").getTime();
 
-      });
-    });
-  }
+    // Update the count down every 1 second
+    var x = setInterval(function() {
 
-  function loadLeague() {
-    $('#allplayers').hide();
-    $('#league').hide();
-    $('#overwatch').hide();
-    $('#fortnite').hide();
-    $('#league').show();
-    console.log("League clicked!");
-    db.collection("gamers").where("game1", "==", "League of Legends").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        var league = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 50px;   object-fit: cover;" src="' + doc.data().gameImage +
-          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-        $('#league').append(league);
-        $('#leagueMobile').append(league);
+      // Get todays date and time
+      var now = new Date().getTime();
 
-      });
-    });
-  }
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
 
-  function loadFortnite() {
-    $('#allplayers').hide();
-    $('#league').hide();
-    $('#overwatch').hide();
-    $('#csgo').hide();
-    $('#fortnite').show();
-    console.log("Fortnite clicked!");
-    db.collection("gamers").where("game1", "==", "Fortnite").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        var fortnite = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 50px;   object-fit: cover;" src="' + doc.data().gameImage +
-          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-        $('#fortnite').append(fortnite);
-        $('#fortniteMobile').append(fortnite);
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      });
-    });
-  }
+      // Display the result in the element with id="demo"
+      document.getElementById("countdown").innerHTML = hours + "h " +
+        minutes + "m " + seconds + "s  left to signup";
 
-
-  function loadCSGO() {
-    $('#allplayers').hide();
-    $('#league').hide();
-    $('#overwatch').hide();
-    $('#fortnite').hide();
-    $('#csgo').show();
-    console.log("CSGO clicked!");
-    db.collection("gamers").where("game1", "==", "Counter-Strike: Global Offensive").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        var csgo = '<div class="col s12 m3"><a data-playerName="' + doc.data().twitch +
-          '" onclick="openPlayerPage(this)"><div class="card white black-text z-depth-4"><div class="card-image"><img style="height: 50px;   object-fit: cover;" src="' + doc.data().gameImage +
-          '"></div><div class="card-content"><h6 class="center-align" style="font-weight: 900;">' + doc.data().twitch + '</h6><br><p class="center-align">' + doc.data().miniBio + '</p></div></div></a></div>';
-        $('#csgo').append(csgo);
-        $('#csgoMobile').append(csgo);
-
-      });
-    });
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
   }
 </script>
 <script>
@@ -492,14 +404,7 @@
     }
   })()
 </script>
-<script type="text/javascript">
-      new Twitch.Embed("twitch-embed", {
-        width: 650,
-        height: 350,
-        layout: "video",
-        channel: "twitchpresents"
-      });
-    </script>
+
 <script type="text/javascript" src="../js/materialize.min.js"></script>
 
 </html>
