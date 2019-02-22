@@ -51,8 +51,6 @@ function loadPlayer() {
       }, 1000);
 
 
-
-
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -65,7 +63,7 @@ function loadPlayer() {
     gameCount = 0;
 
   // Weekly Ranking
-  path.orderBy("kills", "desc").get().then(function(querySnapshot) {
+  path.orderBy("kills").get().then(function(querySnapshot) {
     querySnapshot.forEach(function(player) {
       participants += 1;
       killCount += player.data().kills;
@@ -73,38 +71,38 @@ function loadPlayer() {
       // doc.data() is never undefined for query doc snapshots
       // console.log(player.id, " => ", player.data());
 
-      // var twitchLive = 'https://api.twitch.tv/helix/streams/' + player.data().twitch;
-      // //client id: urff2tmjj5swnbqlltvic62bwpn96f
-      // $.get({
-      //   url: 'https://api.twitch.tv/kraken/streams/' + player.data().twitch,
-      //   data: {
-      //     client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'
-      //   },
-      //   error: function(response) {
-      //     console.log("IT DIDNT WORK");
-      //   },
-      //   success: function(response) {
-      //     console.log("response", response);
-      //
-      //     console.log(player.data().twitch, " => ", response)
-      //     if (response.stream.stream_type == "live") {
-      //       console.log("EVERYTHING IS GUCCI");
-      //       $('#noLive').hide();
-      //       var words = ["051e3e", "251e3e", "451e3e", "651e3e", "851e3e"];
-      //       var word = words[Math.floor(Math.random() * words.length)];
-      //       console.log(word);
-      //
-      //
-      //
-      //       var livePlayers = '<div class="col m3 animated fadeInRight"><a onclick="openPlayerPage(this)" data-playerName="' + player.data().twitch +
-      //         '"><div class="card z-depth-5 animated infinite slower" style="height: 200px; border-radius: 15px; background-color: #' + word +
-      //         ';"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">' + player.data().twitch +
-      //         '</h5></section><div class="card-content white-text"><h6 style="font-weight: 900;" class="white-text">Watch me play ' + response.stream.game + '</h6></div></div></a></div>';
-      //         $('#noLive').hide();
-      //       $('#livePlayers').append(livePlayers);
-      //     }
-      //   }
-      // });
+      var twitchLive = 'https://api.twitch.tv/helix/streams/' + player.data().twitch;
+      //client id: urff2tmjj5swnbqlltvic62bwpn96f
+      $.get({
+        url: 'https://api.twitch.tv/kraken/streams/' + player.data().twitch,
+        data: {
+          client_id: 'urff2tmjj5swnbqlltvic62bwpn96f'
+        },
+        error: function(response) {
+          console.log("IT DIDNT WORK");
+        },
+        success: function(response) {
+          console.log("response", response);
+
+          console.log(player.data().twitch, " => ", response)
+          if (response.stream.stream_type == "live") {
+            console.log("EVERYTHING IS GUCCI");
+            $('#noLive').hide();
+            var words = ["051e3e", "251e3e", "451e3e", "651e3e", "851e3e"];
+            var word = words[Math.floor(Math.random() * words.length)];
+            console.log(word);
+
+
+
+            var livePlayers = '<div class="col m3 animated fadeInRight"><a onclick="openPlayerPage(this)" data-playerName="' + player.data().twitch +
+              '"><div class="card z-depth-5 animated infinite slower" style="height: 200px; border-radius: 15px; background-color: #' + word +
+              ';"><section class="grey darken-4" style="border-radius: 15px 15px 0px 0px;"><h5 class="white-text center-align" style="font-weight: 900; padding-top: 15px; padding-bottom: 15px;">' + player.data().twitch +
+              '</h5></section><div class="card-content white-text"><h6 style="font-weight: 900;" class="white-text">Watch me play ' + response.stream.game + '</h6></div></div></a></div>';
+              $('#noLive').hide();
+            $('#livePlayers').append(livePlayers);
+          }
+        }
+      });
 
 
 
@@ -171,11 +169,11 @@ function loadPlayer() {
               i++;
             }
             console.log("Ok here's whats up for ", player.data().epic, "=> timestamp: ", timestampGod, " kills: ", killsGod, " Games: ", gamesGod );
-            // db.collection("fortnitefugazi").doc(player.id).update({
-            //   kills: killsGod + player.data().kills,
-            //   games: gamesGod + player.data().games,
-            //   timestamp: timestampGod
-            // });
+            db.collection("fortnitefugazi").doc(player.id).update({
+              kills: killsGod + player.data().kills,
+              games: gamesGod + player.data().games,
+              timestamp: timestampGod
+            });
           }
 
 
