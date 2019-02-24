@@ -25,5 +25,6 @@ $(document).ready(function(){
       showClearBtn: true,
     });
     $(".button-collapse").sideNav();
+    
 
   }); // end of document ready
