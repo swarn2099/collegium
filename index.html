@@ -677,6 +677,12 @@
                     <label for="twitch">Twitch</label>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="smash" type="text" class="validate" style="color: #fff;">
+                    <label for="twitch">Smash Name</label>
+                  </div>
+                </div>
                 <a onclick="hideCreate();">
                   <p class="blue-text left-align" style="font-size: 10px;">Already have an account? Login here.</p>
                 </a>
@@ -826,7 +832,9 @@
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script>
   $(document).ready(function() {
-    $('#createAccount').hide();
+    $('#createAccount').show();
+    $('#accountAlready').hide();
+
   });
 
   function hideLogin() {
@@ -870,13 +878,21 @@
     var twitchCreate = document.getElementById('twitch').value;
     var emailCreate = document.getElementById('emailCreate').value;
     var passwordCreate = document.getElementById('passwordCreate').value;
+    var smashCreate = document.getElementById('smash').value;
+
     db.collection("gamers").doc(emailCreate).set({
         first_name: firstCreate,
         last_name: lastCreate,
         twitch: twitchCreate,
         email: emailCreate,
         password: passwordCreate,
-        points: 100
+        points: 100,
+        smash: smashCreate,
+        challenges: [],
+        full_name: firstCreate + ' ' + lastCreate,
+        tierPoints: 25,
+        tier: "BRONZE",
+        notification: {}
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -889,7 +905,7 @@
         html: "You're all set :)",
         classes: 'rounded green white-text'
       });
-      window.open("www/gaming.html", "_self");
+      // window.open("www/gaming.html", "_self");
 
     }).catch(function(error) {
       M.toast({

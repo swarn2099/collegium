@@ -16,15 +16,13 @@ $(document).ready(function(){
     $('.tooltipped').tooltip();
 
     $('.dropdown-trigger').dropdown();
-    $('.datepicker').datepicker({
-      autoClose: true
-    });
+    $('.datepicker').datepicker();
     $('select').formSelect();
     $('.timepicker').timepicker({
       vibrate: true,
       showClearBtn: true,
     });
     $(".button-collapse").sideNav();
-    
+
 
   }); // end of document ready
