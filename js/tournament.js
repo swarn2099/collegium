@@ -3,9 +3,7 @@ var participants = 0;
 
 
 function loadFortnite() {
-
   // This section is to populate the page with Fortnite Information
-
   var docRef = db.collection("tournaments").doc('fortnitefrenzy');
   docRef.get().then(function(doc) {
     if (doc.exists) {
