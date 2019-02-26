@@ -675,7 +675,7 @@
         <div class="blog-slider__pagination"></div>
       </div>
     </div>
-    <div class="containerFake container " style="margin-top: 35%; margin-left: 10%;" >
+    <div class="containerFake container " style="margin-top: 35%; margin-left: 10%;">
       <h1 class="white-text container center-align" style="font-weight: 900; font-size: 50px;" id="">Your Challenges</h1>
       <ul class="collection containerFake collapsible" style="margin-top: 8%" id="challengeSection">
 
@@ -708,9 +708,18 @@
         <div class="blog-slider__pagination"></div>
       </div>
     </div>
-
-
   </section>
+  <!-- Modal Structure -->
+  <!-- <div id="modal1" class="modal" style="min-height: 800px;">
+  <div class="modal-content">
+    <h4>Pick Time and Date</h4>
+    <div class="input-field col s12 container">
+      <input type="text" class="datepicker" id="date">
+      <label for="date">Pick Date</label>
+    </div>
+
+  </div>
+</div> -->
 </body>
 
 <script>
@@ -752,7 +761,11 @@
             myPoints = doc.data().points;
 
             for (var i = 0; i < doc.data().challenges.length; i++) {
-              var card1 ='<li class="collection-item avatar white-text valign-wrapper" style="background-color: #171821; border-color: #000;"><img src="http://pngimg.com/uploads/pokemon/pokemon_PNG14.png" alt="" class="circle"><span class="title" style="font-weight: 900; font-size: 25px;"> Play <span style="  text-decoration: underline;">Smash</span> with '+doc.data().challenges[i].challengerName+'</span> &nbsp at &nbsp <span style="font-size: 20px; text-decoration: underline;">'+doc.data().challenges[i].time+'</span> &nbsp on &nbsp <span style="text-decoration: underline; font-size: 20px;">' + doc.data().challenges[i].date+ '</span><div class="secondary-content valign-wrapper"><a href="#!" class="purple darken-4 waves-effect waves-light btn">Accept</a>&nbsp &nbsp <a href="#!" class="waves-effect waves-light btn grey darken-4">Decline</a></div></li>';
+              var card1 =
+                '<li class="collection-item avatar white-text valign-wrapper" style="background-color: #171821; border-color: #000;"><img src="http://pngimg.com/uploads/pokemon/pokemon_PNG14.png" alt="" class="circle"><span class="title" style="font-weight: 900; font-size: 25px;"> Play <span style="  text-decoration: underline;">Smash</span> with ' +
+                doc.data().challenges[i].challengerName + '</span> &nbsp at &nbsp <span style="font-size: 20px; text-decoration: underline;">' + doc.data().challenges[i].time +
+                '</span> &nbsp on &nbsp <span style="text-decoration: underline; font-size: 20px;">' + doc.data().challenges[i].date +
+                '</span><div class="secondary-content valign-wrapper"><a href="#!" class="purple darken-4 waves-effect waves-light btn">Accept</a>&nbsp &nbsp <a href="#!" class="waves-effect waves-light btn grey darken-4">Decline</a></div></li>';
               $('#challengeSection').append(card1);
               // $('#acceptedChallenge').hide();
 
@@ -801,7 +814,7 @@
             var chip =
               '<li class="collection-item avatar z-depth-5"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" class="circle"><span class="title" style="font-weight: 900; font-size: 20px;">' +
               doc.data().full_name + '</span><p>' + doc.data().tierPoints + ' Tier Points<br>' + doc.data().tier +
-              ' Tier</p><a href="#!" style="border-radius: 15px;" class="secondary-content z-depth-5 btn waves-effect waves-light red datepicker">Challenge</a></li>';
+              ' Tier</p><a style="border-radius: 15px;" class="secondary-content z-depth-5 btn waves-effect waves-light red datepicker" onclick="challengeButton();">Challenge</a> </li>';
             $('#foundPlayer').append(chip);
           });
         })
@@ -810,117 +823,124 @@
         });
     })
     .keyup();
+
+  function challengeButton() {
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+  }
 </script>
 <script type="text/javascript" src="../js/materialize.min.js">
 </script>
 <script>
-  var scene,
-    camera,
-    renderer,
-    containerFake,
-    aspect,
-    fov,
-    plane,
-    far,
-    mouseX,
-    mouseY,
-    windowHalfX,
-    windowHalfY,
-    geometry,
-    starStuff,
-    materialOptions,
-    stars;
-
-  init();
-  animate();
-
-  function init() {
-    containerFake = document.createElement('div');
-    document.body.appendChild(containerFake);
-
-    mouseX = 0;
-    mouseY = 0;
-
-    aspect = window.innerWidth / window.innerHeight;
-    fov = 40;
-    plane = 1;
-    far = 800;
-
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-
-    camera = new THREE.PerspectiveCamera(
-      fov,
-      aspect,
-      plane,
-      far
-    );
-
-    camera.position.z = far / 2;
-
-    scene = new THREE.Scene({
-      antialias: true
-    });
-    scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
-
-    starForge();
-
-    renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true
-    });
-    renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.autoClear = false;
-    renderer.setClearColor(0x000000, 0.0);
-    containerFake.appendChild(renderer.domElement);
-
-    document.addEventListener('mousemove', onMouseMove, false);
-  }
-
-  function animate() {
-    requestAnimationFrame(animate);
-    render();
-  }
-
-  function render() {
-    camera.position.x += (mouseX - camera.position.x) * 0.005;
-    camera.position.y += (-mouseY - camera.position.y) * 0.005;
-    camera.lookAt(scene.position);
-    renderer.render(scene, camera);
-  }
-
-  function starForge() {
-    var amount = 45000;
-    geometry = new THREE.SphereGeometry(1000, 100, 50);
-
-    materialOptions = {
-      color: new THREE.Color(0xffffff),
-      size: 1.1,
-      transparency: true,
-      opacity: 0.8
-    };
-
-    starStuff = new THREE.PointsMaterial(materialOptions);
-
-
-    for (var i = 0; i < amount; i++) {
-      var item = new THREE.Vector3();
-      item.x = Math.random() * 2000 - 1000;
-      item.y = Math.random() * 2000 - 1000;
-      item.z = Math.random() * 2000 - 1000;
-
-      geometry.vertices.push(item);
-    }
-
-    stars = new THREE.PointCloud(geometry, starStuff);
-    scene.add(stars);
-  }
-
-  function onMouseMove(e) {
-    mouseX = e.clientX - windowHalfX;
-    mouseY = e.clientY - windowHalfY;
-  }
+  // var scene,
+  //   camera,
+  //   renderer,
+  //   containerFake,
+  //   aspect,
+  //   fov,
+  //   plane,
+  //   far,
+  //   mouseX,
+  //   mouseY,
+  //   windowHalfX,
+  //   windowHalfY,
+  //   geometry,
+  //   starStuff,
+  //   materialOptions,
+  //   stars;
+  //
+  // init();
+  // animate();
+  //
+  // function init() {
+  //   containerFake = document.createElement('div');
+  //   document.body.appendChild(containerFake);
+  //
+  //   mouseX = 0;
+  //   mouseY = 0;
+  //
+  //   aspect = window.innerWidth / window.innerHeight;
+  //   fov = 40;
+  //   plane = 1;
+  //   far = 800;
+  //
+  //   windowHalfX = window.innerWidth / 2;
+  //   windowHalfY = window.innerHeight / 2;
+  //
+  //   camera = new THREE.PerspectiveCamera(
+  //     fov,
+  //     aspect,
+  //     plane,
+  //     far
+  //   );
+  //
+  //   camera.position.z = far / 2;
+  //
+  //   scene = new THREE.Scene({
+  //     antialias: true
+  //   });
+  //   scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
+  //
+  //   starForge();
+  //
+  //   renderer = new THREE.WebGLRenderer({
+  //     antialias: true,
+  //     alpha: true
+  //   });
+  //   renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+  //   renderer.setSize(window.innerWidth, window.innerHeight);
+  //   renderer.autoClear = false;
+  //   renderer.setClearColor(0x000000, 0.0);
+  //   containerFake.appendChild(renderer.domElement);
+  //
+  //   document.addEventListener('mousemove', onMouseMove, false);
+  // }
+  //
+  // function animate() {
+  //   requestAnimationFrame(animate);
+  //   render();
+  // }
+  //
+  // function render() {
+  //   camera.position.x += (mouseX - camera.position.x) * 0.005;
+  //   camera.position.y += (-mouseY - camera.position.y) * 0.005;
+  //   camera.lookAt(scene.position);
+  //   renderer.render(scene, camera);
+  // }
+  //
+  // function starForge() {
+  //   var amount = 45000;
+  //   geometry = new THREE.SphereGeometry(1000, 100, 50);
+  //
+  //   materialOptions = {
+  //     color: new THREE.Color(0xffffff),
+  //     size: 1.1,
+  //     transparency: true,
+  //     opacity: 0.8
+  //   };
+  //
+  //   starStuff = new THREE.PointsMaterial(materialOptions);
+  //
+  //
+  //   for (var i = 0; i < amount; i++) {
+  //     var item = new THREE.Vector3();
+  //     item.x = Math.random() * 2000 - 1000;
+  //     item.y = Math.random() * 2000 - 1000;
+  //     item.z = Math.random() * 2000 - 1000;
+  //
+  //     geometry.vertices.push(item);
+  //   }
+  //
+  //   stars = new THREE.PointCloud(geometry, starStuff);
+  //   scene.add(stars);
+  // }
+  //
+  // function onMouseMove(e) {
+  //   mouseX = e.clientX - windowHalfX;
+  //   mouseY = e.clientY - windowHalfY;
+  // }
 
 
   function signOut() {

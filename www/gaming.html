@@ -641,7 +641,7 @@
 </ul>
 <nav class="transparent z-depth-0">
   <div class="nav-wrapper black-text">
-    <a href="#" class="brand-logo left " style="padding-left: 10%;"><span class="white-text text-lighten-2" style="font-weight: 900; font-size: 35px;"><b>collegium</b></span></a>
+    <a href="#" class="brand-logo left " style="padding-left: 10%;"><span class="white-text text-lighten-2" style="font-weight: 900; font-size: 35px;"><b>Project Javelin</b></span></a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li class="z-depth-0"><a href="#" id="name"></a></li>
       <li class="z-depth-0"><a href="#" id="points"></a></li>
@@ -663,7 +663,7 @@
               <img src="https://images.unsplash.com/photo-1498736297812-3a08021f206f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2271&q=80" alt="">
             </div>
             <div class="blog-slider__content">
-              <div class="blog-slider__title">Challenge Time</div>
+              <div class="blog-slider__title">Welcome to <br>Project Javelin</div>
               <div class="blog-slider__text">Participate in tournaments and earn money. <br><br> Scroll through this card to see who's streaming on Twitch</div>
               <a href="#tournaments" class="blog-slider__button">Go to Tournaments & Events</a>
             </div>
@@ -1113,113 +1113,113 @@
 <script type="text/javascript" src="../js/materialize.min.js">
 </script>
 <script>
-  var scene,
-    camera,
-    renderer,
-    containerFake,
-    aspect,
-    fov,
-    plane,
-    far,
-    mouseX,
-    mouseY,
-    windowHalfX,
-    windowHalfY,
-    geometry,
-    starStuff,
-    materialOptions,
-    stars;
-
-  init();
-  animate();
-
-  function init() {
-    containerFake = document.createElement(`div`);
-    document.body.appendChild(containerFake);
-
-    mouseX = 0;
-    mouseY = 0;
-
-    aspect = window.innerWidth / window.innerHeight;
-    fov = 40;
-    plane = 1;
-    far = 800;
-
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-
-    camera = new THREE.PerspectiveCamera(
-      fov,
-      aspect,
-      plane,
-      far
-    );
-
-    camera.position.z = far / 2;
-
-    scene = new THREE.Scene({
-      antialias: true
-    });
-    scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
-
-    starForge();
-
-    renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true
-    });
-    renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.autoClear = false;
-    renderer.setClearColor(0x000000, 0.0);
-    containerFake.appendChild(renderer.domElement);
-
-    document.addEventListener('mousemove', onMouseMove, false);
-  }
-
-  function animate() {
-    requestAnimationFrame(animate);
-    render();
-  }
-
-  function render() {
-    camera.position.x += (mouseX - camera.position.x) * 0.005;
-    camera.position.y += (-mouseY - camera.position.y) * 0.005;
-    camera.lookAt(scene.position);
-    renderer.render(scene, camera);
-  }
-
-  function starForge() {
-    var amount = 45000;
-    geometry = new THREE.SphereGeometry(1000, 100, 50);
-
-    materialOptions = {
-      color: new THREE.Color(0xffffff),
-      size: 1.1,
-      transparency: true,
-      opacity: 0.8
-    };
-
-    starStuff = new THREE.PointsMaterial(materialOptions);
-
-
-    for (var i = 0; i < amount; i++) {
-      var item = new THREE.Vector3();
-      item.x = Math.random() * 2000 - 1000;
-      item.y = Math.random() * 2000 - 1000;
-      item.z = Math.random() * 2000 - 1000;
-
-      geometry.vertices.push(item);
-    }
-
-    stars = new THREE.PointCloud(geometry, starStuff);
-    scene.add(stars);
-  }
-
-  function onMouseMove(e) {
-    mouseX = e.clientX - windowHalfX;
-    mouseY = e.clientY - windowHalfY;
-  }
+  // var scene,
+  //   camera,
+  //   renderer,
+  //   containerFake,
+  //   aspect,
+  //   fov,
+  //   plane,
+  //   far,
+  //   mouseX,
+  //   mouseY,
+  //   windowHalfX,
+  //   windowHalfY,
+  //   geometry,
+  //   starStuff,
+  //   materialOptions,
+  //   stars;
+  //
+  // init();
+  // animate();
+  //
+  // function init() {
+  //   containerFake = document.createElement(`div`);
+  //   document.body.appendChild(containerFake);
+  //
+  //   mouseX = 0;
+  //   mouseY = 0;
+  //
+  //   aspect = window.innerWidth / window.innerHeight;
+  //   fov = 40;
+  //   plane = 1;
+  //   far = 800;
+  //
+  //   windowHalfX = window.innerWidth / 2;
+  //   windowHalfY = window.innerHeight / 2;
+  //
+  //   camera = new THREE.PerspectiveCamera(
+  //     fov,
+  //     aspect,
+  //     plane,
+  //     far
+  //   );
+  //
+  //   camera.position.z = far / 2;
+  //
+  //   scene = new THREE.Scene({
+  //     antialias: true
+  //   });
+  //   scene.fog = new THREE.FogExp2(0x1b1b1b, 0.0001);
+  //
+  //   starForge();
+  //
+  //   renderer = new THREE.WebGLRenderer({
+  //     antialias: true,
+  //     alpha: true
+  //   });
+  //   renderer.setPixelRatio((window.devicePixelRatio) ? window.devicePixelRatio : 1);
+  //   renderer.setSize(window.innerWidth, window.innerHeight);
+  //   renderer.autoClear = false;
+  //   renderer.setClearColor(0x000000, 0.0);
+  //   containerFake.appendChild(renderer.domElement);
+  //
+  //   document.addEventListener('mousemove', onMouseMove, false);
+  // }
+  //
+  // function animate() {
+  //   requestAnimationFrame(animate);
+  //   render();
+  // }
+  //
+  // function render() {
+  //   camera.position.x += (mouseX - camera.position.x) * 0.005;
+  //   camera.position.y += (-mouseY - camera.position.y) * 0.005;
+  //   camera.lookAt(scene.position);
+  //   renderer.render(scene, camera);
+  // }
+  //
+  // function starForge() {
+  //   var amount = 45000;
+  //   geometry = new THREE.SphereGeometry(1000, 100, 50);
+  //
+  //   materialOptions = {
+  //     color: new THREE.Color(0xffffff),
+  //     size: 1.1,
+  //     transparency: true,
+  //     opacity: 0.8
+  //   };
+  //
+  //   starStuff = new THREE.PointsMaterial(materialOptions);
+  //
+  //
+  //   for (var i = 0; i < amount; i++) {
+  //     var item = new THREE.Vector3();
+  //     item.x = Math.random() * 2000 - 1000;
+  //     item.y = Math.random() * 2000 - 1000;
+  //     item.z = Math.random() * 2000 - 1000;
+  //
+  //     geometry.vertices.push(item);
+  //   }
+  //
+  //   stars = new THREE.PointCloud(geometry, starStuff);
+  //   scene.add(stars);
+  // }
+  //
+  // function onMouseMove(e) {
+  //   mouseX = e.clientX - windowHalfX;
+  //   mouseY = e.clientY - windowHalfY;
+  // }
 
 
   function signOut() {
