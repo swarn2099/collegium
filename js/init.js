@@ -12,7 +12,6 @@ $(document).ready(function(){
     });
     $('.modal').modal();
 
-    $('.sidenav').sidenav();
     $('.tooltipped').tooltip();
 
     $('.dropdown-trigger').dropdown();
