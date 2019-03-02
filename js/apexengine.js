@@ -13,7 +13,7 @@ function loadStatsApex() {
             .then(function() {
               console.log("Document successfully updated!");
             });
-          // console.log(player);
+          // console.log(player);idk if this is working
           var settings = {
             "async": true,
             "crossDomain": true,
