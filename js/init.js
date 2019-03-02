@@ -21,7 +21,7 @@ $(document).ready(function(){
       vibrate: true,
       showClearBtn: true,
     });
-    $(".button-collapse").sideNav();
+    // $(".button-collapse").sideNav();
 
 
   }); // end of document ready
