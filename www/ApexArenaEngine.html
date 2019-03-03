@@ -3,11 +3,8 @@
 
 <head>
   <!--Import Google Icon Font-->
-  <!-- <meta http-equiv="refresh" content="30"/> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="collegium">
+  <meta http-equiv="refresh" content="30"/>
+
   <title>Apex Arena | Project Phoenix</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
@@ -48,7 +45,7 @@
     firebase.firestore().settings(settings);
     var db = firebase.firestore();
   </script>
-  <script type="text/javascript" src="../js/apexengine.js"></script>
+  <script type="text/javascript" src="../js/ApexArenaEngine.js"></script>
   <style>
     html,
     body {
@@ -80,46 +77,44 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li class="z-depth-0"><a href="#" id="name"></a></li>
       <li class="z-depth-0"><a href="#" id="points"></a></li>
-      <li class="z-depth-0"><a class="waves-effect waves-light btn grey darken-4 white-text" style="border-radius: 20px;">Sign Up</a></li>
-      <li class="z-depth-0"><a class="waves-effect waves-light btn grey darken-4 white-text" style="border-radius: 20px;">Contact Us</a></li>
+      <li class="z-depth-0"><a href="#" id="tierPoints"></a></li>
+      <li class="z-depth-0"><a href="#" id="tier"></a></li>
+      <!-- <li class="z-depth-3" style="background-color: #232f42"><a class="waves-effect waves-light " onclick="signOut(); ">Signout</a></li> -->
     </ul>
   </div>
 </nav>
-
-<hr color="white" />
-
 <body class="">
   <div class="row">
     <div class="col m6">
-      <h2 class="white-text" style="margin-left: 8%; font-weight: 900;">Apex Arena</h2>
+      <h2 class="white-text" style="margin-left: 8%; font-weight: 900;">Apex Arena <span style="font-size:20px;">Engine Portal</span></h2>
     </div>
     <div class="col m6 push-m4">
-      <!-- <h5 class="white-text" id="countdown" style="font-weight: 900; margin-top: 7%;"></h5> -->
+      <h5 class="white-text" id="" style="font-weight: 900; margin-top: 7%;"></h5>
     </div>
   </div>
   <div class="row container">
-    <div class="col m4 col s12">
+    <div class="col m4">
       <div class="card-panel grey darken-4 z-depth-5" style="border-radius: 15px;">
-        <h6 class="white-text center-align">Prize Pot</h6>
-        <h3 class="white-text center-align">$25</h3>
+        <h6 class="white-text center-align">Players in Lobby</h6>
+        <h3 class="white-text center-align" id="lobbyPlayers"></h3>
       </div>
     </div>
-    <div class="col m4 col s12">
+    <div class="col m4">
       <div class="card-panel grey darken-4 z-depth-5" style="border-radius: 15px;">
         <h6 class="white-text center-align">Teams in Arena</h6>
         <h3 class="white-text center-align" id="arenaTeams"></h3>
       </div>
     </div>
-    <div class="col m4 col s12">
+    <div class="col m4">
       <div class="card-panel grey darken-4 z-depth-5" style="border-radius: 15px;">
         <h6 class="white-text center-align">Time Left</h6>
         <h3 class="white-text center-align" id="countdown"></h3>
       </div>
     </div>
   </div>
-  <hr color="white" / class="container">
+  <hr color="white"/ class="container">
   <br>
-  <section class="hide-on-small-only">
+  <section class="container">
     <div class="row container">
       <div class="col m12 container " id="teamSection">
         <div class="progress">
@@ -128,43 +123,6 @@
       </div>
     </div>
   </section>
-  <section class="hide-on-med-and-up">
-    <div class="row container ">
-      <div class="col m12" id="teamSectionMobile">
-        <div class="progress">
-          <div class="indeterminate"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- <section class="container">
-    <div class="row">
-      <div class="col m7 container pull-m1" id="teamSection">
-
-
-        <div class="progress">
-          <div class="indeterminate"></div>
-        </div>
-
-
-      </div>
-      <div class="col m5">
-        <div class="z-depth-5 transparent hoverable" style="background-color: #171C2F; border-radius: 15px; padding: 10px; overflow-y: auto; height: 600px;">
-          <h5 class="center-align" style="padding-top: 10px; padding-left: 20px; color: #fff; font-weight: 900;">Tournament Feed</h5>
-          <hr class="container" color="white" />
-          <br>
-          <section id="liveNow"></section>
-          <section id="trendingCardSection"></section>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-
-  <!--<section class="hide-on-med-and-up">
-    <div id="bannerMobile"></div>
-    <div class="row" id="playerRowMobile"></div>
-  </section> -->
 </body>
 
 <script type="text/javascript" src="../js/materialize.min.js"></script>

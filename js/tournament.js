@@ -6,23 +6,6 @@ function loadFortnite() {
 
 
 
-  $.get({
-    url: 'https://apextab.com/api/player.php?aid=4cfdc3cb029b97666350deba9ea2eb9f',
-    error: function(response) {
-      console.log("IT DIDNT WORK");
-    },
-    success: function(response) {
-      console.log(response);
-
-    }
-  });
-
-
-
-
-
-
-
 
   // This section is to populate the page with Fortnite Information
   var docRef = db.collection("tournaments").doc('fortnitefrenzy');
