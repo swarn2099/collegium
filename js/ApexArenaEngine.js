@@ -4,16 +4,24 @@ var teamCounter = 0;
 console.log("%c Project Phoenix's Apex Engine...all systems go!", 'color: red; font-size: 12px; font-weight: 900; font-family: Arial;');
 db.collection("apexLobby").get().then(function(querySnapshot) {
   querySnapshot.forEach(function(lobby) {
-
+    var platform;
     numPlayers +=1;
     // doc.data() is never undefined for query doc snapshots
     console.log("%c Entering the lobby...", 'color: blue; font-size: 10px; font-weight: 900; font-family: Arial;');
     console.log(lobby.id, " => ", lobby.data());
-    if(lobby.data().addedToTeam == false){
+    if(lobby.data().platform == 'XBOX'){
+      platform = 1;
+    }else if(lobby.data().platform == "PS4"){
+      platform = 2;
+    }else{
+      platform = 5;
+    }
+
+    if(lobby.data().addedToTeam == "false"){
       var settings = {
         "async": true,
         "crossDomain": true,
-        "url": 'https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/apex/v1/standard/profile/' + lobby.data().platform + '/' + lobby.data().name,
+        "url": 'https://cors-anywhere.herokuapp.com/https://public-api.tracker.gg/apex/v1/standard/profile/' + platform + '/' + lobby.data().name,
         "method": "GET",
         "headers": {
           "TRN-Api-Key": "1a753f25-4dce-4936-8092-554a2b44b927",
@@ -29,7 +37,7 @@ db.collection("apexLobby").get().then(function(querySnapshot) {
             name: lobby.data().name,
             difference: 0,
             overallDamage: 0,
-            platform: lobby.data().platform,
+            platform: platform,
             twitch: lobby.data().twitch,
           }
           db.collection('apex').doc(lobby.data().teamName).update({
@@ -86,7 +94,7 @@ db.collection('tournaments').doc('apexarena').get().then(function(date) {
         teamCounter += 1;
         var tempArr = [];
         var initArr = [];
-        if (team.data().teamReady == true) {
+        if (team.data().players.length = 3) {
           team.data().players.forEach(function(player) {
             // console.log(player);idk if this is working
             var settings = {
