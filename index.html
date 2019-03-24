@@ -2,31 +2,22 @@
 <html>
 
 <head>
-  <!--Import Google Icon Font-->
-
-  <title>Home | collegium</title>
+  <title>Home | JAVELIN</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link type="text/css" rel="stylesheet" href="css/home.css" media="screen,projection" />
   <link type="text/css" rel="stylesheet" href="css/animate.css" media="screen,projection" />
-
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="collegium">
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="js/init.js"></script>
-  <script type="text/javascript" src="js/player.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
-
-  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/tournamentLoad.js"></script>
 
   <script>
     // Initialize Firebase
@@ -46,808 +37,86 @@
     var db = firebase.firestore();
   </script>
   <style>
-
-    html {
-      background: linear-gradient(-190deg, #121321 25%, #121321);
-      overflow-x: hidden;
-      ;
+    .btn-rounded {
+      border-radius: 10px;
     }
 
-
-
-    /* GLOBAL VARIABLES */
-
-    :root {
-      --font: "Roboto", sans-serif;
-      --fontOrigin: 1rem;
-      /* 16px */
-      --fontSmall: 0.625em;
-      /* 10px */
-      --fontMedium: 0.875em;
-      /* 14px */
-      --fontNormal: 1em;
-      /* 16px */
-      --fontLarge: 1.375em;
-      /* 22px */
-      --fontLight: 100;
-      --fontRegular: 400;
-      --speed: 0.65s;
+    html,
+    body,
+    .card,
+    .main-color {
+      background-color: #111217;
     }
 
-    @keyframes zoom {
-      from {
-        object-position: 0 50%;
-      }
-      to {
-        object-position: 100% 50%;
-      }
+    nav,
+    .second-color {
+      background-color: #1B1C23;
     }
 
-    @keyframes blur {
-      from {
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
-      }
-      to {
-        -webkit-transform: scale(1.5, 1.5);
-        transform: scale(2, 2);
-      }
+    .third-color {
+      background-color: #212228;
     }
-
-    * {
-      border: 0;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-
-    .menu {
-      grid-area: menu;
-      align-self: end;
-    }
-
-    .menu__list {
-      text-align: center;
-    }
-
-    .menu__item {
-      position: relative;
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: var(--fontMedium);
-      font-weight: var(--fontRegular);
-      text-transform: uppercase;
-      color: #a9a9a9;
-      cursor: pointer;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .menu__item::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      margin-top: 6px;
-      background: rgba(100, 100, 250, 1);
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .menu__item:hover {
-      color: rgba(150, 150, 255, 1);
-    }
-
-    .menu__item.active {
-      color: rgba(100, 100, 250, 1);
-    }
-
-    .menu__item.active::after {
-      width: 100%;
-    }
-
-    .dope {
-      position: relative;
-      grid-area: dope;
-      align-self: center;
-      justify-self: center;
-      overflow: hidden;
-      display: block;
-      width: 100%;
-      /* max-width: 250px; */
-      height: 400px;
-      font-size: var(--fontOrigin);
-      border-radius: 8px;
-      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope:hover {
-      box-shadow: 0 40px 130px rgba(0, 0, 0, 0.6);
-      -webkit-transform: scale(1.1, 1.1);
-      transform: scale(1.1, 1.1);
-    }
-
-    .dope__save {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: block;
-      width: 35px;
-      height: 35px;
-      background: transparent;
-      border: 0;
-      opacity: 0;
-      border-radius: 3px;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope__save:focus {
-      outline: 0;
-      background-color: rgba(255, 255, 255, 0);
-    }
-
-    .dope:hover .dope__save {
-      opacity: 0.6;
-    }
-
-    .dope__save i {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope__save:hover i {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .dope__save:active,
-    .dope__save.active {
-      opacity: 1 !important;
-    }
-
-    .dope__save:active i,
-    .dope__save.active i {
-      color: white;
-    }
-
-    .dope__image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      overflow: hidden;
-      display: block;
-      max-width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
-    }
-
-    .dope__image img {
-      -webkit-transform: scale(1.3, 1.3);
-      transform: scale(1.3, 1.3);
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 1;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-      animation-name: zoom;
-      animation-duration: 30s;
-      animation-direction: alternate;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-    }
-
-    .dope:hover .dope__image img {
-      -webkit-transform: scale(1, 1);
-      transform: scale(1, 1);
-      opacity: 0.5;
-    }
-
-    .dope__header {
-      display: grid;
-      width: 100%;
-      height: 200px;
-    }
-
-    .dope__profile {
-      align-self: center;
-      justify-self: center;
-      display: block;
-      overflow: hidden;
-      width: 10vmax;
-      height: 10vmax;
-      max-width: 100px;
-      max-height: 100px;
-      border-radius: 50%;
-    }
-
-    .dope__profile img {
-      -webkit-transform: scale(1.5, 1.5) translateZ(0);
-      transform: scale(1.5, 1.5) translateZ(0);
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% 50%;
-      -webkit-filter: grayscale(50%) contrast(75%) brightness(1.3);
-      filter: grayscale(50%) contrast(75%) brightness(1.3);
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-      mix-blend-mode: normal;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-    }
-
-    .dope:hover .dope__profile img {
-      -webkit-transform: scale(1, 1) translateZ(0);
-      transform: scale(1, 1) translateZ(0);
-    }
-
-    .dope__body {
-      display: grid;
-      padding: 0 20px;
-    }
-
-    .dope__name {
-      align-self: center;
-      justify-self: center;
-      margin-bottom: 2px;
-      color: white;
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 0.1rem;
-      text-align: center;
-      text-transform: uppercase;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-      background: -webkit-linear-gradient(white, #a1a1a1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope:hover .dope__name {
-      background: -webkit-linear-gradient(white, #c1c1c1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .dope__job {
-      align-self: center;
-      justify-self: center;
-      display: inline-block;
-      font-size: var(--fontSmall);
-      font-weight: var(--fontLight);
-      text-align: center;
-      letter-spacing: 0.35rem;
-      color: rgba(100, 130, 200, 0.45);
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope:hover .dope__job {
-      color: rgba(100, 130, 200, 1);
-    }
-
-    .dope__bio {
-      position: relative;
-      -webkit-transform: translateY(30%);
-      transform: translateY(30%);
-      display: block;
-      margin: 10px 0 16px 0;
-      font-size: var(--fontMedium);
-      font-weight: var(--fontLight);
-      /*text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.35);*/
-      color: rgba(255, 255, 255, 0.65);
-      opacity: 0;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope:hover .dope__bio {
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .dope__footer {
-      position: relative;
-      -webkit-transform: translateY(60%);
-      transform: translateY(60%);
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-areas: "date category";
-      padding: 10px 20px;
-      opacity: 0;
-      -webkit-transition: all var(--speed) ease;
-      transition: all var(--speed) ease;
-    }
-
-    .dope:hover .dope__footer {
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .dope__date {
-      grid-area: date;
-      display: inline-block;
-      align-self: left;
-      justify-self: left;
-      font-size: var(--fontSmall);
-      font-weight: var(--fontLight);
-      text-transform: uppercase;
-      text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.45);
-      color: rgba(250, 250, 250, 0.4);
-    }
-
-    /* MODIFIERS */
-
-    .dope[data-effect="blur"]:hover .dope__image img {
-      -webkit-filter: blur(3px);
-      filter: blur(3px);
-    }
-
-    .dope[data-effect="blur"] .dope__image img {
-      animation-name: blur;
-    }
-
-    .dope[data-effect="color"]:hover {
-      -webkit-transform: scale(1, 1);
-      transform: scale(1, 1);
-      box-shadow: 0 40px 260px rgba(255, 0, 0, 0.1), 0 40px 130px rgba(250, 100, 100, 0.2), -80px -40px 230px rgba(0, 200, 250, 0.15), 80px 40px 230px rgba(120, 120, 255, 0.15);
-    }
-
-    .dope[data-effect="color"] .dope__image {
-      background: linear-gradient(to bottom, rgba(20, 20, 100, 1), rgba(255, 100, 100, 0.5))
-    }
-
-    .dope[data-effect="color"]:hover .dope__image img {
-      opacity: 0.8;
-    }
-
-    .dope[data-effect="color"]:hover .dope__profile img {
-      -webkit-filter: grayscale(50%) contrast(80%) brightness(1.6);
-      filter: grayscale(50%) contrast(80%) brightness(1.6);
-      mix-blend-mode: normal;
-    }
-
-    /*  */
-
   </style>
-</head>
-
-
-<body>
-  <section class="hide-on-med-and-down">
-    <div class="">
-
-      <a href="#" class="brand-logo left hide-on-med-and-down" style="padding-left: 10%; margin-top: 3%;"><span class="white-text text-lighten-2" style="font-weight: 900; font-size: 50px;"><b>Project Javelin</b></span></a>
-
-      <div class="row valign-wrapper">
-        <div class="col m8 pull-m3 s12" style="margin-top: 0%;">
-
-          <div class="row">
-            <div class="col m4">
-              <!-- BEGIN: dope -->
-              <div class="dope" data-effect="zoom">
-                <div class="dope__image">
-                  <img style="filter: blur(1px);" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=2551&q=80" alt="Short description">
-                </div>
-                <div class="dope__header">
-                  <figure class="dope__profile">
-                    <img src="https://i.pinimg.com/originals/3d/a1/c2/3da1c204207bec1124d5a7c8f945346f.gif" alt="Short description">
-                  </figure>
-                </div>
-                <div class="dope__body">
-                  <h3 class="dope__name">Tournaments</h3>
-                  <p class="dope__job">Hover Over Me</p>
-                  <p class="dope__bio"> Participate in our online free and paid tournaments for prizes, points, and more</p>
-                </div>
-              </div>
-            </div>
-            <div class="col m4">
-              <!-- BEGIN: dope -->
-              <div class="dope" data-effect="zoom">
-                <div class="dope__image">
-                  <img style="filter: blur(1px);" src="https://images.unsplash.com/photo-1513594003807-3798b2d49908?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="Short description">
-                </div>
-                <div class="dope__header">
-                  <figure class="dope__profile">
-                    <img src="https://cdn.dribbble.com/users/31826/screenshots/4001287/coin-3d.gif" alt="Short description">
-                  </figure>
-                </div>
-                <div class="dope__body">
-                  <h3 class="dope__name">Collegium Points</h3>
-                  <p class="dope__job">Hover Over Me</p>
-                  <p class="dope__bio"> Win tournaments, earn points. We'll give you a little bit to start out with but more can always be purchased</p>
-                </div>
-              </div>
-              <!-- END: dope -->
-            </div>
-            <div class="col m4">
-              <!-- BEGIN: dope -->
-              <div class="dope" data-effect="zoom">
-                <div class="dope__image">
-                  <img style="filter: blur(1px);" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="Short description">
-                </div>
-                <div class="dope__header">
-                  <figure class="dope__profile">
-                    <img src="https://cdn.dribbble.com/users/2175/screenshots/3161018/leaderboard.gif" alt="Short description">
-                  </figure>
-                </div>
-                <div class="dope__body">
-                  <h3 class="dope__name">Make History</h3>
-                  <p class="dope__job">Hover Over Me</p>
-                  <p class="dope__bio">The more you participate, the more you stats and points you earn on your page to go down in history</p>
-                </div>
-              </div>
-              <!-- END: dope -->
-            </div>
-          </div>
-          <!-- END: dope -->
-        </div>
-        <div class="col m4 s12 pull-m2 valign center">
-          <div class="card z-depth-5" style="background-color: #161726; width: 450px; border-radius: 0px; ">
-            <div class="card-content white-text">
-              <section id="accountAlready">
-                <h5 class="white-text center-align">Welcome Back</h5>
-                <hr color="orange" />
-                <br>
-                <p style="color: #72767d;" class="center-align">Let's Get Some Dubs</p>
-                <br>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="email" type="email" class="validate" style="color: #fff;">
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="password" type="password" class="validate" style="color: #fff;">
-                    <label for="password">Password</label>
-                  </div>
-                </div>
-                <a onclick="hideLogin();">
-                  <p class="blue-text left-align" style="font-size: 10px;">Don't have an account? Sign up here.</p>
-                </a>
-                <br>
-                <a class="waves-effect waves-light btn-large z-depth-5 orange darken-4" style="width: 100%; background-color: #121321;" onclick="login();">Login</a>
-              </section>
-              <section id="createAccount">
-                <h5 class="white-text center-align">Let's Get It</h5>
-                <hr color="orange" />
-                <br>
-                <p style="color: #72767d;" class="center-align">Fill out the information below</p>
-                <br>
-                <div class="row">
-                  <div class="input-field col s6">
-                    <input id="first_nameCreate" type="text" class="validate" style="color: #fff;">
-                    <label for="twitchCreate">First Name</label>
-                  </div>
-                  <div class="input-field col s6">
-                    <input id="last_nameCreate" type="text" class="validate" style="color: #fff;">
-                    <label for="email">Last Name</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="emailCreate" type="email" class="validate" style="color: #fff;">
-                    <label for="emailCreate">Email</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="passwordCreate" type="password" class="validate" style="color: #fff;">
-                    <label for="passwordCreate">Password</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="twitch" type="text" class="validate" style="color: #fff;">
-                    <label for="twitch">Twitch</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="smash" type="text" class="validate" style="color: #fff;">
-                    <label for="twitch">Smash Name</label>
-                  </div>
-                </div>
-                <a onclick="hideCreate();">
-                  <p class="blue-text left-align" style="font-size: 10px;">Already have an account? Login here.</p>
-                </a>
-                <br>
-                <a class="waves-effect waves-light btn-large z-depth-5 orange darken-4" style="width: 100%; background-color: #121321;" onclick="create();">Create Account</a>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
+  <nav class="background-color z-depth-0">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo thin" style="padding-left: 5%;">JAVELIN</a>
     </div>
-  </section>
-  <section class="hide-on-med-and-up">
-    <section class="container center center-align">
-      <nav class="transparent z-depth-0">
-        <div class="nav-wrapper black-text">
-          <a href="index.html" class="brand-logo center-align" style=""><span class="white-text text-lighten-2" style="font-weight: 900; "><b>collegium</b></span><span class="white-text text-darken-4"style="font-weight: 900;">.me</span></a>
-        </div>
-      </nav>
-      <br>
-      <div class="card z-depth-5" style="background-color: #161726; border-radius: 0px; ">
-        <div class="card-content white-text">
-          <section id="accountAlready">
-            <h5 class="white-text center-align">Welcome Back</h5>
-            <hr color="orange" />
-            <br>
-            <p style="color: #72767d;" class="center-align">Let's Get Some Dubs</p>
-            <br>
-            <div class="row">
+  </nav>
+
+  <body onload="loadTournamentHub();">
+    <br>
+    <section class="container">
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="row container">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate" style="color: #fff;">
+                <input id="email" type="email" class="validate">
                 <label for="email">Email</label>
               </div>
             </div>
-            <div class="row">
+            <div class="row container">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate" style="color: #fff;">
+                <input id="password" type="password" class="validate">
                 <label for="password">Password</label>
               </div>
             </div>
-            <a onclick="hideLogin();">
-              <p class="blue-text left-align" style="font-size: 10px;">Don't have an account? Sign up here.</p>
-            </a>
-            <br>
-            <a class="waves-effect waves-light btn-large z-depth-5 orange darken-4" style="width: 100%; background-color: #121321;" onclick="login();">Login</a>
-          </section>
-          <section id="createAccount">
-            <h5 class="white-text center-align">Let's Get It</h5>
-            <hr color="orange" />
-            <br>
-            <p style="color: #72767d;" class="center-align">Fill out the information below</p>
-            <br>
             <div class="row">
-              <div class="input-field col s6">
-                <input id="first_nameCreate" type="text" class="validate" style="color: #fff;">
-                <label for="twitchCreate">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="last_nameCreate" type="text" class="validate" style="color: #fff;">
-                <label for="email">Last Name</label>
-              </div>
+              <a class="waves-effect waves-light btn btn-rounded" onclick="login();">Login</a>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="emailCreate" type="email" class="validate" style="color: #fff;">
-                <label for="emailCreate">Email</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="passwordCreate" type="password" class="validate" style="color: #fff;">
-                <label for="passwordCreate">Password</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="twitch" type="text" class="validate" style="color: #fff;">
-                <label for="twitch">Twitch</label>
-              </div>
-            </div>
-            <a onclick="hideCreate();">
-              <p class="blue-text left-align" style="font-size: 10px;">Already have an account? Login here.</p>
-            </a>
-            <br>
-            <a class="waves-effect waves-light btn-large z-depth-5 orange darken-4" style="width: 100%; background-color: #121321;" onclick="create();">Create Account</a>
-          </section>
+        </form>
         </div>
-      </div>
-      <br><br><br>
-      <!-- BEGIN: dope -->
-      <div class="dope" style="width: 100% !important;" data-effect="zoom">
-        <div class="dope__image">
-          <img style="filter: blur(1px);" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=2551&q=80" alt="Short description">
-        </div>
-        <div class="dope__header">
-          <figure class="dope__profile">
-            <img src="https://i.pinimg.com/originals/3d/a1/c2/3da1c204207bec1124d5a7c8f945346f.gif" alt="Short description">
-          </figure>
-        </div>
-        <div class="dope__body">
-          <h3 class="dope__name">Tournaments</h3>
-          <p class="dope__job">Hover Over Me</p>
-          <p class="dope__bio"> Participate in our online free and paid tournaments for prizes, points, and more</p>
-        </div>
-      </div>
-      <br><br>
-      <!-- BEGIN: dope -->
-      <div class="dope" data-effect="zoom">
-        <div class="dope__image">
-          <img style="filter: blur(1px);" src="https://images.unsplash.com/photo-1513594003807-3798b2d49908?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="Short description">
-        </div>
-        <div class="dope__header">
-          <figure class="dope__profile">
-            <img src="https://cdn.dribbble.com/users/31826/screenshots/4001287/coin-3d.gif" alt="Short description">
-          </figure>
-        </div>
-        <div class="dope__body">
-          <h3 class="dope__name">Collegium Points</h3>
-          <p class="dope__job">Hover Over Me</p>
-          <p class="dope__bio"> Win tournaments, earn points. We'll give you a little bit to start out with but more can always be purchased</p>
-        </div>
-      </div>
-      <!-- END: dope -->
-      <br><br>
-      <!-- BEGIN: dope -->
-      <div class="dope" data-effect="zoom">
-        <div class="dope__image">
-          <img style="filter: blur(1px);" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80" alt="Short description">
-        </div>
-        <div class="dope__header">
-          <figure class="dope__profile">
-            <img src="https://cdn.dribbble.com/users/2175/screenshots/3161018/leaderboard.gif" alt="Short description">
-          </figure>
-        </div>
-        <div class="dope__body">
-          <h3 class="dope__name">Make History</h3>
-          <p class="dope__job">Hover Over Me</p>
-          <p class="dope__bio">The more you participate, the more you stats and points you earn on your page to go down in history</p>
-        </div>
-      </div>
-      <!-- END: dope -->
+
     </section>
+  </body>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script>
+    function login() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById('password').value;
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+        M.toast({
+          html: 'Logging In :)',
+          classes: 'rounded green white-text'
+        });
+        window.location.href = "www/tournamentHub.html";
+      }, function(error) {
+        M.toast({
+          html: 'Incorrect Email or Password',
+          classes: 'rounded red white-text'
+        });
+        window.location.href = "index.html";
 
-  </section>
-</body>
-
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('#createAccount').show();
-    $('#accountAlready').hide();
-
-  });
-
-  function hideLogin() {
-    $('#accountAlready').hide();
-    $('#createAccount').show();
-
-  }
-
-  function hideCreate() {
-    $('#createAccount').hide();
-    $('#accountAlready').show();
-
-  }
-
-  function login() {
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-      M.toast({
-        html: "You're all set :)",
-        classes: 'rounded green white-text'
       });
-      window.open("www/gaming.html", "_self");
-
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      M.toast({
-        html: "Uh-Oh, something doesn't seem right. Try Again?",
-        classes: 'rounded red white-text'
-      });
-
-      // ...
-    });
-  }
-
-  function create() {
-    var firstCreate = document.getElementById('first_nameCreate').value;
-    var lastCreate = document.getElementById('last_nameCreate').value;
-    var twitchCreate = document.getElementById('twitch').value;
-    var emailCreate = document.getElementById('emailCreate').value;
-    var passwordCreate = document.getElementById('passwordCreate').value;
-    var smashCreate = document.getElementById('smash').value;
-
-    db.collection("gamers").doc(emailCreate).set({
-        first_name: firstCreate,
-        last_name: lastCreate,
-        twitch: twitchCreate,
-        email: emailCreate,
-        password: passwordCreate,
-        points: 100,
-        smash: smashCreate,
-        challenges: [],
-        full_name: firstCreate + ' ' + lastCreate,
-        tierPoints: 25,
-        tier: "BRONZE",
-        notification: {}
-      })
-      .then(function() {
-        console.log("Document successfully written!");
-      })
-      .catch(function(error) {
-        console.error("Error writing document: ", error);
-      });
-    firebase.auth().createUserWithEmailAndPassword(emailCreate, passwordCreate).then(function() {
-      M.toast({
-        html: "You're all set :)",
-        classes: 'rounded green white-text'
-      });
-      // window.open("www/gaming.html", "_self");
-
-    }).catch(function(error) {
-      M.toast({
-        html: "Uh-Oh, something doesn't seem right. Try Again?",
-        classes: 'rounded red white-text'
-      });
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
-
-  }
-
-  /////////
-  var tmax_optionsGlobal = {
-    repeat: -1,
-    repeatDelay: 0.65,
-    yoyo: true
-  };
-
-  CSSPlugin.useSVGTransformAttr = true;
-
-  var tl = new TimelineMax(tmax_optionsGlobal),
-    path = 'svg *',
-    stagger_val = 0.0125,
-    duration = 0.75;
-
-  $.each($(path), function(i, el) {
-    tl.set($(this), {
-      x: '+=' + getRandom(-500, 500),
-      y: '+=' + getRandom(-500, 500),
-      rotation: '+=' + getRandom(-720, 720),
-      scale: 0,
-      opacity: 0
-    });
-  });
-
-  var stagger_opts_to = {
-    x: 0,
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    rotation: 0,
-    ease: Power4.easeInOut
-  };
-
-  tl.staggerTo(path, duration, stagger_opts_to, stagger_val);
-
-  var $svg = $('svg');
-  $svg.hover(
-    function() {
-      tl.timeScale(0.15);
-    },
-    function() {
-      tl.timeScale(1);
-    });
-
-  function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-</script>
+    }
+  </script>
 
 </html>

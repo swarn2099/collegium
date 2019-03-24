@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Damage | JAVELIN</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/animate.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/tournamentLoad.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyC6GRrWQ0v-xzvfHg32xgTP9fxSZB9Skb8",
+      authDomain: "collegium-a3676.firebaseapp.com",
+      databaseURL: "https://collegium-a3676.firebaseio.com",
+      projectId: "collegium-a3676",
+      storageBucket: "collegium-a3676.appspot.com",
+      messagingSenderId: "852316993941"
+    };
+    firebase.initializeApp(config);
+    const settings = {
+      timestampsInSnapshots: true
+    };
+    firebase.firestore().settings(settings);
+    var db = firebase.firestore();
+  </script>
+  <style>
+    .btn-rounded {
+      border-radius: 25px;
+    }
+
+    html,
+    body,
+    .card,
+    .main-color {
+      background-color: #111217;
+    }
+
+    nav,
+    #slide-out,
+    .second-color {
+      background-color: #1B1C23;
+    }
+
+    .tinted-image {
+      width: 100%;
+      height: 300px;
+    }
+
+
+    *,
+    *:before,
+    *:after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    table {
+      background: #111217;
+      border-radius: 0.25em;
+      border-collapse: collapse;
+      margin: 1em;
+    }
+
+    th {
+      border-bottom: 1px solid #364043;
+      color: #E2B842;
+      font-weight: 600;
+      padding: 0.5em 1em;
+      text-align: left;
+    }
+
+    td {
+      color: #fff;
+      font-weight: 400;
+      padding: 0.65em 1em;
+    }
+
+    .disabled td {
+      color: #4F5F64;
+    }
+
+    tbody tr {
+      transition: background 0.25s ease;
+    }
+
+    tbody tr:hover {
+      background: #1B1C23;
+    }
+  </style>
+  <!-- Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content main-color white-text">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+  </ul>
+  <nav class="background-color z-depth-5">
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand-logo center thin">JAVELIN</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Welcome Swarn<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
+  <ul id="slide-out" class="sidenav sidenav-fixed center" style="padding-left: 1%; padding-right: 1%; overflow-y: hidden;">
+    <h4 class="white-text" style="font-weight: 600;" id="header"></h4>
+    <section class="">
+      <a class="waves-effect  btn-small second-color grey-text" style="width: 100%; margin-top: -1%;" href="index.html">Back to Home</a>
+      <a class="waves-effect waves-light btn btn-rounded z-depth-3 modal-trigger" href="#modal1" style="width: 100%; background-color: #11BAA8;">Register</a>
+      <div class="card-panel second-color z-depth-3 hoverable" style="border-radius: 10px;">
+        <h6 class="white-text" style="font-weight: 900;">Time Reamaining</h6>
+        <h5 class="white-text" style="font-weight: 200;" id="countdown"></h5>
+      </div>
+      <div class="card-panel second-color z-depth-3 hoverable" style="border-radius: 10px;">
+        <h6 class="white-text" style="font-weight: 900;">Money in Pot</h6>
+        <h5 class="white-text" style="font-weight: 200;" id="prize"></h5>
+      </div>
+    </section>
+    <section style="border-radius: 15px; padding: 10px; background-color: #583E83; height: 25%; overflow-y: auto;">
+      <h5 class="white-text" style="font-weight: 700;"><i class="fab fa-twitch"></i> Live Now</h5>
+      <h6 class="white-text thin" style="margin-top: 25%;" id="noOne">No one is live now :(</h6>
+      <section id="liveNow"></section>
+    </section>
+    <iframe src="https://discordapp.com/widget?id=550559525602590761&theme=dark" width="100%" height="30%" style="margin-top: 5%;" allowtransparency="true" frameborder="0"></iframe>
+  </ul>
+  <!-- Registration -->
+  <div id="modal1" class="modal bottom-sheet second-color" style="min-height: 100%; margin-left: 70%; width: 30%;">
+    <div class="modal-content white-text center">
+      <h4 style="font-weight: 700;" id="registrationName"></h4>
+      <p style="font-weight: 100;" class="grey-text">Press ESC to dismiss</p>
+      <br>
+      <div class="card-panel second-color z-depth-4 hoverable left-align" style="border-radius: 10px;">
+        <h5 class="white-text left-align" style="font-weight: 600;">Tournament Rules</h5>
+        <hr color="orange" />
+        <ul class="container">
+          <li style="list-style-type: circle !important"><h6 class="white-text" style="font-weight: 400;">Enable 'Damage Done' tracker on your main legend</h6></li>
+          <li style="list-style-type: circle !important"><h6 class="white-text" style="font-weight: 400;">Play your matches till the timer is up</h6></li>
+          <li style="list-style-type: circle !important"><h6 class="white-text" style="font-weight: 400;">The match in which you do the highest damage will be updated on the table</h6></li>
+          <li style="list-style-type: circle !important"><h6 class="white-text" style="font-weight: 400;">Once the timer is up, the player in 1st place will be given the prize money in the pot automatically</h6></li>
+          <li style="list-style-type: circle !important"><h6 class="white-text" style="font-weight: 400;">NO CHEATING WILL BE TOLERATED. If you have any concerns and or would like to report any suspected cheating, please join our Discord and let us know in the cheating channel.</h6></li>
+        </ul>
+      </div>
+      <a class="waves-effect waves-light btn-large btn-rounded" style="width: 100%;" onclick="userRegister();">Register</a>
+    </div>
+  </div>
+
+  <body onload="loadTournamentData()">
+    <section style="padding-left: 300px;">
+      <div class="tinted-image">
+      </div>
+      <section style="padding-left: 5%; padding-right: 5%;">
+            <h3 class="white-text" style="font-weight: 700;" id="name"></h3>
+        <hr color="orange" />
+        <div class="row">
+          <div class="col m12">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Player Tag</th>
+                  <th>Points</th>
+                  <th>Last Updated</th>
+                  <th>Total Points</th>
+                </tr>
+              </thead>
+              <tbody id="tournamentPlayerStats">
+                <!-- <tr>
+                  <td>1</td>
+                  <td>Malcolm</td>
+                  <td>Reynolds</td>
+                  <td>Mal, Cap'n</td>
+                  <td>M</td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+    </section>
+  </body>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</html>
